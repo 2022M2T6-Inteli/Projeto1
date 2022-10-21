@@ -19,7 +19,7 @@
 
 ## 📝 Descrição
 
-Curta descrição sobre o que o seu projeto faz (problema a ser resolvido e solução proposta).
+O principal objetivo do projeto é facilitar o processo de contratação entre empreiteiras e a construtora MRV, bem como facilitar o contato dessas empreiteiras com a mão de obra local,  durante o período da realização das obras. Em suma, o projeto é uma plataforma com o objetivo de automatizar a contratação dos colaboradores da MRV.
 
 ## 📁 Estrutura de pastas
 
