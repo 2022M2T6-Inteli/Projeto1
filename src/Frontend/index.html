@@ -1,16 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Endpoints</title>
     <link href="./style.css" type="stylesheet">
+    <style>
+    #container{
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+        height: 100px;
+        }
+    body{   
+        background-image: radial-gradient(#ffa300, #006838, #006838, #006838);
+    }
+    button{
+        margin-bottom: 25px;
+        margin-right: 30px;
+        width: 150px;
+        height: 50px;
+       
+    }
+
+    a{
+        text-decoration: none;
+        color: inherit;
+        font-weight: bold;
+        }
+
+    </style>
 </head>
 <body>
     <div id="container">
         <form id="form_endpoint_index">
-            <button id="button_endpoint_create" value="Endpoint Create"></button>
+            <button id="button_endpoint_create"><a href="endpoint_create.html">Endpoint Create</a></button>
+            <button id="button_endpoint_read"><a href="endpoint_read.html">Endpoint Read</a></button>
+            <button id="button_endpoint_uptade"><a href="endpoint_uptade.html">Endpoint Uptade</a></button>
+            <button id="button_endpoint_delete"><a href="endpoint_delete.html">Endpoint Delete</a></button>
+            <button id="button_endpoint_join"><a href="endpoint_join.html">Endpoint Join</a></button>
         </form>
     </div>
     
