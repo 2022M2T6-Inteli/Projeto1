@@ -38,7 +38,6 @@ app.post('/insereUsuario', urlencodedParser, (req, res) => {
 		}
 		
 	});
-	res.write('<a href="/listar.html">VOLTAR</a>');
 	db.close(); // Fecha o banco
 	res.end();
 });
@@ -46,9 +45,8 @@ app.post('/insereUsuario', urlencodedParser, (req, res) => {
 //UPDATE
 app.post('/atualizaUsuario', urlencodedParser, (req, res) => {
 	res.statusCode = 200;
-	//res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
-
-	sql = "";
+	res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+	sql = "UPDATE customers SET address = 'Canyon 123' WHERE address = 'Valley 345'"; //Lê-se: "update a tabela costumers, colocando (set) no parâmetro adress o termo ... no lugar (where) do termo ..."
 	var db = new sqlite3.Database(DBPATH); // Abre o banco
 	db.run(sql, [],  err => {
 		if (err) {
@@ -76,6 +74,24 @@ app.post('/removeUsuario', urlencodedParser, (req, res) => {
 	db.close(); // Fecha o banco
 });
 
+app.use(express.json());
+app.get('/experiencia', (req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Access-Control-Allow-Origin', '*'); 
+    var db = new sqlite3.Database(DBPATH); // Abre o banco
+    var sql = 'SELECT empresa, descricao, nome_da_empresa, periodo FROM experiencia ORDER BY empresa DESC';
+    db.all(sql, [],  (err, rows ) => {
+        if (err) {
+            throw err;
+        }
+        res.json(rows);
+    });
+	res.write();
+    db.close(); // Fecha o banco
+});
+
 app.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
   });
+
+  // 2 updates, 
