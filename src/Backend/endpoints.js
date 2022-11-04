@@ -219,7 +219,7 @@ app.get('/spe/atualizar', (req, res) => {
     res.statusCode = 200; //Código de status HTTP, que indica pro cliente qual a situação da sua requisição
     res.setHeader('Access-Control-Allow-Origin', '*'); 
     var db = new sqlite3.Database(DBPATH); // Abre o banco
-	var sql = `SELECT Nome_Fantasia, Data_Abertura FROM Oportunidade WHERE CNPJ= '${req.query.CNPJ}'`;
+	var sql = `SELECT Nome_Fantasia, Data_Abertura FROM SPE WHERE CNPJ= '${req.query.CNPJ}'`;
 	console.log(sql)
     db.all(sql, [],  (err, rows ) => {
         if (err) {
@@ -249,13 +249,13 @@ app.post('/spe/atualizar', urlencodedParser, (req, res) => {
 });
 
 //Deletar SPE
-app.post('/spe/remover', urlencodedParser, (req, res) => {
+app.get('/spe/remover', urlencodedParser, (req, res) => {
 	res.statusCode = 200;
 	res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
 	var db = new sqlite3.Database(DBPATH); // Abre o banco
-	var sql = `DELETE FROM SPE WHERE CNPJ='${req.body.CNPJ}'`;
+	var sql = `DELETE FROM SPE WHERE CNPJ='${req.query.CNPJ}'`;
 	console.log(sql);
-	db.run(sql, [],  err => {
+	db.all(sql, [],  err => {
 		if (err) {
 		    throw err;
 		}
