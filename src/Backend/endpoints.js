@@ -196,6 +196,7 @@ app.post('/spe/criar', urlencodedParser, (req, res) => {
 	 	res.send();
 	 });
 	 db.close(); // Fecha o banco
+	 res.write('<p>Cadastro criado com sucesso!</p><a href="/spe">Voltar</a>')
 });
 
 //Listar os SPE
@@ -242,6 +243,7 @@ app.post('/spe/atualizar', urlencodedParser, (req, res) => {
 		    throw err;
 		}
 		res.send();
+		res.write('<p>Cadastro atualizado com sucesso!</p><a href="/spe">Voltar</a>')
 	});
 	db.close(); // Fecha o banco
 });
@@ -260,6 +262,7 @@ app.post('/spe/remover', urlencodedParser, (req, res) => {
 		res.send();
 	});
 	db.close(); // Fecha o banco
+	res.write('<p>Cadastro excluido com sucesso!</p><a href="/spe">Voltar</a>')
 });
 
 //INNER JOIN CNPJ
