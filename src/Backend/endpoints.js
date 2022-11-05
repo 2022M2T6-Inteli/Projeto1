@@ -87,7 +87,7 @@ app.get('/empreiteira/remover', urlencodedParser, (req, res) => {
 	var sql = `DELETE FROM Empreiteira WHERE CNPJ='${req.query.CNPJ}'`;
 	console.log(sql);
 	var db = new sqlite3.Database(DBPATH); // Abre o banco
-	db.run(sql, [],  err => {
+	db.all(sql, [],  err => {
 		if (err) {
 		    throw err;
 		}
@@ -156,7 +156,7 @@ app.get('/postagem/remover', urlencodedParser, (req, res) => {
 	var db = new sqlite3.Database(DBPATH); // Abre o banco
 	var sql = `DELETE FROM Oportunidade WHERE ID_Oportunidade='${req.query.ID_Oportunidade}'`;
 	console.log(sql);
-	db.run(sql, [],  err => {
+	db.all(sql, [],  err => {
 		if (err) {
 		    throw err;
 		}
@@ -287,4 +287,4 @@ app.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
   });
 
-
+//Comentt
