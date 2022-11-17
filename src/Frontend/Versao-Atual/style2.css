@@ -1,4 +1,4 @@
-@import url('http://fonts.googleapis.com/css?family=Noto+Sans&display=swap');
+@import url('http://fonts.googleapis.com/css?family=Noto+Sans&dispaly=swap');
 
 :root{
     /* - Color palette - */
@@ -17,6 +17,7 @@
     --yellowB1: #f4b669;
     --yellowB2: #f3ad56;
     --yellowB3:#f2a444;
+    --boneWhite: #F9F6EE;
 }
 
 /* ---- Indicators ---- */
@@ -27,86 +28,12 @@
     box-sizing: border-box;
 }
 
-body{
-    background: linear-gradient(90deg, var(--yellowB1), var(--yellowA1));
-}
-
-
-a, p, h1, h2, h3, h4, h5, h6{
-    /* text-decoration: underline; */
-    color: white
-}
-
-i{
-    padding-top: 3px;
-    font-size: 30px;
-    color: white;
-    margin-left: 5px;
-}
-
-
-img{
-    cursor: pointer;
-}
-
-form .txt-field{
-    position: relative;
-    border-bottom: 2px solid whitesmoke;
-    margin: 30px 0;
-
-}
-
-/* ---- Classes ---- */
-
-.flex-div{
-    display: flex;
-    align-items: center;
-}
-
-.header{
-    padding: 10px 2%;
-    background: var(--greenB3);
-    position: static;
-    width: 100%;
-    top: 0px;
-    box-shadow: 0 10px 10px 0 var(--yellowA2);
-    z-index: 2;
-}
-.gap1{     /* gap é espaçamento entre itens que estão dentro de um container */
-    gap: 1rem;
-}
-
-.gap2{     /* gap é espaçamento entre itens que estão dentro de um container */
-    gap: 2rem;
-}
-
-.padding2rem{
-    padding: 2rem;
-    
-}
-
-.padding1rem{
-    padding: 1rem;
-
-}
-
-.padding131{
-    padding: 1em 3em 1em; /* superior | horizontal | inferior */
-}
-
 .alignright{
-    align-self: right;
+    align-items: right;
 }
 
 .principal{
     height:768px;
-}
-
-.central{
-    width: 100%;
-    height: 100%;
-    background-color: white;
-
 }
 
 .imgbottom{
@@ -125,6 +52,39 @@ form .txt-field{
     flex-direction: row;
 }
 
+
+nav{
+    padding: 10px 2%;
+    background: linear-gradient(to right, var(--greenB3) 0%, var(--greenA2) 100%);
+    justify-content: space-between;
+    position: static;
+    top: 0px;
+    box-shadow: 0 10px 10px 0 var(--yellowA2);
+
+}
+
+
+img{
+    cursor: pointer;
+    max-width: 100%;   
+  	height: auto;  
+}
+
+form .txt-field{
+    position: relative;
+    border-bottom: 2px solid whitesmoke;
+    margin: 30px 0;
+
+}
+
+/* ---- Classes ---- */
+
+.flex-div{
+    display: flex;
+    align-items: center;
+
+}
+
 /* - Center - */
 .center-box{
     position: absolute;
@@ -138,16 +98,15 @@ form .txt-field{
 .center-box h1{
     text-align: center;
     color: white;
-    padding: 20px 10px 20px 10px;
+    padding: 20px 0 20px 0;
     border-bottom: 3px solid var(--greenA3);
 }
-.center-box form, summary{
+.center-box form{
     padding: 0 40px;
     box-sizing: border-box;
 }
 
 .center-text{
-    text-align: center;
     color: white;
 }
 
@@ -155,14 +114,15 @@ form .txt-field{
 .nav-left p{
     font-size: 30px;
     color: white;
-    margin-right: 100rem;
+}
+
+.nav-right img{
+    width: 35px;
 }
 
 /* -  Login - */
-
-
-.inactive{
-    visibility: hidden;
+.login-body{
+    background: linear-gradient(90deg, var(--yellowB1), var(--yellowA1));
 }
 
 .txt-field input{
@@ -205,30 +165,29 @@ form .txt-field{
 .txt_field input:valid ~ span::before{
   width: 100%;
 }
+
 .pass{
     margin: -5px 0 20px 5px;
-}
-
-.left, .right{
-    margin-inline: 25px;
-    margin-bottom: 10px;
-    text-align: center;
-    width: 100%;
-}
-
-.pass, .left, .right{
     color: var(--greenB1);
     cursor: pointer;
 }
-.pass:hover, .left:hover, .right:hover{
+.pass:hover{
     text-decoration: underline;
 }
+
+.interacoes{
+    margin-left: 1px;
+    width: 30%;
+    height: 30%;
+    border-radius: 80%;
+    border: 2px solid #2D7345;
+}
+
 
 input[type="submit"]{
     width: 100%;
     height: 50px;
     border: 1px solid;
-    margin-bottom: 15px;
     background: #2691d9;
     border-radius: 25px;
     font-size: 18px;
@@ -260,45 +219,18 @@ input[type="submit"]:hover{
 .containerUnique{
     width: 100%;
     left:0px;
-    margin-top: 25px;
+    margin-top: 30px;
     font-weight: bold;
     padding-left: 15%;
     font-size: 24px;
 }
-/* -  FAQ - */
-details p{
-    text-justify: auto;
-    padding : 30px;
-}
-
-summary{
-    color: white;
-    font-size: 20px;
-    margin: 20px 100px 10px 100px;
-}
-
-/* Feed */
-.interacoes{
-    margin-left: 1px;
-    border: 1px solid black;
-    width: 30%;
-    height: 30%;
-}
-
-.fakeimgpost{
-    border: 1px solid black;
-    width: 100%;
-    height: 100px;
-}
-
-.fakeimgservice{
-    border: 1px solid black;
+.containerDouble{
     width: 50%;
     margin: 0px;
     font-weight: bold;
     padding-left: 10%;
     font-size: 24px;
-    margin-top: 25px;
+    margin-top: 30px;
 }
 .inputSmall{
     border-radius: 20px;
@@ -317,41 +249,119 @@ summary{
     left: 0px;
     flex-wrap: wrap;
     width: 100%;
-    height: 20px;
 }
 
+
+#cidadePost{
+    width:70% ;
+}
+#estadoPost{
+    width: 10%;
+}
+#headPost{
+    box-shadow: 0 0 5px 5px var(--yellowA2);
+}
+#footPost{
+    box-shadow: 0 0 5px 5px var(--yellowA2);
+}
+#postar{
+    width: 40%;
+}
+#botaoPost{
+    text-align: center;
+    padding: 0px;
+}
+#backgroundPost{
+    background-color: var(--boneWhite);
+}
 /* -  Footer - */
 .footer{
     padding: 10px 2%;
-    background: var(--greenB3);
+    background: linear-gradient(to right, var(--greenB3) 0%, var(--greenA2) 100%);
     position: fixed;
     bottom: 0;
     width: 100%;
     box-shadow: 0 0 10px 10px var(--yellowA2);
 }
 
-/* ---- ID's ---- */
+.filtroscheckbox{
+    display: flex; /*vai usar o flex direction na organização */
+    flex-direction: row;
+}
 
-/* - Register - */
-#welcome{
+.opportunities{
+    padding: 1em 3em 1em; /* superior | horizontal | inferior */
+    display: flex; /*vai usar o flex direction na organização */
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.opportunity{
+    display: flex; /*vai usar o flex direction na organização */
+    flex-direction: column;
+    position:absolute;
+    margin-right: 3em;
+    border-bottom: 5px solid grey;
+    padding-bottom: 20px; 
+}
+
+.img_post{
+    position: relative;
+    display: flex; /*vai usar o flex direction na organização */
+    flex-direction: column;
     width: 100%;
-}
-#welcome h1{
-    text-align: center;
-    margin-top: 100px;
-    font-weight: bold;
-    font-size: 40px;
+    height: 300px;
+    background-color: grey;
+    border-radius: 50px;
 }
 
-/* - FAQ - */
-#first-sum{
-    margin-top: 200px;
-}
-#last-sum{
-    margin-bottom: 200px;
+.img_service_post{
+    position: absolute;
+    display: flex; /*vai usar o flex direction na organização */
+    flex-direction: column;
+    width: 50%;
+    height: 60px;
+    position: absolute;
+    bottom: 240px;
+    left: 0;
+    z-index: 1;
+    background-color: rgb(13, 24, 232);
 }
 
-/* -  Feed - */
+.infoopportunity{
+    display: flex; /*vai usar o flex direction na organização */
+    flex-direction: column;
+    width: 70%;
+    height: 100%;
+    color: black;
+    padding: 5px;
+}
+
+.interactionsopportunity{
+    display: flex; /*vai usar o flex direction na organização */
+    flex-direction: row;
+    color: black;   
+    width: 30%;
+    height: auto;
+    padding-left: 20%;
+    padding-top: 5px;
+}
+
+/* ---- Size Change ---- */
+/* -  Phones - */
+@media only screen and (max-device-width: 480px){
+    .center-box h1{
+    padding: 20px 110px 20px 110px;
+}
+}
+
+/* -  Tablets - */
+@media only screen and (max-device-width: 768px){
+    .center-box h1{
+    padding: 20px 80px 20px 80px;
+}
+}
+
 #main{
     height:768px;
     display: flex;
@@ -368,6 +378,7 @@ summary{
     height: 100%;
     background-color: #2D7345;
     position: fixed;
+    color: white;
 }
 
 #content{
@@ -380,48 +391,3 @@ summary{
     margin-left: 20%;
 }
 
-#infoopportunity{
-    display: flex; /*vai usar o flex direction na organização */
-    flex-direction: column;
-    width: 70%;
-    height: 100%;
-    border: 1px solid black;
-}
-#infoopportunity a{
-    color: black;   
-}    
-
-#interactionsopportunity{
-    display: flex; /*vai usar o flex direction na organização */
-    flex-direction: row;
-    color: black;   
-    width: 30%;
-    height: 100%;
-    border: 1px solid black;
-    padding-left: 20%;
-    padding-top: 5px;
-    
-}
-
-/* ---- Size Change ---- */
-/* -  Phones - */
-@media only screen and (max-device-width: 480px){
-    .center-box h1{
-    padding: 20px 110px 20px 110px;
-}
-
-    #welcome h1{
-        font-size: 30px;
-}
-}
-
-
-/* -  Tablets - */
-@media only screen and (max-device-width: 768px){
-    .center-box h1{
-    padding: 20px 80px 20px 80px;
-}
-    #welcome h1{
-        font-size: 30px;
-}
-}
