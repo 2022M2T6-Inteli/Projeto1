@@ -27,46 +27,12 @@
     box-sizing: border-box;
 }
 
-a, p, h1, h2, h3, h4, h5, h6{
-    text-decoration: underline;
-    color: white
-}
-
-.gap1{     /* gap é espaçamento entre itens que estão dentro de um container */
-    gap: 1rem;
-}
-
-.gap2{     /* gap é espaçamento entre itens que estão dentro de um container */
-    gap: 2rem;
-}
-
-.padding2rem{
-    padding: 2rem;
-    
-}
-
-.padding1rem{
-    padding: 1rem;
-
-}
-
-.padding131{
-    padding: 1em 3em 1em; /* superior | horizontal | inferior */
-}
-
 .alignright{
     align: right;
 }
 
 .principal{
     height:768px;
-}
-
-.central{
-    width: 100%;
-    height: 100%;
-    background-color: #ffffff;
-
 }
 
 .imgbottom{
@@ -99,6 +65,8 @@ nav{
 
 img{
     cursor: pointer;
+    max-width: 100%;   
+  	height: auto;  
 }
 
 form .txt-field{
@@ -207,22 +175,12 @@ form .txt-field{
 
 .interacoes{
     margin-left: 1px;
-    border: 1px solid black;
     width: 30%;
     height: 30%;
+    border-radius: 80%;
+    border: 2px solid #2D7345;
 }
 
-.fakeimgpost{
-    border: 1px solid black;
-    width: 100%;
-    height: 100px;
-}
-
-.fakeimgservice{
-    border: 1px solid black;
-    width: 50%;
-    height: 20px;
-}
 
 input[type="submit"]{
     width: 100%;
@@ -265,6 +223,69 @@ input[type="submit"]:hover{
     box-shadow: 0 0 10px 10px var(--yellowA2);
 }
 
+.filtroscheckbox{
+    display: flex; /*vai usar o flex direction na organização */
+    flex-direction: row;
+}
+
+.opportunities{
+    padding: 1em 3em 1em; /* superior | horizontal | inferior */
+    display: flex; /*vai usar o flex direction na organização */
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.opportunity{
+    display: flex; /*vai usar o flex direction na organização */
+    flex-direction: column;
+    position:absolute;
+    margin-right: 3em;
+    border-bottom: 5px solid grey;
+    padding-bottom: 20px; 
+}
+
+.img_post{
+    position: relative;
+    display: flex; /*vai usar o flex direction na organização */
+    flex-direction: column;
+    width: 100%;
+    height: 300px;
+    background-color: grey;
+    border-radius: 50px;
+}
+
+.img_service_post{
+    position: absolute;
+    display: flex; /*vai usar o flex direction na organização */
+    flex-direction: column;
+    width: 50%;
+    height: 60px;
+    position: absolute;
+    bottom: 240px;
+    left: 0;
+    z-index: 1;
+    background-color: rgb(13, 24, 232);
+}
+
+.infoopportunity{
+    display: flex; /*vai usar o flex direction na organização */
+    flex-direction: column;
+    width: 70%;
+    height: 100%;
+    color: black;
+    padding: 5px;
+}
+
+.interactionsopportunity{
+    display: flex; /*vai usar o flex direction na organização */
+    flex-direction: row;
+    color: black;   
+    width: 30%;
+    height: auto;
+    padding-left: 20%;
+    padding-top: 5px;
+}
+
 /* ---- Size Change ---- */
 /* -  Phones - */
 @media only screen and (max-device-width: 480px){
@@ -296,6 +317,7 @@ input[type="submit"]:hover{
     height: 100%;
     background-color: #2D7345;
     position: fixed;
+    color: white;
 }
 
 #content{
@@ -308,27 +330,3 @@ input[type="submit"]:hover{
     margin-left: 20%;
 }
 
-
-
-#infoopportunity{
-    display: flex; /*vai usar o flex direction na organização */
-    flex-direction: column;
-    width: 70%;
-    height: 100%;
-    border: 1px solid black;
-}
-
-#infoopportunity a{
-    color: black;   
-}    
-#interactionsopportunity{
-    display: flex; /*vai usar o flex direction na organização */
-    flex-direction: row;
-    color: black;   
-    width: 30%;
-    height: 100%;
-    border: 1px solid black;
-    padding-left: 20%;
-    padding-top: 5px;
-    
-}
