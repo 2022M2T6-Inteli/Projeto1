@@ -28,7 +28,7 @@
 }
 
 body{
-    background: linear-gradient(90deg, var(--yellowB1), var(--yellowA1));
+    background-color: linear-gradient(to right, var(--yellowB1), var(--yellowA1));
 }
 
 
@@ -63,10 +63,11 @@ form .txt-field{
     align-items: center;
 }
 
+
 .header{
     padding: 10px 2%;
     background: var(--greenB3);
-    position: static;
+    position: fixed;
     width: 100%;
     top: 0px;
     box-shadow: 0 10px 10px 0 var(--yellowA2);
@@ -128,6 +129,7 @@ form .txt-field{
 /* - Center - */
 .center-box{
     position: absolute;
+    z-index: 1;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -138,11 +140,11 @@ form .txt-field{
 .center-box h1{
     text-align: center;
     color: white;
-    padding: 20px 10px 20px 10px;
+    padding: 10px 5px 20px 10px;
     border-bottom: 3px solid var(--greenA3);
 }
 .center-box form, summary{
-    padding: 0 40px;
+    padding: 0 10px;
     box-sizing: border-box;
 }
 
@@ -298,6 +300,9 @@ summary{
     box-shadow: 0 0 10px 10px var(--yellowA2);
 }
 
+#bodyLog{
+    background-color:var(--yellowA1);
+}
 /* ---- ID's ---- */
 
 /* - Register - */
@@ -313,10 +318,10 @@ summary{
 
 /* - FAQ - */
 #first-sum{
-    margin-top: 200px;
+    margin-top: 10px;
 }
 #last-sum{
-    margin-bottom: 200px;
+    margin-bottom: 10px;
 }
 
 /* -  Feed - */
