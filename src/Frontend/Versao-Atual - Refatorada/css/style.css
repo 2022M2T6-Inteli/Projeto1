@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-/* DELETE LATER */
+/*DELETE THIS*/
 /* div{
     border-style: dotted;
 } */
@@ -122,12 +122,18 @@ a:hover{
     left: 10px;
     cursor: pointer;
 }
+.sidebar .menu-active{
+    color: var(--yellowA1);
+}
 .sidebar h5{
     margin-left: 50px;
 }
+.sidebar a{
+    text-decoration: none;
+}
 
 .main-container{
-    /* border: cadetblue dotted; */
+    /* border: cadetblue dotted 10px; DELETE THIS */
     width: 100%;
     min-height: 100vh;
 }
@@ -194,7 +200,6 @@ a:hover{
 
 /* --- Feed --- */
 .post-container{
-    /* border-style: dotted; */
     position: absolute;
     width: calc(100% - 150px);
     min-height: 100vh;
@@ -214,7 +219,7 @@ a:hover{
 
 .post-img{
     overflow: hidden;
-    border-radius: 100px;
+    border-radius: 20px;
     align-items: center;
     width: 600px;
     height: 350px;
@@ -274,5 +279,72 @@ a:hover{
     color: var(--yellowA3);
 }
 
+/* --- Profile --- */
 
+.profile-main h1, p{
+    color: black;
+}
+.profile-main .vertical-container{
+    padding: 40px 40px 0px;
+    width: calc(100% - 170px);
+}
+.profile-main button{
+    width: 100px;
+    margin-top: 10px;
+    font-size: 15px;
+    background: var(--greenB3);
+    border-radius: 30px;
+}
+.profile-img{
+    margin: 20px;
+    overflow: hidden;
+    border-radius: 100%;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+}
+.profile-img img{
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
 
+.profile-info .center-box{
+    margin: 20px;
+    justify-content: space-between;
+    background: lightgray;
+    width: 100%;
+}
+.profile-info .center-box .horizontal-container .vertical-container{
+    width: 100%;
+}
+.profile-info h1,.profile-info h2,.profile-info p{
+    color: black;
+}
+.profile-info h1{
+    font-size: 20px;
+    text-align: center;
+}
+.profile-info h2{
+    font-size: 16px;
+    text-align: start;
+}
+#business-info .center-box .horizontal-container{
+    width: 100%;
+    padding-inline: 60px;
+    justify-content: space-between;
+}
+#business-info h2{
+    margin: 0;
+}
+#aval .vertical-container{
+    padding-inline: 50px;
+}
+#aval h2{
+    margin: 5px;
+    margin-right: 10%;
+}
+#aval i{
+    margin: 1px;
+}
