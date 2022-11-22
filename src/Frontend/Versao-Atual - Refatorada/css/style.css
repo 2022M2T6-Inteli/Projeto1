@@ -6,9 +6,9 @@
 }
 
 /*DELETE THIS*/
-/* div{
+div{
     border-style: dotted;
-} */
+}
 
 :root{
     /* - Color palette - */
@@ -82,9 +82,10 @@ a:hover{
 }
 
 .footer{
-    position: relative;
+    /* position: relative;
     left: 0;
-    bottom: 0;
+    bottom: 0; */
+    clear: both;
 }
 .footer.normal-shadow{
     box-shadow: 160px -5px 20px gray;
@@ -101,6 +102,7 @@ a:hover{
     background: linear-gradient(180deg, var(--greenA2), var(--greenA3));
     position: fixed;
     left: 0;
+    top: 0;
     min-height: 100vh;
     width: 150px;
     z-index: 9;
@@ -133,9 +135,8 @@ a:hover{
 }
 
 .main-container{
-    /* border: cadetblue dotted 10px; DELETE THIS */
+    border: cadetblue dotted 10px; /* DELETE THIS */
     width: 100%;
-    min-height: 100vh;
 }
 
 .center{
@@ -200,11 +201,11 @@ a:hover{
 
 /* --- Feed --- */
 .post-container{
-    position: absolute;
+    /* position: absolute;
     width: calc(100% - 150px);
-    min-height: 100vh;
+    min-height: 100vh; 
     top: 55px;
-    left: 150px;
+    left: 150px;*/
 }
 .post-container h1, p{
     color: var(--greenA1);
