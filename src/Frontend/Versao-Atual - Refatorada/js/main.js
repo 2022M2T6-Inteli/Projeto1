@@ -21,3 +21,32 @@ $( document ).ready(function() {
         }
     });
 });
+
+//  Código Open Modal Editar Perfil Empreiteira
+
+// let open = document.getElementById('openModal');
+// let close = document.getElementById('close');
+// let fade = document.getElementById('fade');
+// let cntModal = document.getElementById('ctnModal');
+
+// $('#openModal').on("click", function(){
+//     $('#fade').css({'display': 'flex'})
+// });
+
+// $('#openModal').on("click", function(){
+//     $('#fade').css({'display': 'flex'})
+// });
+
+// close.onclick = function() {fade.style.display = "none"}
+
+// fade.onclick = function() {fade.style.display = "none"}
+
+// cntModal.onclick = function(event) {event.stopPropagation()}
+
+// $('.close').click(function(){
+//     $('.modal').hide();
+// });
+
+$("#fade").modal({
+    fadeDuration: 500
+  });

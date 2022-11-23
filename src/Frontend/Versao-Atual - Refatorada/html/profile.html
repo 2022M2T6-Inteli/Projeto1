@@ -9,6 +9,9 @@
     <script src="https://kit.fontawesome.com/35a78a5461.js" crossorigin="anonymous"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="../js/main.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
     <title>Profile - ConstruMatch</title>
 </head>
 <body>
@@ -50,7 +53,7 @@
                     <div class="vertical-container">
                         <h1>Apollon Empreiteira</h1>
                         <p>Concretagem</p>
-                        <button>Editar Perfil</button>
+                         <button><a id="link_editar_perfil" href="#ex1" rel="modal:open">Editar Perfil</a></button> 
                     </div>
                 </div>
             </div>
@@ -63,7 +66,7 @@
                             <p>xx.xxx.xxx/0001-xx</p>
                             <h2>E-MAIL</h2>
                             <p>apollon@serviço.com</p>
-                            <h2>CEL - What'sApp</h2>
+                            <h2>CEL - Whatsapp</h2>
                             <p>(xx)9xxxx-xxxx</p>
                         </div>
                         <div class="vertical-container">
@@ -71,7 +74,7 @@
                             <p>xx.xxx.xxx/0001-xx</p>
                             <h2>E-MAIL</h2>
                             <p>apollon@serviço.com</p>
-                            <h2>CEL - What'sApp</h2>
+                            <h2>CEL - Whatsapp</h2>
                             <p>(xx)9xxxx-xxxx</p>
                         </div>
                     </div>
@@ -82,6 +85,7 @@
                     <h1>AVALIAÇÕES</h1>
                     <div class="horizontal-container">
                         <div class="vertical-container">
+                            <!-- <button id="openModal">Esqueci minha senha</button> -->
                             <div class="horizontal-container">
                                 <h2>MÉDIA GERAL</h2>
                                 <i class="fa-solid fa-star"></i>
@@ -136,9 +140,47 @@
             </div>  
         </div>
     </div>
-    <!-- <div class="footer normal-shadow center">
+    
+
+      <div id="ex1" class="modal">
+        <p id="Editar_Perfil_text">Editar perfil</p>
+        <div class="container-modal">
+            <p style="margin-top: 20px;">Dados Empreiteira</p>
+            <div id="form_modal_empreiteira">
+                <p>Digite o Nome Fantasia</p>
+                <input type="text">
+                <p>Digite a Razão Social</p>
+                <input type="text">
+                <p>Digite o E-mail</p>
+                <input type="email">
+                <p>Digite o Celular</p>
+                <input type="tel">  
+            </div>
+
+            <p>Dados do Respnsável pela Empreiteira</p>
+            
+            <div id="form_modal_responsavel_empreiteira">
+                <p>Digite o Nome Fantasia</p>
+                <input type="text">
+                <p>Digite a Razão Social</p>
+                <input type="text">
+                <p>Digite o E-mail</p>
+                <input type="email">
+                <p>Digite o Celular</p>
+                <input type="tel">  
+            </div>
+        </div>
+        
+        <!-- <a href="#" rel="modal:close">Close</a> -->
+    </div>
+
+    <button id="button-teste"></button>
+      
+          <!-- <div class="footer normal-shadow center">
         <a href="http://www.inteli.edu.br"><img src="https://www.inteli.edu.br/wp-content/uploads/2022/04/28103439/Logo-Container.png" alt="Logo Inteli"></a>
         <a href="http://www.mrv.com.br"><img src="https://www.mrv.com.br/institucional/build/img/nova-marca/Logo-Gradiente.png" alt="Logo MRV"></a>
     </div>  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 </body>
 </html>
