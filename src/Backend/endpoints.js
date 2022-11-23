@@ -282,6 +282,58 @@ app.get('/postagem/listar', urlencodedParser, (req, res) => {
 	db.close(); // Fecha o banco
 });
 
+//CREATE Proposta
+app.post('/proposta/criar', urlencodedParser, (req, res) => {
+	res.statusCode = 200;
+	res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+	var db = new sqlite3.Database(DBPATH); // Abre o banco
+	var sql = `INSERT INTO Proposta (Valor_Proposta, Escopo) VALUES ('${req.body.Valor_Proposta}', '${req.body.Escopo}')`;
+	console.log(sql);
+	db.run(sql, [],  err => {
+		if (err) {
+	 	    throw err;
+	 	}
+	 	res.send();
+	 });
+	 db.close(); // Fecha o banco
+	 res.write('<p>Proposta feita com sucesso!</p><a href="/lerPost.html">Voltar</a>')
+	 
+});
+
+//READ Proposta
+app.get('/proposta', (req, res) => {
+    res.statusCode = 200; //Código de status HTTP, que indica pro cliente qual a situação da sua requisição
+    res.setHeader('Access-Control-Allow-Origin', '*'); 
+    var db = new sqlite3.Database(DBPATH); // Abre o banco
+    var sql = 'SELECT Valor_Proposta, Escopo FROM Proposta';
+	console.log(sql)
+    db.all(sql, [],  (err, rows ) => {
+        if (err) {
+            throw err;
+        }
+        res.json(rows);
+    });
+    db.close(); // Fecha o banco
+});
+
+//DELETE Proposta
+app.get('/proposta/remover', urlencodedParser, (req, res) => {
+	res.statusCode = 200;
+	res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+	var sql = `DELETE FROM Proposta WHERE ID_Proposta='${req.query.ID_Proposta}'`;
+	console.log(sql);
+	var db = new sqlite3.Database(DBPATH); // Abre o banco
+	db.all(sql, [],  err => {
+		if (err) {
+		    throw err;
+		}
+		res.send();
+	});
+	res.write('<p>Proposta removida com sucesso!</p><a href="/lerUserEmp.html">Voltar</a>');
+	db.close(); // Fecha o banco
+});
+
+
 
 app.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
