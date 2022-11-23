@@ -349,3 +349,57 @@ a:hover{
 #aval i{
     margin: 1px;
 }
+
+
+
+@media screen and (max-width: 400px) {
+    .main-container{
+        width: 100%;
+    }
+    .footer .normal-shadow{
+        width: 100%;
+    }
+
+
+    .center-box{
+        width: 100%;
+        margin: 80px 50px;
+    }
+
+
+    /* --- Feed --- */
+    .post{
+        margin: 60px 20px;
+        width: 100%;
+    }
+
+    .post-img{
+        width: 100%;
+    }
+
+    .oportunity-general{
+        margin-left: -10px;
+    }
+    .oportunity-general h1{
+        font-size: 25px;
+    }
+
+    /* --- Profile --- */
+
+    .profile-main .vertical-container{
+        padding: 50px 10px 0px;
+    }
+
+    .profile-img{
+        margin: 50px 10px;
+    }
+    
+    #business-info .center-box .horizontal-container{
+        padding-inline: 0px;
+        margin: 10px -20px;
+    }
+
+    #aval .vertical-container{
+        padding-inline: 0px;
+    }
+}
