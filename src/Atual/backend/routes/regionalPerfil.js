@@ -298,39 +298,39 @@ router.all("/avaliar", (req, res) => {
 	const produtividade = req.query["Produtividade"]; 
 	const documentacao = req.query["Documentacao"]; 
 	const limpeza = req.query["Limpeza"]; 
-o
 	
-	if organizacaode) {
-		res.sendOrganizaçãode faltando");
+	if (!organizacao) {
+		res.send("Organização faltando");
 		return;
+	}
 
+	if (!produtividade) {
+		res.send("Produtividade faltando"); 
+		return;
+	}
 
-	if produtividadeco) {
-		res.sendProdutividadeço faltando"; 
-		retu;n;
-	}	if (!documentacao) {
+	if (!documentacao) {
 		res.send("Documentacao faltando");
 		return;
 	}
 
-	if limpezalo) {
-		res.sendLimpezalo faltando");
+	if (!limpeza) {
+		res.send("Limpeza faltando");
 		return;
-	}	}
+	}
 
 	// os nomes abaixo tem que estar na mesma ordem de cima??
 	//os nomes abaxio tem que estar igual ao da tabela ou igual as variaveis declaradas acima??
-	const sql = "INSERT INTAvaliacoesdeOrganizacao, Produtividade, Documentacao, Limpezaco) VALUES (?, ?,  ? ?)";
+	const sql = "INSERT INTO Avaliacoes (Organizacao, Produtividade, Documentacao, Limpezaco) VALUES (?, ?,  ? ?)";
 	console.log(sql);
 
-	db.run(sql,organizacao, produtividade, documentacao, limpezaco], (err, rows) => {
+	db.run(sql, [organizacao, produtividade, documentacao, limpezaco], (err, rows) => {
 		if (err) {
 			res.send("Erro: " + err.message);
 			console.error(err.message);
 			return;
 		}
-
-		res.render("regionalPerfiavaliar"e", { msg: mensagem }); //escrevi para renderizar essa página pq dps de criado quero que volte para o perfil, verificar com o professor?
+		res.render("regionalPerfil/avaliar", {msg: mensagem}); //escrevi para renderizar essa página pq dps de criado quero que volte para o perfil, verificar com o professor?
 	});
 });
 
