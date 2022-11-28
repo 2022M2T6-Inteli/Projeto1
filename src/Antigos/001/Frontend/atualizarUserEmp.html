@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualizar Dados</title>
+    <style>
+        #button_enviar{
+            margin-top: 10px;
+            height: 30px;
+            width: 150px;
+        }
+    </style>
+</head>
+<script>
+    let url = new URL(window.location.href);
+    let params = url.searchParams;
+    url = '/empreiteira/atualizar?CNPJ='+url.searchParams.get("CNPJ");
+
+    fetch(url)
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        let usuarios = data;
+
+        usuarios.map(function(usuario) {
+            document.getElementById('1').value = usuario.CNPJ;
+            document.getElementById('2').value = usuario.Nome_Fantasia;
+        });
+        alert(response.json());
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
+</script>
+<body><h1>Atualizar dados</h1>
+    <form name="Atualizar User Empreiteira" method="post" action="http://localhost:3000/empreiteira/atualizar">
+        CNPJ: <input type="text" name="CNPJ" id="1" readonly><br>
+        Novo nome: <input type="text" name="Novo_Nome" id="2" value=""><br>
+        <button name="button_enviar" id="button_enviar" onclick="">Enviar mudanças</button>
+    </form>
+</body>
+</html>
