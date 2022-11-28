@@ -8,21 +8,21 @@ const { reset } = require('nodemon');
 const app = express();
 
 // Server definitions
-const port = 3022
+const port = 1234
 const ip = `http://localhost:${port}`
 
 // Set view engine
 app.set('view engine', 'ejs')
 
 // Endpoint index
-const viewPath = path.join(__dirname, '..', 'frontend', 'views', 'login');
-app.get('/', (req, res) =>{
-    res.render(viewPath + '/login')
-})
+// const viewPath = path.join(__dirname, '..', 'frontend', 'views', 'login');
+// app.get('/', (req, res) =>{
+//     res.render(viewPath + '/login')
+// })
 
 // Endpoint signup
-// const signupRouter = require('./routes/signup');
-// app.use('/signup', signupRouter);
+const signupRouter = require('./routes/signup');
+app.use('/cadastrar', signupRouter);
 
 // Endpoint empreiteira profile
 // const empProfileRouter = require('./routes/empreiteiraProfile');
