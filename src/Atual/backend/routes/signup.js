@@ -21,7 +21,7 @@ router
         res.statusCode = 200; // Status: OK
         res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
         var db = new sqlite3.Database(DBPATH);
-        var sql = `INSERT INTO Empreiteira (CNPJ, Razao_Social, Nome_Fantasia, CNAE, N_Inscricao, Data_Abertura, Email, Rua, End_n, Bairro, Estado, Cidade, Numero_Funcionarios, Servico_1, Servico_2) VALUES (${req.body.cnpj}, ${req.body.razaoSoc}, ${req.body.nomeFant}, ${req.body.cnae}, ${req.body.insc}, ${req.body.dataAbert}, ${req.body.email}, ${req.body.rua}, ${req.body.n}, ${req.body.bairro}, ${req.body.estados}, ${req.body.cidades}, ${req.body.func}, ${req.body.serv1}, ${req.body.serv2});`;
+        var sql = `INSERT INTO Empreiteira (CNPJ, Razao_Social, Nome_Fantasia, CNAE, N_Inscricao, Data_Abertura, Email, Rua, End_n, Bairro, Estado, Cidade, Numero_Funcionarios, Servico_1, Servico_2) VALUES (${req.body.cnpj}, "${req.body.razaoSoc}", "${req.body.nomeFant}", ${req.body.cnae}, ${req.body.insc}, "${req.body.dataAbert}", "${req.body.email}", "${req.body.rua}", ${req.body.n}, "${req.body.bairro}", "${req.body.estados}", "${req.body.cidades}", ${req.body.func}, "${req.body.serv1}", "${req.body.serv2}");`;
 	    console.log(sql);
         db.run(sql, [],  err => {
             if (err) {
