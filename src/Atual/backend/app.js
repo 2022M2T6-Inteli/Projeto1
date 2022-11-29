@@ -33,8 +33,8 @@ app.use('/cadastrar', signupRouter);
 // app.use('/empreiteira/profile', empProfileRouter);
 
 // Endpoint regional profile
-// const regionalPerfil = require('./routes/regionalPerfil');
-// app.use('/regional/profile', regProfileRouter);
+const regionalPerfil = require('./routes/regionalPerfil');
+app.use("/regionalPerfil", require(".routes/regionalPerfil"));
 
 // Endpoint faq
 // const faqRouter = require('./routes/faq');

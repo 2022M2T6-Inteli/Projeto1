@@ -146,65 +146,65 @@ router.post("/alterarPerfil", (req, res) => {
 
 router.get("/alterarOportunidade", (req, res) => { 
 	let Id_Oportunidade = req.body["Id_Oportunidade"];
-	let data_oportunidade = req.body["Data_Oportunidade"];
-	let servico = req.body["Servico"];
-	let titulo = req.body["Titulo"];
-	let escopo = req.body["Escopo"]; // entender se a MRV vai postar isso tbm ou nao
-	let data_inicio = req.body["Data_Inicio"];
-	let data_fim = req.body["Data_Fim"];
-	let status = req.body["Status"]; // verificar posteriormente se sera necessario frente ao nosso tempo e como fazemos para atualizar automaticamente
-	let estado = req.body["Estado"];
-	let cidade = req.body["Cidade"];
-	let nome_obra = req.body["Nome_Obra"]; 
-	let endereco = req.body["Endereco"]; 
+	let Data_oportunidade = req.body["Data_Oportunidade"];
+	let Servico = req.body["Servico"];
+	let Titulo = req.body["Titulo"];
+	let Escopo = req.body["Escopo"]; // entender se a MRV vai postar isso tbm ou nao
+	let Data_inicio = req.body["Data_Inicio"];
+	let Data_fim = req.body["Data_Fim"];
+	let Status = req.body["Status"]; // verificar posteriormente se sera necessario frente ao nosso tempo e como fazemos para atualizar automaticamente
+	let Estado = req.body["Estado"];
+	let Cidade = req.body["Cidade"];
+	let Nome_obra = req.body["Nome_Obra"]; 
+	let Endereco = req.body["Endereco"]; 
 
 	if (!Id_Oportunidade) {
 		res.send("Id faltando");
 		return;
 	}
 
-	if (!data_oportunidade) {
+	if (!Data_Oportunidade) {
 		res.send("Data oportunidade faltando");
 		return;
 	}
 
-	if (!servico) {
+	if (!Servico) {
 		res.send("Serviço faltando"); 
 		return;
 	}
-	if (!titulo) {
+	if (!Titulo) {
 		res.send("Título faltando");
 		return;
 	}
-	if (!escopo) {
+	if (!Escopo) {
 		res.send("Escopo faltando");
 		return;
 	}
-	if (!data_inicio) {
+	if (!Data_Inicio) {
 		res.send("Data inicio faltando");
 		return;
 	}
-	if (!data_fim) {
+	if (!Data_Fim) {
 		res.send("Data fim faltando");
 		return;
 	}
-	if (!status) {
+	if (!Status) {
 		res.send("Status faltando");
 		return;
 	}
-	if (!estado) {
+	if (!Estado) {
 		res.send("Estado faltando");
 		return;
 	}
-	if (!cidade) {
+	if (!Cidade) {
 		res.send("Cidade faltando");
 		return;
 	}
-	if (!nome_obra) {
+	if (!Nome_Obra) {
 		res.send("Nome obra faltando");
 		return;
 	}
-	if (!endereco) {
+	if (!Endereco) {
 		res.send("Endereço faltando");
 		return;
 	}
@@ -227,65 +227,65 @@ router.get("/alterarOportunidade", (req, res) => {
 router.post("/alterarOportunidade", (req, res) => {
 	let msg;
 	let Id_Oportunidade = req.body["Id_Oportunidade"];
-	let data_oportunidade = req.body["Data_Oportunidade"];
-	let servico = req.body["Servico"];
-	let titulo = req.body["Titulo"];
-	let escopo = req.body["Escopo"]; // entender se a MRV vai postar isso tbm ou nao
-	let data_inicio = req.body["Data_Inicio"];
-	let data_fim = req.body["Data_Fim"];
-	let status = req.body["Status"]; // verificar posteriormente se sera necessario frente ao nosso tempo e como fazemos para atualizar automaticamente
-	let estado = req.body["Estado"];
-	let cidade = req.body["Cidade"];
-	let nome_obra = req.body["Nome_Obra"]; 
-	let endereco = req.body["Endereco"]; 
+	let Data_Oportunidade = req.body["Data_Oportunidade"];
+	let Servico = req.body["Servico"];
+	let Titulo = req.body["Titulo"];
+	let Escopo = req.body["Escopo"]; // entender se a MRV vai postar isso tbm ou nao
+	let Data_Inicio = req.body["Data_Inicio"];
+	let Data_Fim = req.body["Data_Fim"];
+	let Status = req.body["Status"]; // verificar posteriormente se sera necessario frente ao nosso tempo e como fazemos para atualizar automaticamente
+	let Estado = req.body["Estado"];
+	let Cidade = req.body["Cidade"];
+	let Nome_Obra = req.body["Nome_Obra"]; 
+	let Endereco = req.body["Endereco"]; 
 
 	if (!Id_Oportunidade) {
 		res.send("Id faltando");
 		return;
 	}
 	
-	if (!data_oportunidade) {
+	if (!Data_Oportunidade) {
 		res.send("Data oportunidade faltando");
 		return;
 	}
 
-	if (!servico) {
+	if (!Servico) {
 		res.send("Serviço faltando"); 
 		return;
 	}
-	if (!titulo) {
+	if (!Titulo) {
 		res.send("Título faltando");
 		return;
 	}
-	if (!escopo) {
+	if (!Escopo) {
 		res.send("Escopo faltando");
 		return;
 	}
-	if (!data_inicio) {
+	if (!Data_Inicio) {
 		res.send("Data inicio faltando");
 		return;
 	}
-	if (!data_fim) {
+	if (!Data_Fim) {
 		res.send("Data fim faltando");
 		return;
 	}
-	if (!status) {
+	if (!Status) {
 		res.send("Status faltando");
 		return;
 	}
-	if (!estado) {
+	if (!Estado) {
 		res.send("Estado faltando");
 		return;
 	}
-	if (!cidade) {
+	if (!Cidade) {
 		res.send("Cidade faltando");
 		return;
 	}
-	if (!nome_obra) {
+	if (!Nome_Obra) {
 		res.send("Nome obra faltando");
 		return;
 	}
-	if (!endereco) {
+	if (!Endereco) {
 		res.send("Endereço faltando");
 		return;
 	}
@@ -294,7 +294,7 @@ router.post("/alterarOportunidade", (req, res) => {
 
 	console.log(sql);
 
-	db.run(sql, [data_oportunidade, servico, titulo, escopo, data_inicio, data_fim, status, estado, cidade, nome_obra, endereco, Id_Oportunidade], (err, rows) => {
+	db.run(sql, [Data_Oportunidade, Servico, Titulo, Escopo, Data_Inicio, Data_fim, Status, Estado, Cidade, Nome_Obra, Endereco, Id_Oportunidade], (err, rows) => {
 		if (err)
 			msg = "Erro: " + err.message;
 		else
