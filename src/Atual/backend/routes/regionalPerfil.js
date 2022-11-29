@@ -3,11 +3,35 @@ const db = require('../utils/db');
 
 const router = express.Router();
 
-router.all("/", (req, res) => {
-	res.render("regionalProfile/index");
+////como nesse caso so vai haver apenas um usuario, n é necessário ordenar, verificar com o prof minha sugestão??
+router.all("/", (req, res) => { // rota index onde será a tela inicial do perfil do usuário, nessa tela aparecerá as informações deles e os links "Ver Oportunidades", "Alterar Perfil", "Criar Oportunidades"
+	let pessoas; //entender pq foi declarado essas 3 variaveis? Declaro o nome da minha tabela??
+	let ordenar = req.query["ordenar"];
+	let params;
+
+	if (!ordenar) {
+		ordenar = "";
+		params = [];
+	} else {
+		ordenar = "ORDER BY ? COLLATE NOCASE ASC";
+		params = [ordenar];
+	}
+
+	const sql = "SELECT CPF_Responsavel, Nome_Responsavel, Email_Responsavel, Celular_Responsavel, Departamento_Responsavel, Funcao_Responsavel, Empresa_Responsavel FROM Regional " + ordenar;
+	console.log(sql);
+
+	db.all(sql, params, (err, rows) => {
+		if (err) {
+			console.error(err.message);
+			res.send("Erro: " + err.message);
+			return;
+		}
+
+		res.render("regionalPerfil/index", { model: rows });
+	});
 });
 
-router.get("/alterarOportunidade", (req, res) => {
+router.get("/alterarOportunidade", (req, res) => { 
 	let id = req.query["Id_Oportunidade"];
 	let data_oportunidade = req.query["Data_Oportunidade"];
 	let servico = req.query["Servico"];
@@ -72,7 +96,7 @@ router.get("/alterarOportunidade", (req, res) => {
 		return;
 	}
 
-	const sql = "SELECT Id_Oportunidade, Data_Oportunidade, Servico, Titulo, Escopo, Data_Inicio, Data_Fim, Status, Estado, Cidade, Nome_Obra, Endereco FROM Oportunidades WHERE id=?";
+	const sql = "SELECT Id_Oportunidade, Data_Oportunidade, Servico, Titulo, Escopo, Data_Inicio, Data_Fim, Status, Estado, Cidade, Nome_Obra, Endereco FROM Oportunidade WHERE id=?";
 
 	console.log(sql);
 
@@ -83,7 +107,7 @@ router.get("/alterarOportunidade", (req, res) => {
 			return;
 		}
 
-		res.render("regionalPerfil/form", { funcionario: row });
+		res.render("regionalPerfil/formOportunidade", { funcionario: row });
 	});
 });
 
@@ -153,7 +177,7 @@ router.post("/alterarOportunidade", (req, res) => {
 		return;
 	}
 
-	const sql = "UPDATE Oportunidades SET Data_Oportunidade=?, Servico=?, Titulo=?, Escopo=?, Data_Inicio=?, Data_Fim=?, Status=?, Estado=?, Cidade=?, Nome_Obra=?, Endereco=? FROM Oportunidades WHERE id=?";
+	const sql = "UPDATE Oportunidade SET Data_Oportunidade=?, Servico=?, Titulo=?, Escopo=?, Data_Inicio=?, Data_Fim=?, Status=?, Estado=?, Cidade=?, Nome_Obra=?, Endereco=? FROM Oportunidade WHERE id=?";
 
 	console.log(sql);
 
@@ -168,7 +192,7 @@ router.post("/alterarOportunidade", (req, res) => {
 });
 
 // entender com o prof como faço aparecer apenas as oportunidades daquele regional
-router.all("/listar", (req, res) => {
+router.all("/listar", (req, res) => { //essa URL aparecerá quando o usuário apertar "Ver Oportunidades" no index do perfil, nessa página ele tera como botões "Alterar Oportunidade", "Remover Oportunidade" e ver "Interessados" para cada oportunidade
 	let pessoas; //entender pq foi declarado essas 3 variaveis? Declaro o nome da minha tabela??
 	let ordenar = req.query["ordenar"];
 	let params;
@@ -324,7 +348,7 @@ router.all("/avaliar", (req, res) => {
 	const sql = "INSERT INTO Avaliacoes (Organizacao, Produtividade, Documentacao, Limpezaco) VALUES (?, ?,  ? ?)";
 	console.log(sql);
 
-	db.run(sql, [organizacao, produtividade, documentacao, limpezaco], (err, rows) => {
+	db.run(sql, [organizacao, produtividade, documentacao, limpeza], (err, rows) => {
 		if (err) {
 			res.send("Erro: " + err.message);
 			console.error(err.message);
