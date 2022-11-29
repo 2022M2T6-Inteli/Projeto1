@@ -1,5 +1,7 @@
 const express = require('express');
 const db = require('../utils/db');
+const bodyParser = require('body-parser');
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 const router = express.Router();
 
@@ -31,19 +33,130 @@ router.all("/", (req, res) => { // rota index onde será a tela inicial do perfi
 	});
 });
 
+router.get("/alterarPerfil", (req, res) => { 
+	let CPF_Responsavel = req.body["CPF_Responsavel"];
+	let Nome_Responsavel = req.body["Nome_Responsavel"];
+	let Email_Responsavel = req.body["Email_Responsavel"];
+	let Celular_Responsavel = req.body["Celular_Responsavel"];
+	let Departamento_Responsavel = req.body["Departamento_Responsavel"]; // entender se a MRV vai postar isso tbm ou nao
+	let Funcao_Responsavel = req.body["Funcao_Responsavel"];
+	let Empresa_Responsavel = req.body["Empresa_Responsavel"];
+
+	if (!CPF_Responsavel) {
+		res.send("CPF faltando");
+		return;
+	}
+
+	if (!Nome_Responsavel) {
+		res.send("Nome faltando");
+		return;
+	}
+
+	if (!Email_Responsavel) {
+		res.send("Email faltando"); 
+		return;
+	}
+	if (!Celular_Responsavel) {
+		res.send("Celular faltando");
+		return;
+	}
+	if (!Departamento_Responsavel) {
+		res.send("Departamento faltando");
+		return;
+	}
+	if (!Funcao_Responsavel) {
+		res.send("Funcao faltando");
+		return;
+	}
+	if (!Empresa_Responsavel) {
+		res.send("Data fim faltando");
+		return;
+	}
+	
+	const sql = "SELECT CPF_Responsavel, Nome_Responsavel, Email_Responsavel, Celular_Responsavel, Departamento_Responsavel, Funcao_Responsavel, Empresa_Responsavel FROM Regional WHERE CPF_Responsavel=?";
+
+	console.log(sql);
+
+	db.get(sql, [CPF_Responsavel], (err, row) => {
+		if (err) {
+			console.error(err.message);
+			res.send("Erro: " + err.message);
+			return;
+		}
+
+		res.render("regionalPerfil/formPerfil", { Oportunidade: row });
+	});
+});
+
+router.post("/alterarPerfil", (req, res) => {
+	let msg;
+	let CPF_Responsavel = req.body["CPF_Responsavel"];
+	let Nome_Responsavel = req.body["Nome_Responsavel"];
+	let Email_Responsavel = req.body["Email_Responsavel"];
+	let Celular_Responsavel = req.body["Celular_Responsavel"];
+	let Departamento_Responsavel = req.body["Departamento_Responsavel"]; 
+	let Funcao_Responsavel = req.body["Funcao_Responsavel"];
+	let Empresa_Responsavel = req.body["Empresa_Responsavel"];
+
+	if (!CPF_Responsavel) {
+		res.send("CPF faltando");
+		return;
+	}
+	
+	if (!Nome_Responsavel) {
+		res.send("Nome faltando");
+		return;
+	}
+
+	if (!Email_Responsavel) {
+		res.send("Email faltando"); 
+		return;
+	}
+	if (!Celular_Responsavel) {
+		res.send("Celular faltando");
+		return;
+	}
+	if (!Departamento_Responsavel) {
+		res.send("Departamento faltando");
+		return;
+	}
+	if (!Funcao_Responsavel) {
+		res.send("Funcao faltando");
+		return;
+	}
+	if (!Empresa_Responsavel) {
+		res.send("Empresa faltando");
+		return;
+	}
+
+
+	const sql = "UPDATE Oportunidade SET CPF_Responsavel=?, Nome_Responsavel=?, Email_Responsavel=?, Celular_Responsavel=?, Departamento_Responsavel=?, Funcao_Responsavel=?, Empresa_Responsavel=? FROM Regional WHERE CPF_Responsavel=?";
+
+	console.log(sql);
+
+	db.run(sql, [CPF_Responsavel, Nome_Responsavel, Email_Responsavel, Celular_Responsavel, Departamento_Responsavel, Funcao_Responsavel, Empresa_Responsavel], (err, rows) => {
+		if (err)
+			msg = "Erro: " + err.message;
+		else
+			msg = "Usuário Alterado!";
+
+		res.render("regionalPerfil/alterarPerfil", { mensagem: msg });
+	});
+});
+
 router.get("/alterarOportunidade", (req, res) => { 
-	let id = req.query["Id_Oportunidade"];
-	let data_oportunidade = req.query["Data_Oportunidade"];
-	let servico = req.query["Servico"];
-	let titulo = req.query["Titulo"];
-	let escopo = req.query["Escopo"]; // entender se a MRV vai postar isso tbm ou nao
-	let data_inicio = req.query["Data_Inicio"];
-	let data_fim = req.query["Data_Fim"];
-	let status = req.query["Status"]; // verificar posteriormente se sera necessario frente ao nosso tempo e como fazemos para atualizar automaticamente
-	let estado = req.query["Estado"];
-	let cidade = req.query["Cidade"];
-	let nome_obra = req.query["Nome_Obra"]; //necessario atualizar o db com essa coluna e apagar o CNPJ 
-	let endereco = req.query["Endereco"]; //necessario atualizar o db com essa coluna e apagar o CNPJ
+	let id = req.body["Id_Oportunidade"];
+	let data_oportunidade = req.body["Data_Oportunidade"];
+	let servico = req.body["Servico"];
+	let titulo = req.body["Titulo"];
+	let escopo = req.body["Escopo"]; // entender se a MRV vai postar isso tbm ou nao
+	let data_inicio = req.body["Data_Inicio"];
+	let data_fim = req.body["Data_Fim"];
+	let status = req.body["Status"]; // verificar posteriormente se sera necessario frente ao nosso tempo e como fazemos para atualizar automaticamente
+	let estado = req.body["Estado"];
+	let cidade = req.body["Cidade"];
+	let nome_obra = req.body["Nome_Obra"]; 
+	let endereco = req.body["Endereco"]; 
 
 	if (!id) {
 		res.send("Id faltando");
@@ -107,24 +220,24 @@ router.get("/alterarOportunidade", (req, res) => {
 			return;
 		}
 
-		res.render("regionalPerfil/formOportunidade", { funcionario: row });
+		res.render("regionalPerfil/formOportunidade", { Oportunidade: row });
 	});
 });
 
 router.post("/alterarOportunidade", (req, res) => {
 	let msg;
-	let id = req.query["Id_Oportunidade"];
-	let data_oportunidade = req.query["Data_Oportunidade"];
-	let servico = req.query["Servico"];
-	let titulo = req.query["Titulo"];
-	let escopo = req.query["Escopo"]; // entender se a MRV vai postar isso tbm ou nao
-	let data_inicio = req.query["Data_Inicio"];
-	let data_fim = req.query["Data_Fim"];
-	let status = req.query["Status"]; // verificar posteriormente se sera necessario frente ao nosso tempo e como fazemos para atualizar automaticamente
-	let estado = req.query["Estado"];
-	let cidade = req.query["Cidade"];
-	let nome_obra = req.query["Nome_Obra"]; //necessario atualizar o db com essa coluna e apagar o CNPJ 
-	let endereco = req.query["Endereco"]; //necessario atualizar o db com essa coluna e apagar o CNPJ
+	let id = req.body["Id_Oportunidade"];
+	let data_oportunidade = req.body["Data_Oportunidade"];
+	let servico = req.body["Servico"];
+	let titulo = req.body["Titulo"];
+	let escopo = req.body["Escopo"]; // entender se a MRV vai postar isso tbm ou nao
+	let data_inicio = req.body["Data_Inicio"];
+	let data_fim = req.body["Data_Fim"];
+	let status = req.body["Status"]; // verificar posteriormente se sera necessario frente ao nosso tempo e como fazemos para atualizar automaticamente
+	let estado = req.body["Estado"];
+	let cidade = req.body["Cidade"];
+	let nome_obra = req.body["Nome_Obra"]; 
+	let endereco = req.body["Endereco"]; 
 
 	if (!id) {
 		res.send("Id faltando");
@@ -181,11 +294,11 @@ router.post("/alterarOportunidade", (req, res) => {
 
 	console.log(sql);
 
-	db.run(sql, [nome, email, id], (err, rows) => {
+	db.run(sql, [data_oportunidade, servico, titulo, escopo, data_inicio, data_fim, status, estado, cidade, nome_obra, endereco, id], (err, rows) => {
 		if (err)
 			msg = "Erro: " + err.message;
 		else
-			msg = "Usuário Alterado!";
+			msg = "Oportunidade Alterada!";
 
 		res.render("regionalPerfil/alterarOportunidade", { mensagem: msg });
 	});
@@ -221,7 +334,7 @@ router.all("/listar", (req, res) => { //essa URL aparecerá quando o usuário ap
 
 router.get("/remover", (req, res) => {
 	let msg;
-	let id = req.query["id"];
+	let id = req.body["id"];
 
 	const sql = "DELETE FROM Oportunidades WHERE id=?";
 	console.log(sql);
@@ -230,25 +343,25 @@ router.get("/remover", (req, res) => {
 		if (err)
 			msg = err.message;
 		else
-			msg = "Usuário Removido!";
+			msg = "Oportunidade Removida!";
 
 		res.render("regionalPerfil/remover", { mensagem: msg });
 	});
 });
 
-router.all("/criarOportunidade", (req, res) => {
-	const id = req.query["Id_Oportunidade"];
-	const data_oportunidade = req.query["Data_Oportunidade"];
-	const servico = req.query["Servico"];
-	const titulo = req.query["Titulo"];
-	const escopo = req.query["Escopo"]; // entender se a MRV vai postar isso tbm ou nao
-	const data_inicio = req.query["Data_Inicio"];
-	const data_fim = req.query["Data_Fim"];
-	const status = req.query["Status"]; // verificar posteriormente se sera necessario frente ao nosso tempo e como fazemos para atualizar automaticamente
-	const estado = req.query["Estado"];
-	const cidade = req.query["Cidade"];
-	const nome_obra = req.query["Nome_Obra"]; //necessario atualizar o db com essa coluna e apagar o CNPJ 
-	const endereco = req.query["Endereco"]; //necessario atualizar o db com essa coluna e apagar o CNPJ
+router.all("/criarOportunidade", (req, res) => { //usar body com url parser, 
+	const id = req.body["Id_Oportunidade"];
+	const data_oportunidade = req.body["Data_Oportunidade"];
+	const servico = req.body["Servico"];
+	const titulo = req.body["Titulo"];
+	const escopo = req.body["Escopo"]; // entender se a MRV vai postar isso tbm ou nao
+	const data_inicio = req.body["Data_Inicio"];
+	const data_fim = req.body["Data_Fim"];
+	const status = req.body["Status"]; // verificar posteriormente se sera necessario frente ao nosso tempo e como fazemos para atualizar automaticamente
+	const estado = req.body["Estado"];
+	const cidade = req.body["Cidade"];
+	const nome_obra = req.body["Nome_Obra"]; 
+	const endereco = req.body["Endereco"]; 
 
 	if (!data_oportunidade) {
 		res.send("Data oportunidade faltando");
@@ -298,7 +411,7 @@ router.all("/criarOportunidade", (req, res) => {
 
 	// os nomes abaixo tem que estar na mesma ordem de cima??
 	//os nomes abaxio tem que estar igual ao da tabela ou igual as variaveis declaradas acima??
-	const sql = "INSERT INTO Oportunidade (data_oportunidade, servico, titulo, escopo, data_inicio, data_fim, status, estado, cidade, nome_obra, endereco) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	const sql = "INSERT INTO Oportunidade (Data_Oportunidade, Servico, Titulo, Escopo, Data_Inicio, Data_Fim, Status, Estado, Cidade, Nome_Obra, Endereco) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	console.log(sql);
 
 	db.run(sql, [data_oportunidade, servico, titulo, escopo, data_inicio, data_fim, status, estado, cidade, nome_obra, endereco], (err, rows) => {
@@ -315,13 +428,13 @@ router.all("/criarOportunidade", (req, res) => {
 //como junto o id da oportunidade na proposta??
 //como faço  a avaliação geral ser a média das avaliações?
 router.all("/avaliar", (req, res) => {
-	const id = req.query["Id_Oportunidade"];
-	const idAvaliacao = req.query["Id_Avaliacao"]; //necessário criar essa coluna no db
-	const avaliacaoGeral = req.query["Avaliacao_Geral"]; 
-	const organizacao = req.query["Organizacao"]; 
-	const produtividade = req.query["Produtividade"]; 
-	const documentacao = req.query["Documentacao"]; 
-	const limpeza = req.query["Limpeza"]; 
+	const id = req.body["Id_Oportunidade"];
+	const idAvaliacao = req.body["Id_Avaliacao"]; //necessário criar essa coluna no db
+	const avaliacaoGeral = req.body["Avaliacao_Geral"]; 
+	const organizacao = req.body["Organizacao"]; 
+	const produtividade = req.body["Produtividade"]; 
+	const documentacao = req.body["Documentacao"]; 
+	const limpeza = req.body["Limpeza"]; 
 	
 	if (!organizacao) {
 		res.send("Organização faltando");

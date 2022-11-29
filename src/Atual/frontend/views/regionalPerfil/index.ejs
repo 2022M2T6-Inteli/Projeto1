@@ -11,7 +11,7 @@ for (const pessoa of model), professor usou isso, entender pq ele declarou pesso
 -->
 
 <div id="perfilregional">
-	<% for (const Regional of model) { %> 
+	<%- for (const Regional of model) { %> 
 		
 	<p>
 		<%= Regional.Nome_Responsavel %> : <%= Regional.CPF_Responsavel %> - <%= Regional.Email_Responsavel %> - <%= Regional.Celular_Responsavel %> - <%= Regional.Departamento_Responsavel %> - <%= Regional.Funcao_Responsavel %> -  <%= Regional.Empresa_Responsavel %> |
