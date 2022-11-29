@@ -14,11 +14,15 @@ const ip = `http://localhost:${port}`
 // Set view engine
 app.set('view engine', 'ejs')
 
+// Static EJS
+app.use('/frontend', express.static(path.join(__dirname, "../frontend")))
+console.log(path.join(__dirname, "../frontend"));
+
 // Endpoint index
-// const viewPath = path.join(__dirname, '..', 'frontend', 'views', 'login');
-// app.get('/', (req, res) =>{
-//     res.render(viewPath + '/login')
-// })
+const viewPath = path.join(__dirname, '..', 'frontend', 'views', 'login');
+app.get('/', (req, res) =>{
+    res.render(viewPath + '/login')
+})
 
 // Endpoint signup
 const signupRouter = require('./routes/signup');
