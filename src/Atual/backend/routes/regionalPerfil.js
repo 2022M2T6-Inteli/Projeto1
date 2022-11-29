@@ -145,7 +145,7 @@ router.post("/alterarPerfil", (req, res) => {
 });
 
 router.get("/alterarOportunidade", (req, res) => { 
-	let id = req.body["Id_Oportunidade"];
+	let Id_Oportunidade = req.body["Id_Oportunidade"];
 	let data_oportunidade = req.body["Data_Oportunidade"];
 	let servico = req.body["Servico"];
 	let titulo = req.body["Titulo"];
@@ -158,7 +158,7 @@ router.get("/alterarOportunidade", (req, res) => {
 	let nome_obra = req.body["Nome_Obra"]; 
 	let endereco = req.body["Endereco"]; 
 
-	if (!id) {
+	if (!Id_Oportunidade) {
 		res.send("Id faltando");
 		return;
 	}
@@ -209,11 +209,11 @@ router.get("/alterarOportunidade", (req, res) => {
 		return;
 	}
 
-	const sql = "SELECT Id_Oportunidade, Data_Oportunidade, Servico, Titulo, Escopo, Data_Inicio, Data_Fim, Status, Estado, Cidade, Nome_Obra, Endereco FROM Oportunidade WHERE id=?";
+	const sql = "SELECT Id_Oportunidade, Data_Oportunidade, Servico, Titulo, Escopo, Data_Inicio, Data_Fim, Status, Estado, Cidade, Nome_Obra, Endereco FROM Oportunidade WHERE Id_Oportunidade=?";
 
 	console.log(sql);
 
-	db.get(sql, [id], (err, row) => {
+	db.get(sql, [Id_Oportunidade], (err, row) => {
 		if (err) {
 			console.error(err.message);
 			res.send("Erro: " + err.message);
@@ -226,7 +226,7 @@ router.get("/alterarOportunidade", (req, res) => {
 
 router.post("/alterarOportunidade", (req, res) => {
 	let msg;
-	let id = req.body["Id_Oportunidade"];
+	let Id_Oportunidade = req.body["Id_Oportunidade"];
 	let data_oportunidade = req.body["Data_Oportunidade"];
 	let servico = req.body["Servico"];
 	let titulo = req.body["Titulo"];
@@ -239,7 +239,7 @@ router.post("/alterarOportunidade", (req, res) => {
 	let nome_obra = req.body["Nome_Obra"]; 
 	let endereco = req.body["Endereco"]; 
 
-	if (!id) {
+	if (!Id_Oportunidade) {
 		res.send("Id faltando");
 		return;
 	}
@@ -290,11 +290,11 @@ router.post("/alterarOportunidade", (req, res) => {
 		return;
 	}
 
-	const sql = "UPDATE Oportunidade SET Data_Oportunidade=?, Servico=?, Titulo=?, Escopo=?, Data_Inicio=?, Data_Fim=?, Status=?, Estado=?, Cidade=?, Nome_Obra=?, Endereco=? FROM Oportunidade WHERE id=?";
+	const sql = "UPDATE Oportunidade SET Data_Oportunidade=?, Servico=?, Titulo=?, Escopo=?, Data_Inicio=?, Data_Fim=?, Status=?, Estado=?, Cidade=?, Nome_Obra=?, Endereco=? FROM Oportunidade WHERE Id_Oportunidade=?";
 
 	console.log(sql);
 
-	db.run(sql, [data_oportunidade, servico, titulo, escopo, data_inicio, data_fim, status, estado, cidade, nome_obra, endereco, id], (err, rows) => {
+	db.run(sql, [data_oportunidade, servico, titulo, escopo, data_inicio, data_fim, status, estado, cidade, nome_obra, endereco, Id_Oportunidade], (err, rows) => {
 		if (err)
 			msg = "Erro: " + err.message;
 		else
@@ -334,12 +334,12 @@ router.all("/listar", (req, res) => { //essa URL aparecerá quando o usuário ap
 
 router.get("/remover", (req, res) => {
 	let msg;
-	let id = req.body["id"];
+	let Id_Oportunidade = req.body["Id_Oportunidade"];
 
-	const sql = "DELETE FROM Oportunidades WHERE id=?";
+	const sql = "DELETE FROM Oportunidades WHERE Id_Oportunidade=?";
 	console.log(sql);
 
-	db.all(sql, [id], (err, rows) => {
+	db.all(sql, [Id_Oportunidade], (err, rows) => {
 		if (err)
 			msg = err.message;
 		else
@@ -350,61 +350,61 @@ router.get("/remover", (req, res) => {
 });
 
 router.all("/criarOportunidade", (req, res) => { //usar body com url parser, 
-	const id = req.body["Id_Oportunidade"];
-	const data_oportunidade = req.body["Data_Oportunidade"];
-	const servico = req.body["Servico"];
-	const titulo = req.body["Titulo"];
-	const escopo = req.body["Escopo"]; // entender se a MRV vai postar isso tbm ou nao
-	const data_inicio = req.body["Data_Inicio"];
-	const data_fim = req.body["Data_Fim"];
-	const status = req.body["Status"]; // verificar posteriormente se sera necessario frente ao nosso tempo e como fazemos para atualizar automaticamente
-	const estado = req.body["Estado"];
-	const cidade = req.body["Cidade"];
-	const nome_obra = req.body["Nome_Obra"]; 
-	const endereco = req.body["Endereco"]; 
+	const Id_Oportunidade = req.body["Id_Oportunidade"]; // esse ID n é usado msm? Verificar prof
+	const Data_Oportunidade = req.body["Data_Oportunidade"];
+	const Servico = req.body["Servico"];
+	const Titulo = req.body["Titulo"];
+	const Escopo = req.body["Escopo"]; // entender se a MRV vai postar isso tbm ou nao
+	const Data_Inicio = req.body["Data_Inicio"];
+	const Data_Fim = req.body["Data_Fim"];
+	const Status = req.body["Status"]; // verificar posteriormente se sera necessario frente ao nosso tempo e como fazemos para atualizar automaticamente
+	const Estado = req.body["Estado"];
+	const Cidade = req.body["Cidade"];
+	const Nome_Obra = req.body["Nome_Obra"]; 
+	const Endereco = req.body["Endereco"]; 
 
-	if (!data_oportunidade) {
+	if (!Data_Oportunidade) {
 		res.send("Data oportunidade faltando");
 		return;
 	}
 
-	if (!servico) {
+	if (!Servico) {
 		res.send("Serviço faltando"); 
 		return;
 	}
-	if (!titulo) {
+	if (!Titulo) {
 		res.send("Título faltando");
 		return;
 	}
-	if (!escopo) {
+	if (!Escopo) {
 		res.send("Escopo faltando");
 		return;
 	}
-	if (!data_inicio) {
+	if (!Data_Inicio) {
 		res.send("Data inicio faltando");
 		return;
 	}
-	if (!data_fim) {
+	if (!Data_Fim) {
 		res.send("Data fim faltando");
 		return;
 	}
-	if (!status) {
+	if (!Status) {
 		res.send("Status faltando");
 		return;
 	}
-	if (!estado) {
+	if (!Estado) {
 		res.send("Estado faltando");
 		return;
 	}
-	if (!cidade) {
+	if (!Cidade) {
 		res.send("Cidade faltando");
 		return;
 	}
-	if (!nome_obra) {
+	if (!Nome_Obra) {
 		res.send("Nome obra faltando");
 		return;
 	}
-	if (!endereco) {
+	if (!Endereco) {
 		res.send("Endereço faltando");
 		return;
 	}
@@ -414,7 +414,7 @@ router.all("/criarOportunidade", (req, res) => { //usar body com url parser,
 	const sql = "INSERT INTO Oportunidade (Data_Oportunidade, Servico, Titulo, Escopo, Data_Inicio, Data_Fim, Status, Estado, Cidade, Nome_Obra, Endereco) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	console.log(sql);
 
-	db.run(sql, [data_oportunidade, servico, titulo, escopo, data_inicio, data_fim, status, estado, cidade, nome_obra, endereco], (err, rows) => {
+	db.run(sql, [Data_Oportunidade, Servico, Titulo, Escopo, Data_Inicio, Data_Fim, Status, Estado, Cidade, Nome_Obra, Endereco], (err, rows) => {
 		if (err) {
 			res.send("Erro: " + err.message);
 			console.error(err.message);

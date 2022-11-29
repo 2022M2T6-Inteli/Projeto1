@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post">
+        <input type="text" required id="cnpj" name="cnpj">
+        <label for="cnpj">CNPJ</label><br>
+        <input type="text" required id="razaoSoc" name="razaoSoc">
+        <label for="razaoSoc">Razão Social</label><br>
+        <input type="text" required id="nomeFant" name="nomeFant">
+        <label for="nomeFant">Nome Fantasia</label><br>
+        <input type="number" required id="cnae" name="cnae">
+        <label for="cnae">CNAE</label><br>
+        <input type="number" required id="insc" name="insc">
+        <label for="insc">Número de inscrição</label><br>
+        <input type="date" required id="dataAbert" name="dataAbert">
+        <label for="dataAbert">Data de abertura</label><br>
+        <input type="email" required id="email" name="email">
+        <label for="email">E-Mail</label><br>
+        <input type="text" required id="rua" name="rua">
+        <label for="rua">Rua</label><br>
+        <input type="number" required id="n" name="n">
+        <label for="n">N°</label><br>
+        <input type="text" required id="bairro" name="bairro">
+        <label for="bairro">Bairro</label><br>
+        <select id="estados" name="estados"><option value=""></option></select>
+        <label for="estados">Estado</label><br>
+        <select id="cidades" name="cidades"></select>
+        <label for="cidades">Cidade</label><br>
+        <input type="file" id="foto" name="foto">
+        <label for="foto">Foto</label><br>
+        <input type="number" required id="func" name="func">
+        <label for="func">Número de funcionários</label><br>
+        <input type="text" required id="serv1" name="serv1">
+        <label for="serv1">Serviço principal</label><br>
+        <input type="text" required id="serv2" name="serv2">
+        <label for="serv2">Serviço secundário</label><br>
+        <input type="password" required id="pass" name="pass">
+        <label for="pass">Senha</label><br>
+        <button onclick="submitProfile()">Entrar</button>
+    </form>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="frontend/scripts/signup.js"></script>
+</html>
+

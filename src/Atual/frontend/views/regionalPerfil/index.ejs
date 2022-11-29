@@ -10,13 +10,10 @@
 for (const pessoa of model), professor usou isso, entender pq ele declarou pessoas e escreveu so pessoa e se do jeito qe fiz vai rodar
 -->
 
-<div id="perfilregional">
-	<%- for (const Regional of model) { %> 
-		
+<div id="perfilregional">		
 	<p>
 		<%= Regional.Nome_Responsavel %> : <%= Regional.CPF_Responsavel %> - <%= Regional.Email_Responsavel %> - <%= Regional.Celular_Responsavel %> - <%= Regional.Departamento_Responsavel %> - <%= Regional.Funcao_Responsavel %> -  <%= Regional.Empresa_Responsavel %> |
 	</p>
-	<% } %>
 </div>
 
 <%- include("../rodape") %>

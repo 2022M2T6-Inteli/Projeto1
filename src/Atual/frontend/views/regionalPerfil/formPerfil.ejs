@@ -1,66 +1,41 @@
 <%- include("../cabecalho") %>
 
 <form method="POST">
-	<input type="hidden" name="Id_Oportunidade" value="<%= Oportunidade.Id_Oportunidade %>" />
+	<input type="hidden" id="CPF_Responsavel" name="CPF_Oportunidade" value="<%= Regional.CPF_Responsavel %>" />
 
 	<div>
-		<label for="nome">Nome</label>
-		<input type="text" id="Data_Oportunidade" name="Data_Oportunidade" value="<%= Oportunidade.Data_Oportunidade %>" />
+		<label for="Nome_Responsavel">Nome</label>
+		<input type="text" id="Nome_Responsavel" name="Nome_Responsavel" value="<%= Regional.Nome_Responsavel %>" />
 	</div>
 
 	<div>
-		<label for="email">E-mail</label>
-		<input type="text" id="Servico" name="Servico" value="<%= Oportunidade.Servico %>" />
+		<label for="Email_Responsavel">E-mail</label>
+		<input type="text" id="Email_Responsavel" name="Email_Responsavel" value="<%= Regional.Email_Responsavel %>" />
 	</div>
 
 	<div>
-		<label for="email">E-mail</label>
-		<input type="text" id="Titulo" name="Titulo" value="<%= Oportunidade.Titulo %>" />
+		<label for="Celular_Responsavel">Celular</label>
+		<input type="text" id="Celular_Responsavel" name="Celular_Responsavel" value="<%= Regional.Celular_Responsavel %>" />
 	</div>
 
 	<div>
-		<label for="email">E-mail</label>
-		<input type="text" id="Escopo" name="Escopo" value="<%= Oportunidade.Escopo %>" />
+		<label for="Departamento_Responsavel">Departamento</label>
+		<input type="text" id="Departamento_Responsavel" name="Departamento_Responsavel" value="<%= Regional.Departamento_Responsavel %>" />
 	</div>
 
 	<div>
-		<label for="email">E-mail</label>
-		<input type="text" id="Data_Inicio" name="Data_Inicio" value="<%= Oportunidade.Data_Inicio %>" />
+		<label for="Funcao_Responsavel">Função</label>
+		<input type="text" id="Funcao_Responsavel" name="Funcao_Responsavel" value="<%= Regional.Funcao_Responsavel %>" />
 	</div>
 
 	<div>
-		<label for="email">E-mail</label>
-		<input type="text" id="Data_Fim" name="Data_Fim" value="<%= Oportunidade.Data_Fim %>" />
+		<label for="Empresa_Responsavel">Empresa</label>
+		<input type="text" id="Empresa_Responsavel" name="Empresa_Responsavel" value="<%= Regional.Empresa_Responsavel %>" />
 	</div>
 
-	<div>
-		<label for="email">E-mail</label>
-		<input type="text" id="Status" name="Status" value="<%= Oportunidade.Status %>" />
-	</div>
-
-	<div>
-		<label for="email">E-mail</label>
-		<input type="text" id="Estado" name="Estado" value="<%= Oportunidade.Estado %>" />
-	</div>
-
-	<div>
-		<label for="email">E-mail</label>
-		<input type="text" id="Cidade" name="Cidade" value="<%= Oportunidade.Cidade %>" />
-	</div>
-
-	<div>
-		<label for="email">E-mail</label>
-		<input type="text" id="Nome_Obra" name="Nome_Obra" value="<%= Oportunidade.Nome_Obra %>" />
-	</div>
-
-	<div>
-		<label for="email">E-mail</label>
-		<input type="text" id="Endereco" name="Endereco" value="<%= Oportunidade.Endereco %>" />
-	</div>
-
-	<button type="submit">SALVAR</button>
+	<button type="submit">Alterar Perfil</button>
 </form>
 
-<a href="/regionalPerfil/listar">VOLTAR</a>
+<a href="/regionalPerfil/index">Voltar</a>
 
 <%- include("../rodape") %>
