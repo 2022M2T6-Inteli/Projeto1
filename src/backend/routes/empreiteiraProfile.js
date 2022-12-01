@@ -8,8 +8,10 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
 // Definitions
-const viewPath = path.join(__dirname, "../../frontend/views/empreiteiraPerfil/profile"); // Fetch the ejs file
+const viewPath = path.join(__dirname, "../../frontend/views/empreiteiraPerfil/perfil"); // Fetch the ejs file
 const DBPATH = path.join(__dirname, "../data/ConstruMatch.db"); // Fetch the database
+
+
 
 // Opening endpoint
 router
@@ -18,20 +20,40 @@ router
 		res.statusCode = 200 // Status: OK
 		res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
         res.render(viewPath) // Render page
-		var db = new sqlite3.Database(DBPATH); // Instantiate database
-        var sql = `SELECT CNPJ, CNAE FROM Empreiteira WHERE CNPJ = 23456;`;
-	    console.log(sql);
-        db.run(sql, [],  err => {
-            if (err) {
-                throw err;
-            }
-        });
-        db.close();
-        res.end();
     })
     .post(urlencodedParser, (req, res) => {
         res.statusCode = 200; // Status: OK
         res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
+    })
+
+router
+    .route('/info')
+    .get((req, res) => {
+        var db = new sqlite3.Database(DBPATH); // Instantiate database
+        var sql = `SELECT * FROM Empreiteira WHERE CNPJ = ${req.query.cnpj};`;
+	    console.log(sql);
+        db.all(sql, [],  (err, rows ) => {
+            if (err) {
+                throw err;
+            }
+            res.json(rows);
+        });
+        db.close();
+    })
+
+    router
+    .route('/infoResp')
+    .get((req, res) => {
+        var db = new sqlite3.Database(DBPATH); // Instantiate database
+        var sql = `SELECT * FROM Responsavel_Empreiteira WHERE CNPJ_Empresa = ${req.query.cnpj};`;
+	    console.log(sql);
+        db.all(sql, [],  (err, rows ) => {
+            if (err) {
+                throw err;
+            }
+            res.json(rows);
+        });
+        db.close();
     })
 
 

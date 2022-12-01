@@ -16,7 +16,7 @@ app.set('view engine', 'ejs')
 
 // Static EJS
 app.use('/frontend', express.static(path.join(__dirname, "../frontend")))
-console.log(path.join(__dirname, "../frontend"));
+console.log(`Static Path at: ${path.join(__dirname, "../frontend")}`);
 
 // Endpoint index
 const viewPath = path.join(__dirname, '..', 'frontend', 'views', 'login');
@@ -49,4 +49,4 @@ app.use('/empreiteira/perfil', empProfileRouter);
 
 // Start server with port
 app.listen(port);
-console.log(`Servidor iniciado em ${ip}`)
+console.log(`Server hosted at: ${ip}`)
