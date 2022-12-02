@@ -30,20 +30,19 @@ app.use('/cadastrar', signupRouter);
 
 // Endpoint empreiteira profile
 const empProfileRouter = require('./routes/empreiteiraProfile');
-app.use('/empreiteira/perfil', empProfileRouter);
+app.use('/perfilEmp', empProfileRouter);
 
 // Endpoint regional profile
 // const regionalPerfil = require('./routes/regionalPerfil');
 // app.use('/regional/profile', regProfileRouter);
 
 // Endpoint faq
-// const faqRouter = require('./routes/faq');
-// app.use('/faq', faqRouter);
+const faqRouter = require('./routes/faq');
+app.use('/faq', faqRouter);
 
 // Endpoint signup
-// const feedRouter = require('./routes/feed');
-// app.use('/feed', feedRouter);
-
+const feedRouter = require('./routes/feed');
+app.use('/feed', feedRouter);
 
 
 
