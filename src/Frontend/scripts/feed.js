@@ -13,7 +13,7 @@ function read(){
                 tx+=`<div class="grid-item">`;
                     tx+=`<div class="post-box">`;
                         tx+=`<strong id="title">${element.Titulo}</strong>`;
-                        tx+=`<div id="desc">${element.Escopo}</div>`;
+                        tx+=`<div id="desc">${element.Descricao}</div>`;
                         tx+=`<div class="info">`;
                             tx+=`Cidade, Estado:<br>${element.Cidade}, ${element.Estado}<br><br>`;
                             tx+=`Serviço:<br>${element.Servico}`;
