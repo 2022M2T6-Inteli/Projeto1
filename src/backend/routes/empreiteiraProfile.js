@@ -30,7 +30,7 @@ router
     .route('/info')
     .get((req, res) => {
         var db = new sqlite3.Database(DBPATH); // Instantiate database
-        var sql = `SELECT * FROM Empreiteira WHERE CNPJ = ${req.query.cnpj};`;
+        var sql = `SELECT * FROM Empreiteira WHERE ID_Empreiteira = ${req.query.id};`;
 	    console.log(sql);
         db.all(sql, [],  (err, rows ) => {
             if (err) {
@@ -45,7 +45,7 @@ router
     .route('/infoResp')
     .get((req, res) => {
         var db = new sqlite3.Database(DBPATH); // Instantiate database
-        var sql = `SELECT * FROM Responsavel_Empreiteira WHERE CNPJ_Empresa = ${req.query.cnpj};`;
+        var sql = `SELECT * FROM Responsavel_Empreiteira WHERE ID_Empreiteira = ${req.query.id};`;
 	    console.log(sql);
         db.all(sql, [],  (err, rows ) => {
             if (err) {
