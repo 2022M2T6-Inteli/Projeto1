@@ -31,7 +31,6 @@ router
     .get((req, res) => {
         var db = new sqlite3.Database(DBPATH); // Instantiate database
         var sql = `SELECT Servico, Titulo, Descricao, Data_Inicio, Data_Fim, Estado, Cidade, ID_Oportunidade FROM Oportunidade`;
-	    console.log(sql);
         db.all(sql, [],  (err, rows ) => {
             if (err) {
                 throw err;

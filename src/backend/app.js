@@ -19,11 +19,12 @@ app.use('/frontend', express.static(path.join(__dirname, "../frontend")))
 console.log(`Static Path at: ${path.join(__dirname, "../frontend")}`);
 
 // Endpoint index
-const viewPath = path.join(__dirname, '..', 'frontend', 'views', 'login');
+const viewPath = path.join(__dirname, '..', 'frontend', 'views','feed');
 app.get('/', (req, res) =>{
-    res.render(viewPath + '/login')
+    res.render(viewPath + '/feed')
 })
 
+// const login = require(.routes)
 // Endpoint signup
 const signupRouter = require('./routes/signup');
 app.use('/cadastrar', signupRouter);
@@ -37,8 +38,8 @@ app.use('/perfilEmp', empProfileRouter);
 // app.use('/regional/profile', regProfileRouter);
 
 // Endpoint faq
-const faqRouter = require('./routes/faq');
-app.use('/faq', faqRouter);
+// const faqRouter = require('./routes/faq');
+//  app.use('/faq', faqRouter);
 
 // Endpoint signup
 const feedRouter = require('./routes/feed');
