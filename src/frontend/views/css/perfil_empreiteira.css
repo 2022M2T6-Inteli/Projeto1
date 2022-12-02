@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+*{
+    font-family: 'Noto Sans', sans-serif;
+    margin: 0;
+    padding: 0; 
+}
+
+html{
+    background-color: #F9F6EE;
+}
+
+
+#grid-container{
+    display: grid;
+    height: 100vh;
+     grid-template-columns: 80% 80%; 
+    /* grid-template-rows: 20%; */
+    padding: 10px;
+    justify-content: center;
+    margin-left: 10%;
+}
+
+.grid-item{
+    display: flex;
+    /* border-left: 2px solid black; */
+    padding-right: 10px;
+    /* padding-bottom: 30px; */
+     border: 2px solid #000; 
+    
+}
+
+.grid-item > p{
+    color: #000;
+   
+}
+
+#profile_pic{
+    background-color: gray;
+    border-radius: 50%;
+    width: 120px;
+    height: 115px;
+    position: relative;
+}
+
+#icon_user{
+    position: absolute;
+    top: 21%;
+    left: 29%;
+    height: 8vh;
+}
+
+.grid-item:nth-child(1){
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 40px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    color: black;
+}
+
+.grid-item:nth-child(1) > div{
+    margin-left: 40px;
+
+}
+
+#name_empreiteira, #service_empreiteira{
+    color: green;
+}
+
+#name_empreiteira{
+    font-size: 60px;
+    margin-bottom: 5px;
+}
+
+#service_empreiteira{
+    font-size: 25px;
+}
+
+
+#edit_profile, #edit_responsavel{
+    border-radius: 30px;
+    background-color: var(--greenA3);
+    color: #fff;
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#edit_profile:hover, #edit_responsavel:hover{
+    background-color: #fff;
+    color: var(--greenA3);
+    font-weight: bold;
+    border: 2px solid var(--greenA3);
+}
+
+/* 
+.grid-item:nth-child(2){
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    align-items: initial;
+} */
+
+.grid-item:nth-child(2){
+    display: flex;
+    /* flex-direction: row; */
+    /* flex-direction: flex-end; */
+    /* justify-content: center; */
+    grid-column-start: 1;
+    grid-column-end: 3;
+    justify-content: space-evenly;
+    padding: 2% 0 2% 3.5%;
+
+}
+
+
+#info_empreiteira{
+    width: 90%;
+    height: 50vh;
+    background-color: #D9D9D9;
+    border-radius: 40px;
+    padding: 2% 5% 2% 2%;
+    display: grid;
+    grid-template-columns: 60% 60%;
+    grid-template-rows: 20% 20% 20% 20%;
+    border: 2px solid #000;
+ 
+}
+
+#info_empreiteira > p{
+    color: #000;
+}
+
+#rate_empreiteira{
+    width: 90%;
+    height: 50vh;
+    background-color: #D9D9D9;
+    border-radius: 40px;
+    padding: 2%;
+    display: grid;
+    grid-template-columns: 100%;
+    border: 2px solid #000;
+}
+
+#rate_empreiteira > .rate_grid_item > h2{
+    margin-top: -5px;
+}
+
+.grid-item:nth-child(5){
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    padding: 20px 0 0 0;
+} 
+
+.grid-item:nth-child(3){
+    display: flex;
+    flex-direction: row; 
+    /* flex-direction: flex-end; */
+    justify-content: center; 
+   
+    /* padding-left: 25%; */
+    /* background-color: blue; */
+}
+
+.grid-item:nth-child(4){
+    display: flex;
+    flex-direction: row; 
+    /* flex-direction: flex-end; */
+     justify-content: center; 
+   
+    /* padding-left: 25%; */
+    /* background-color: blue; */
+}
+
+.info_grid_item:nth-child(1){
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: flex;
+    /* margin-left: 22%; */
+    margin-left: 15%;
+    }
+
+#title_grad{
+    margin-top: 30px;
+}
+
+.rate_grid_item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rate_grid_item:nth-child(1){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#info_responsavel{
+    width: 98.5%;
+    height: 50vh;
+    background-color: #D9D9D9;
+    border-radius: 40px;
+    padding: 2%;
+    display: grid;
+    grid-template-columns: 60% 60%;
+    grid-template-rows: 20% 20% 20% 20%;
+    border: 2px solid #000;
+}
+
+
+/* .responsavel_grid_item{
+    border: 2px solid #000;
+} */
+
+.responsavel_grid_item:nth-child(1){
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: flex;
+    margin-left: 22%;
+}
+
+/* Modal Editar Empreiteira */
+
+a{
+    text-decoration: none;
+}
+
+/* .btn{
+    display: inline-flex;
+    padding: 1rem;
+    background-color: var(--greenA3);
+    color: #fff;
+    justify-content: center;
+    border-radius: 4px;
+} */
+.modal, .modal_responsavel{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #000000ab;
+    display: grid;
+    place-content: center;
+    visibility: hidden;
+    transition: 0.3s;
+    opacity: 0;
+}
+
+.modal:target,.modal_responsavel:target{
+    opacity: 1;
+    visibility: visible;    
+}
+
+.modal_content{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    width: 600px;
+    padding: 2rem 2rem 1rem;
+    border-radius: 10px;
+    border-top: 0.5rem solid var(--greenA3);
+}
+
+.modal_title{
+    margin-bottom: 1rem;
+    justify-content: center;
+}
+
+.send_button{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--greenA3);
+    color: #fff;
+    padding: 0.7rem 3rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.send_button:hover{
+    background-color: #fff;
+    color: var(--greenA3);
+    font-weight: bold;
+    border: 2px solid var(--greenA3);
+}
+.send_button:active{
+    background-color: var(--greenA2);
+    color: #fff;
+}
+
+.close_button{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FF0000;
+    color: #fff;
+    padding: 0.7rem 3rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.close_button:hover{
+    background-color: #fff;
+    color: #FF0000;
+    font-weight: bold;
+    border: 2px solid #FF0000;
+}
+
+.close_button:active{
+    background-color: #8B0000;
+    color: #fff;
+}
+
+.modal_title{
+    text-align: center;
+}
+
+#formulario_uptade_empreiteira > p, #formulario_uptade_responsabvel > p{
+    margin-top: 12px;
+    margin-left: 2%;
+}
+
+#formulario_uptade_empreiteira > input, #formulario_uptade_responsavel > input{
+    padding: 3px 7px 3px 7px;
+    border-radius: 30px;
+    border: 2px solid #000;
+    width: 70%;
+}

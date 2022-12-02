@@ -1,0 +1,235 @@
+<%- include("menu.ejs") %>
+
+<head>
+    <link rel="stylesheet" href="/public/css/perfil_contratante.css">
+</head>
+<div id="grid-container">
+    <div class="grid-item">
+        <div id="profile_pic">
+            <!-- <img src="/img/icon_user.png" id="icon_user"> -->
+        </div>
+
+        <div>
+            <p id="name_empreiteira">João Almeida Prado</p>
+            <p id="service_empreiteira">São Paulo</p>
+        </div>
+    </div>
+               
+    <div class="grid-item">
+        <a href="#modal_postagem"><button id="new_postagem">Adicionar uma obra</button></a>
+        <a href="#modal"><button id="edit_profile">Editar Perfil</button></a>
+    </div>   
+    <!-- <div class="grid-item">
+        <div id="info_empreiteira">
+            <div class="info_grid_item">
+                <h2>Dados Cadastrais</h1> 
+            </div>
+            <div class="info_grid_item">
+                <p class="title_grid"><b>CNPJ:</b></p>
+                <p>XX.XXX.XXX/00001-XX</p>
+            </div>
+            <div class="info_grid_item">        
+                <p class="title_grid"><b>E-mail:</b></p>
+                <p>Empretech@gmail.com</p>
+            </div>
+            <div class="info_grid_item">
+                <p class="title_grid"><b>Celular - Whatsapp:</b></p>
+                <p>(11)98643-5012</p>
+            </div>
+            <div class="info_grid_item">
+                <p class="title_grid"><b>Data de Cadastro:</b></p>
+                <p id="signup_date_value">30/10/2020</p> 
+            </div>
+            <div class="info_grid_item">
+                <p class="title_grad"><b>Número de funcionários:</b></p>
+                <p id="funcionarios_empreiteira_value">15 funcionários</p> 
+            </div>
+        </div>
+    </div> -->
+
+   
+
+   <div class="grid-item">
+    <div id="info_contratante">
+        <div class="contratante_grid_item">
+            <h2>Meus Dados:</h1> 
+        </div>
+        <div class="contratante_grid_item">
+            <p class="title_grid"><b>CPF:</b></p>
+            <p>XXX.XXX.XXX-XX</p>
+        </div>
+        <div class="contratante_grid_item">        
+            <p class="title_grid"><b>E-mail:</b></p>
+            <p>joaoalmeida.empretech@gmail.com</p>
+        </div>
+        <div class="contratante_grid_item">
+            <p class="title_grid"><b>Nome Completo:</b></p>
+            <p>João Martins de Oliveira</p>
+        </div>
+     
+        <div class="contratante_grid_item">
+            <p class="title_grad"><b>Celular - Whatsapp:</b></p>
+            <p id="cel_value">(XX) XXXXX-XXXX</p> 
+        </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Editar Informações Empreiteira -->
+
+<div id="modal" class="modal">
+    <div class="modal_content">
+       <h2 class="modal_title">Editar Informações da Empreiteira</h2>
+       <div class="modal_description">
+        <form id="formulario_uptade_contratante">
+            <p>CPF:</p>
+            <input type="number" readonly placeholder="1123829329/0001-90"></input>
+            <p>Nome:</p>
+            <input type="text" placeholder="" value="<%= empreiteira.NomeFantasia %>"></input>
+            <p>Email:</p>
+            <input type="text" placeholder=""></input>
+            <p>Celular</p>
+            <input type="number" placeholder=""></input>
+            <p>Regional:</p>
+            <input type="text" placeholder=""></input>
+            
+            
+        </form>
+            
+        </div>
+        <div id="modal_buttons">
+            <a href="#" class="close_button">Fechar</a>
+            <a href="#" class="send_button">Atualizar</a>
+        </div>
+       
+   </div>
+</div>
+
+<!-- Modal Criar Postagem -->
+
+<div id="modal_postagem" class="modal_postagem">
+    <div class="modal_content">
+       <h2 class="modal_title">Editar Informações da Empreiteira</h2>
+       <div class="modal_description">            
+            <div class="containerUnique">
+                Título: <br>
+                <input type="text" class="inputSmall">
+            </div>
+            <div class="containerUnique">
+                Descrição: <br>
+                <textarea class="inputBig"></textarea>
+            </div>
+            <div class="box">
+                <div class="containerDouble">
+                    Cidade, Estado: <br>
+                    <input type="text" class="inputSmall" id="cidadePost">
+                    <select id="estadoPost" class="inputSmall">
+                        <option value="ac">AC</option>
+                        <option value="al">AL</option>
+                        <option value="ap">AP</option>
+                        <option value="am">AM</option>
+                        <option value="ba">BA</option>
+                        <option value="ce">CE</option>
+                        <option value="df">DF</option>
+                        <option value="es">ES</option>
+                        <option value="go">GO</option>
+                        <option value="ma">MA</option>
+                        <option value="mg">MG</option>
+                        <option value="ms">MS</option>
+                        <option value="mt">MT</option>
+                        <option value="pa">PA</option>
+                        <option value="pb">PB</option>
+                        <option value="pe">PE</option>
+                        <option value="pi">PI</option>
+                        <option value="pr">PR</option>
+                        <option value="rj">RJ</option>
+                        <option value="rn">RN</option>
+                        <option value="ro">RO</option>
+                        <option value="rs">RS</option>
+                        <option value="rr">RR</option>
+                        <option value="sc">SC</option>
+                        <option value="se">SE</option>
+                        <option value="sp">SP</option>
+                        <option value="to">TO</option>
+                    </select>
+                </div>
+                <div class="containerDouble">
+                    Data de início:
+                    <input type="date" class="inputSmall">
+                </div>
+                <div class="containerDouble">
+                    Serviços:
+                    <select class="inputSmall">
+                        <option value="acab">Acabamentos louças - HID</option>
+                        <option value="alve">Alvenaria / Parede Concreto</option>
+                        <option value="arrimoBC">Arrimos em bloco cheio</option>
+                        <option value="arrimosCA">Arrimos em concreto armado</option>
+                        <option value="band">Bandejão</option>
+                        <option value="barr">Barracão</option>
+                        <option value="lajao">Blocos e Cintamento / Lajão</option>
+                        <option value="cana">Canaleta, sarjeta</option>
+                        <option value="cera">Cerâmica</option>
+                        <option value="cont">Contrapiso</option>
+                        <option value="esca">Escada, corrimão</option>
+                        <option value="fiac">Fiação</option>
+                        <option value="forma">Forma e Desforma</option>
+                        <option value="forGe">Forro de Gesso</option>
+                        <option value="forPV">Forro de PVC</option>
+                        <option value="gas">Gás</option>
+                        <option value="gasE">Gás externo</option>
+                        <option value="gasI">Gás Interno</option>
+                        <option value="gasIP">Gás interno - Prumadas e ramais</option>
+                        <option value="gessoA">Gesso Acartonado</option>
+                        <option value="gessoC">Gesso corrido</option>
+                        <option value="guar">Guarda-corpo, corrimão</option>
+                        <option value="impe">Impermeabilização - Piso apto</option>
+                        <option value="instBanc">Instalação de bancadas - HID</option>
+                        <option value="instPor">Instalação de portas corta fogo</option>
+                        <option value="instEle">Instalação ELE / HID</option>
+                        <option value="instAnt">Instalações Anti-incêndio</option>
+                        <option value="instElec">Instalações Elétricas</option>
+                        <option value="jane">Janelas e portas metálicas</option>
+                        <option value="lanc">Lançamento de Concreto</option>
+                        <option value="limp">Limpeza</option>
+                        <option value="montB">Montagem bomba Castelo</option>
+                        <option value="montT">Montagem tubulação Castelo</option>
+                        <option value="muroA">Muro área privativa e acabamento</option>
+                        <option value="muroD">Muro de divisa</option>
+                        <option value="muroF">Muro de frente</option>
+                        <option value="pare">Parede de Drywall</option>
+                        <option value="passE">Passeio e meio-fio externo</option>
+                        <option value="passI">Passeio e meio-fio interno</option>
+                        <option value="pintV">Pintura de vagas</option>
+                        <option value="pintE">Pintura Externa</option>
+                        <option value="pintI">Pintura Interna</option>
+                        <option value="pisoI">Piso Intertravado</option>
+                        <option value="pisoL">Piso Laminado</option>
+                        <option value="pisoP">Piso Pobre</option>
+                        <option value="plat">Platibanda</option>
+                        <option value="port">Portas de madeira</option>
+                        <option value="posF">Pós Forma</option>
+                        <option value="post">Posteamento</option>
+                        <option value="prot">Proteção Predial - SPDA</option>
+                        <option value="quad">Quadra</option>
+                        <option value="rede">Rede drenagem, água pluvial</option>
+                        <option value="sala">Salão de Festas / Espaço Gourmet</option>
+                        <option value="shaf">Shaft</option>
+                        <option value="test">Testes,vistorias e cartas - SPDA</option>
+                    </select>
+                </div>
+                <div class="containerDouble">
+                    Data de término:
+                    <input type="date" class="inputSmall">
+                </div>
+            </div>
+            <div class="containerUnique" id="botaoPost">
+                <input type="submit" value="Publicar" id="postar">
+            </div>   
+        </div>
+        <div id="modal_buttons">
+            <a href="#" class="close_button">Fechar</a>
+            <a href="#" class="send_button">Atualizar</a>
+        </div>
+       
+   </div>
+</div>
