@@ -2,14 +2,15 @@
 
 let url = new URL(window.location.href);
 let params = url.searchParams;
-var cnpj = url.searchParams.get("cnpj");
-console.log(cnpj)
+var id = url.searchParams.get("id");
 
+
+var cnpj;
 function list() {
-   
+
     // Get from table 'empreiteira'
     $.ajax({
-        url: `./info/?cnpj=${cnpj}`,
+        url: `./info/?id=${id}`,
         type: 'GET',
         success: data => {
             data.forEach(element => {
@@ -27,11 +28,14 @@ function list() {
                 $('#open_date_value').text(element.Data_Abertura) // Set Opening date
                 $('#icon_user').attr('src', element.Foto); // Set Profile picture
                 $('#funcionarios_empreiteira_value').text(`${element.Numero_Funcionarios} Funcionários`) // Set number of employees
+                $('#cnpj').text(element.CNPJ);
             });
+            
         }
     });
+    console.log(cnpj);
     $.ajax({
-        url: `./infoResp/?cnpj=${cnpj}`,
+        url: `./infoResp/?id=${id}`,
         type: 'GET',
         success: data => {
             data.forEach(element => {
@@ -61,7 +65,6 @@ function list() {
 
 
 $(document).ready(function () {
-    $('#cnpj').text(cnpj)
     list();
     
 });
