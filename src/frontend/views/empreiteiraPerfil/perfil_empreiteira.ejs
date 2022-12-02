@@ -1,16 +1,18 @@
-<%- include("menu.ejs") %>
+<%- include("../structures/menu.ejs") %>
+
 <head>
-    <link rel="stylesheet" href="/public/css/perfil_empreiteira.css">
+    <link rel="stylesheet" href="/frontend/views/css/perfil_empreiteira.css">
+    
 </head>
 
 <div id="grid-container">
     <div class="grid-item">
         <div id="profile_pic">
-            <!-- <img src="/img/icon_user.png" id="icon_user"> -->
+            <img src="/img/icon_user.png" id="icon_user"> 
         </div>
 
         <div>
-            <p id="name_empreiteira">Empretech</p>
+            <p id="name_empreiteira" name="name_empreiteira">Empretech</p>
             <p id="service_empreiteira">Cerâmica</p>
         </div>
     </div>
@@ -183,7 +185,7 @@
             <p>CPF:</p>
             <input type="number" readonly placeholder="332.587.273-84"></input>
             <p>Nome:</p>
-            <input type="text" placeholder="" value="<%= empreiteira.NomeFantasia %>"></input>
+            <input type="text" placeholder="" value=""></input>
             <p>Email:</p>
             <input type="email" placeholder=""></input>
             <p>Celular:</p>
@@ -199,3 +201,6 @@
        
    </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="/frontend/scripts/perfil_empreiteira.js"></script>

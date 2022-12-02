@@ -8,9 +8,8 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
 // Definitions
-const viewPath = path.join(__dirname, "../../frontend/views/empreiteiraPerfil/perfil"); // Fetch the ejs file
+const viewPath = path.join(__dirname, "../../frontend/views/empreiteiraPerfil/perfil_empreiteira.ejs"); // Fetch the ejs file
 const DBPATH = path.join(__dirname, "../data/ConstruMatch.db"); // Fetch the database
-
 
 
 // Opening endpoint
@@ -27,7 +26,7 @@ router
     })
 
 router
-    .route('/info')
+    .route('/perfil')
     .get((req, res) => {
         var db = new sqlite3.Database(DBPATH); // Instantiate database
         var sql = `SELECT * FROM Empreiteira WHERE ID_Empreiteira = ${req.query.id};`;
@@ -74,6 +73,9 @@ router
         var db = new sqlite3.Database(DBPATH);
         var sql = `UPDATE Empreiteiras SET `
     })
+
+
+
 
 module.exports = router;
 

@@ -30,8 +30,11 @@ const signupRouter = require('./routes/signup');
 app.use('/cadastrar', signupRouter);
 
 // Endpoint empreiteira profile
-const empProfileRouter = require('./routes/empreiteiraProfile');
-app.use('/perfilEmp', empProfileRouter);
+const empProfileRouter = require('./routes/perfil_empreiteira');
+app.use('/perfil', empProfileRouter);
+
+// const contratRouter = require('./routes/perfil_contratante');
+// app.use('/contratante', contratRouter);
 
 // Endpoint regional profile
 // const regionalPerfil = require('./routes/regionalPerfil');

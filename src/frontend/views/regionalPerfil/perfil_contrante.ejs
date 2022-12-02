@@ -113,11 +113,11 @@
        <div class="modal_description">            
             <div class="containerUnique">
                 Título: <br>
-                <input type="text" class="inputSmall">
+                <input type="text" id="titulo" class="inputSmall">
             </div>
             <div class="containerUnique">
                 Descrição: <br>
-                <textarea class="inputBig"></textarea>
+                <textarea id="descricao" class="inputBig"></textarea>
             </div>
             <div class="box">
                 <div class="containerDouble">
@@ -155,11 +155,11 @@
                 </div>
                 <div class="containerDouble">
                     Data de início:
-                    <input type="date" class="inputSmall">
+                    <input type="date" id="data_inicio" class="inputSmall">
                 </div>
                 <div class="containerDouble">
                     Serviços:
-                    <select class="inputSmall">
+                    <select class="inputSmall" id="servico">
                         <option value="acab">Acabamentos louças - HID</option>
                         <option value="alve">Alvenaria / Parede Concreto</option>
                         <option value="arrimoBC">Arrimos em bloco cheio</option>
@@ -219,11 +219,11 @@
                 </div>
                 <div class="containerDouble">
                     Data de término:
-                    <input type="date" class="inputSmall">
+                    <input type="date" id="data_fim" class="inputSmall">
                 </div>
             </div>
             <div class="containerUnique" id="botaoPost">
-                <input type="submit" value="Publicar" id="postar">
+                <input type="submit" value="Publicar" id="postar" onclick="criarPostagem();">
             </div>   
         </div>
         <div id="modal_buttons">
