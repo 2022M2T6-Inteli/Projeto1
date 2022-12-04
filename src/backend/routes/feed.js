@@ -6,7 +6,7 @@ const sqlite3 = require('sqlite3').verbose();
 
 // Definitions
 const router = express.Router(); // Setup router
-const viewPath = path.join(__dirname, "../../frontend/views/cadastrar/tela_cadastro"); // Fetch the ejs file
+const viewPath = path.join(__dirname, "../../frontend/views/feed/feed"); // Fetch the ejs file
 const urlencodedParser = bodyParser.urlencoded({ extended: false }) // Setup parser
 const DBPATH = path.join(__dirname, "../data/ConstruMatch.db"); // Fetch the database
 
