@@ -1,28 +1,27 @@
+const url = `http://${new URL(window.location.href).hostname}:${new URL(window.location.href).port}`;
+
+// Interacts with server to post in database
 function submitProfile(){
-    let cnpj = $('#cnpj').val();
-    let razaoSoc = $('#razaoSoc').val();
-    let nomeFant = $('#nomeFant').val();
-    let cnae = $('#cnae').val();
-    let dataAbert = $('#dataAbert').val();
-    let email = $('#email').val();
-    let serv1 = $('#serv1').val();
-    let serv2 = $('#serv2').val();
     $.ajax({
         type: "POST",
         url: "/cadastrar",
         data: {
-            cnpj: cnpj, 
-            razaoSoc: razaoSoc, 
-            nomeFant: nomeFant, 
-            cnae: cnae, 
-            dataAbert: dataAbert, 
-            email: email, 
-            serv1: serv1, 
-            serv2: serv2
+            cnpj: $('#cnpj').val(),
+            razaoSoc: $('#razaoSoc').val(),
+            nomeFant: $('#nomeFant').val(),
+            cnae: $('#cnae').val(),
+            dataAbert: $('#dataAbert').val(), 
+            email: $('#email').val(),
+            func: $('#func').val(),
+            cidades: $('#cidades').val(),
+            estados: $('#estados').val(), 
+            serv1: $('#serv1').val(), 
+            serv2: $('#serv2').val()
         }
     }).done(function(){
         console.log('done');
         alert('Usuário cadastrado com sucesso')
+        window.location.href = (url)
     }).fail(function(){
         alert('Falha no cadastro, tente novamente')
         console.log('failed');
@@ -31,36 +30,45 @@ function submitProfile(){
     });
 };
 
-// $(document).ready(function () {
-// // Run states and cities function (Shoutout to ografael)
-// $.getJSON('https://gist.githubusercontent.com/ografael/2037135/raw/5d31e7baaddd0d599b64c3ec04827fc244333447/estados_cidades.json', function (data) {
-//     var items = [];
-//     var options = '<option value="">Escolha um estado</option>';	
 
-//     $.each(data, function (key, val) {
-//         options += '<option value="' + val.nome + '">' + val.nome + '</option>';
-//     });					
-//     $("#estados").html(options);				
-    
-//     $("#estados").change(function () {				
-    
-//         var options_cidades = '';
-//         var str = "";					
-        
-//         $("#estados option:selected").each(function () {
-//             str += $(this).text();
-//         });
-        
-//         $.each(data, function (key, val) {
-//             if(val.nome == str) {							
-//                 $.each(val.cidades, function (key_city, val_city) {
-//                     options_cidades += '<option value="' + val_city + '">' + val_city + '</option>';
-//                 });							
-//             }
-//         });
+// Fills the fields for cities and states
+function cityState(){
+    $.getJSON('frontend/scripts/json/cidades-estados.json', function(data) {
+        var options = '<option value="">Escolha um estado</option>';	
 
-//         $("#cidades").html(options_cidades);
+        $.each(data, function (key, val) {
+            options += '<option value="' + val.sigla + '">' + val.nome + '</option>';
+        });					
+        $("#estados").html(options);				
+        $("#estados").change(function () {				
         
-//     }).change();		
-// });
-// });
+            var options_cidades = '<option value="">Escolha uma cidade</option>';
+            var str = "";					
+            
+            $("#estados option:selected").each(function () {
+                str += $(this).text();
+            });
+            
+            $.each(data, function (key, val) {
+                if(val.nome == str) {							
+                    $.each(val.cidades, function (key_city, val_city) {
+                        options_cidades += '<option value="' + val_city + '">' + val_city + '</option>';
+                    });							
+                }
+            });
+
+            $("#cidades").html(options_cidades);
+            
+        }).change();		
+    
+    });
+};
+
+$(document).ready(function () {
+    cityState();
+
+    $('#signup').click(function (e) { 
+        e.preventDefault();
+        submitProfile();
+    });
+});
