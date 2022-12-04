@@ -3,13 +3,13 @@
 let url = new URL(window.location.href);
 let params = url.searchParams;
 var id = url.searchParams.get("id");
-console.log(id)
 
 var cnpj;
 function list() {
+
     // Get from table 'empreiteira'
     $.ajax({
-        url: `./perfil/?id=${id}`,
+        url: `./info/?id=${id}`,
         type: 'GET',
         success: data => {
             data.forEach(element => {
@@ -61,37 +61,6 @@ function list() {
     });
     
 }
-
-function criarpostagem(){
-    let servico = $('#servico').val();
-    let titulo = $('#titulo').val();
-    let descricao = $('#descricao').val();
-    let data_inicio = $('#data_inicio').val();
-    let data_fim = $('#data_fim').val();
-    let cidade = $('#cidadePost').val();
-    let estado = $('#estado').val();
-    $.ajax({
-        type: "POST",
-        url: "/cadastrar",
-        data: {
-            servico: servico, 
-            titulo: titulo, 
-            descricao: descricao,
-            data_inicio: data_inicio,      
-            data_fim: data_fim, 
-            estado: estado, 
-            cidade: cidade
-        }
-    }).done(function(){
-        console.log('done');
-        alert('Postagem criada com sucesso')
-    }).fail(function(){
-        alert('Falha ao criar a postagem, tente novamente')
-        console.log('failed');
-    }).always(function(){
-        console.log('always');
-    });
-};
 
 $(document).ready(function () {
     list();
