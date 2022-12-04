@@ -19,32 +19,38 @@ app.use('/frontend', express.static(path.join(__dirname, "../frontend")))
 console.log(`Static Path at: ${path.join(__dirname, "../frontend")}`);
 
 // Endpoint index
-const viewPath = path.join(__dirname, '..', 'frontend', 'views', 'login');
+const viewPath = path.join(__dirname, '../frontend/views/index/index');
 app.get('/', (req, res) =>{
-    res.render(viewPath + '/login')
+    res.render(viewPath)
 })
+
 
 // Endpoint signup
 const signupRouter = require('./routes/signup');
 app.use('/cadastrar', signupRouter);
 
 // Endpoint empreiteira profile
-const empProfileRouter = require('./routes/empreiteiraProfile');
-app.use('/empreiteira/perfil', empProfileRouter);
+const empProfileRouter = require('./routes/perfil_empreiteira');
+app.use('/perfil', empProfileRouter);
 
 // Endpoint regional profile
-// const regionalPerfil = require('./routes/regionalPerfil');
-// app.use('/regional/profile', regProfileRouter);
+// const regionalRouter = require('./routes/regionalPerfil');
+// app.use('/regional', regionalRouter);
 
 // Endpoint faq
 // const faqRouter = require('./routes/faq');
-// app.use('/faq', faqRouter);
+//  app.use('/faq', faqRouter);
 
 // Endpoint signup
-// const feedRouter = require('./routes/feed');
-// app.use('/feed', feedRouter);
+const feedRouter = require('./routes/feed');
+app.use('/feed', feedRouter);
 
 
+// Endpoint Page not found
+const viewPathNF = path.join(__dirname, "../frontend/views/404/NotFound.ejs"); // Fetch the ejs file "Not found"
+app.get('*', function(req, res) {
+    res.render(viewPathNF);
+});
 
 
 // Start server with port
