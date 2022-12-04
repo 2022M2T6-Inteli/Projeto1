@@ -9,6 +9,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // Definitions
 const viewPath = path.join(__dirname, "../../frontend/views/empreiteiraPerfil/perfil_empreiteira.ejs"); // Fetch the ejs file
+const viewPathNF = path.join(__dirname, "../../frontend/views/404/NotFound.ejs"); // Fetch the ejs file "Not found"
 const DBPATH = path.join(__dirname, "../data/ConstruMatch.db"); // Fetch the database
 
 
@@ -26,10 +27,13 @@ router
     })
 
 router
-    .route('/perfil')
+    .route('/info')
     .get((req, res) => {
+        res.statusCode = 200;
+        res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
         var db = new sqlite3.Database(DBPATH); // Instantiate database
-        var sql = `SELECT * FROM Empreiteira WHERE ID_Empreiteira = ${req.query.id};`;
+        if(req.query.id){
+            var sql = `SELECT * FROM Empreiteira WHERE ID_Empreiteira = ${req.query.id};`;
 	    console.log(sql);
         db.all(sql, [],  (err, rows ) => {
             if (err) {
@@ -38,6 +42,12 @@ router
             res.json(rows);
         });
         db.close();
+        }
+        else{
+            res.statusCode = 404;
+            res.render(viewPathNF);
+
+        }
     })
 
 router

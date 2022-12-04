@@ -1,14 +1,13 @@
 // Import modules
 const express = require('express');
 const path = require('path');
-const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
-const router = express.Router();
-const urlencodedParser = bodyParser.urlencoded({ extended: false })
-
+const sqlite3 = require('sqlite3').verbose();
 
 // Definitions
+const router = express.Router(); // Setup router
 const viewPath = path.join(__dirname, "../../frontend/views/feed/feed"); // Fetch the ejs file
+const urlencodedParser = bodyParser.urlencoded({ extended: false }) // Setup parser
 const DBPATH = path.join(__dirname, "../data/ConstruMatch.db"); // Fetch the database
 
 
@@ -29,7 +28,12 @@ router
 router
     .route('/info')
     .get((req, res) => {
-        var db = new sqlite3.Database(DBPATH); // Instantiate database
+        var db = new sqlite3.Database(DBPATH, err => {
+            if (err) {
+                return console.error(err.message);
+            }
+            console.log("Successful connection to the database 'ConstruMatch.db'");
+        });
         var sql = `SELECT Servico, Titulo, Descricao, Data_Inicio, Data_Fim, Estado, Cidade, ID_Oportunidade FROM Oportunidade`;
         db.all(sql, [],  (err, rows ) => {
             if (err) {
@@ -39,4 +43,5 @@ router
         });
         db.close();
     })
-module.exports = router;
+
+module.exports = router; // Export Router
