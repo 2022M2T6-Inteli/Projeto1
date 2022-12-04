@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+*{
+    font-family: 'Noto Sans', sans-serif;
+    margin: 0;
+    padding: 0; 
+}
+
+html{
+    background-color: var(--boneWhite);
+}
+
+:root{
+    /* - Color palette - */
+    --blue1: #93b1cb;
+    --blue2: #85a7c5;
+    --blue3: #789ebf;
+    --greenA1: #568f6a;
+    --greenA2: #428157;
+    --greenA3: #006b3f;
+    --greenB1: #8fe094;
+    --greenB2: #81dc87;
+    --greenB3: #73d97a;
+    --yellowA01: #ffd375;
+    --yellowA1: #ffc546;
+    --yellowA2: #ffbe2f;
+    --yellowA3: #ffb719;
+    --yellowB01: #ffb97a;
+    --yellowB1: #ffa24e;
+    --yellowB2: #ff9638;
+    --yellowB3: #ff8b22;
+    --boneWhite: #F9F6EE
+}
+
+#main_container{
+    width: 100%;
+    height: 100vh;
+    background-color: var(--yellowA01);
+    display: flex;
+    flex-direction: column;
+    gap: 2ch;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+
+}
+
+ #cadastro_grid{
+    display: flex;
+    width: 45%;
+    height: 70vh;
+    background-color: #006b3f;
+    border-radius: 15px 50px;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 12% repeat(7, 15%);
+    padding: 1% 1% 1% 1%;
+    /* overflow-y: scroll; */
+    /* overflow-x: hidden; */
+    justify-items: center;
+    overflow: auto;
+} 
+
+/* .cadastro_item{
+    border: 2px solid #000;
+} */
+.cadastro_item{
+    display: flex;
+    flex-direction: column;
+}
+.cadastro_item > input,
+.cadastro_item > select{
+    border-radius: 30px;
+    margin: 2ch;
+    border: none;
+    width: 20rem;
+    height: 4vh;
+    padding: 0 1% 0 1%;
+    align-self: center;
+}
+.cadastro_item > p{
+margin-bottom: 7px;
+text-align: center;
+}
+
+button {
+    margin-top: 2ch;
+    width: 10ch;
+    height: 5ch;
+}
+
