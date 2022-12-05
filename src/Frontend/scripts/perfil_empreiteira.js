@@ -4,7 +4,6 @@ let url = new URL(window.location.href);
 let params = url.searchParams;
 var id = url.searchParams.get("id");
 
-
 var cnpj;
 function list() {
 
@@ -62,7 +61,6 @@ function list() {
     });
     
 }
-
 
 $(document).ready(function () {
     list();

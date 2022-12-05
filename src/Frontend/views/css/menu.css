@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/35a78a5461.js" crossorigin="anonymous"></script>
-    
-    <title>Menu</title>
-</head>
-<body>
-    <style>
-        *{
+*{
     margin: 0;
     padding: 0;
     font-family: 'Noto Sans', sans-serif;
@@ -111,7 +99,6 @@ a:hover{
     min-height: 100vh;
     width: 150px;
     z-index: 9;
-    top:20px;
 }
 .sidebar .vertical-container{
     margin-top: 50px;
@@ -144,7 +131,6 @@ a:hover{
     /* border: cadetblue dotted 10px; DELETE THIS */
     width: 100%;
     min-height: 100vh;
-    top: 20px;
 }
 
 .center{
@@ -172,42 +158,3 @@ a:hover{
 .menu-names{
     color: #fff;
 }
-    </style> -
-
-    <!-- Menu Lateral e Menu Superior -->   
-
-    <div class="header normal-shadow">
-        <div class="horizontal-container">
-            <div class="icons-left">
-                <!-- <i id="toggle-sidebar" class="fa-solid fa-bars"></i> -->
-            </div>
-            <h1 class="menu-names">ConstruMatch</h1>
-            <div class="icons-right">
-            </div>
-        </div>  
-    </div>
-    <div class="main-container center">
-        <div class="sidebar">
-            <div class="vertical-container">
-                <a href="feed"><div class="horizontal-container center">
-                    <i class="fa-solid fa-list menu-active"></i>
-                    <h5 class="menu-names">Feed</h5>
-                </div></a>
-                <a href="perfilEmp"><div class="horizontal-container center">
-                    <i class="fa-solid fa-user"></i>
-                    <h5 class="menu-names">Perfil</h5>
-                </div></a>
-                <!-- <a href><div class="horizontal-container center">
-                    <i class="fa-solid fa-hammer"></i>
-                    <h5 class="menu-names" align=center>Meus serviços</h5>
-                </div></a> -->
-                <a href="faq"><div class="horizontal-container center">
-                    <i class="fa-solid fa-circle-info"></i>
-                    <h5 class="menu-names">Ajuda</h5>
-                </div></a>
-            </div>
-        </div>
-        
-      
-</body>
-</html>

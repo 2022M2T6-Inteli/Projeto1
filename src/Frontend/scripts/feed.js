@@ -2,6 +2,20 @@ let url = new URL(window.location.href);
 let params = url.searchParams;
 var id = url.searchParams.get("id");
 
+function like(i) {
+    var x = document.getElementById("prop" + `${i}`);
+    
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    }
+    else if (x.style.display === "block") {
+      x.style.display = "none";
+    }
+    else {
+      x.style.display = "block";
+    }
+};
+
 function read(){
     $.ajax({
         url: '/feed/info',
@@ -13,7 +27,7 @@ function read(){
                 tx+=`<div class="grid-item">`;
                     tx+=`<div class="post-box">`;
                         tx+=`<strong id="title">${element.Titulo}</strong>`;
-                        tx+=`<div id="desc">${element.Escopo}</div>`;
+                        tx+=`<div id="desc">${element.Descricao}</div>`;
                         tx+=`<div class="info">`;
                             tx+=`Cidade, Estado:<br>${element.Cidade}, ${element.Estado}<br><br>`;
                             tx+=`Serviço:<br>${element.Servico}`;
