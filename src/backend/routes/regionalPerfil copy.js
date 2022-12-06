@@ -17,32 +17,33 @@ const viewPathInteressados= path.join(__dirname, "../../frontend/views/regionalP
 const viewPathListar = path.join(__dirname, "../../frontend/views/regionalPerfil/listar"); // Fetch the ejs file
 const viewPathRemover = path.join(__dirname, "../../frontend/views/regionalPerfil/remover"); // Fetch the ejs file
 const urlencodedParser = bodyParser.urlencoded({ extended: false }) // Setup parser
-const DBPATH = path.join(__dirname, "../data/ConstruMatch.db"); // Fetch the database
+const db = path.join(__dirname, "../data/ConstruMatch.db"); // Fetch the database
 
 router
 	.route('/')
 	.get((req, res) => {
-		res.statusCode = 200; // Status: OK
-        res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
-		const params = [req.query.id];
-		console.log('QUERY', params);
+		let pessoas; //entender pq foi declarado essas 3 variaveis? Declaro o nome da minha tabela??
+		let ordenar = req.query["ordenar"];
+		let params;
 
-        var db = new sqlite3.Database(DBPATH, err => {
-            if (err) {
-                return console.error(err.message);
-            }
-            console.log("Successful connection to the database 'ConstruMatch.db'");
-        });
+		if (!ordenar) {
+			ordenar = "";
+			params = [];
+		} else {
+			ordenar = "ORDER BY ? COLLATE NOCASE ASC";
+			params = [ordenar];
+		}
 
-
-		const sql = "SELECT * FROM Contratante WHERE ID_Contratante=? ";
+		const sql = "SELECT CPF, Nome, Email, Celular, Regional FROM Contratante WHERE ID_Contratante=? " + ordenar;
 		console.log(sql);
 
+		db.all(sql, params, (err, rows) => {
+			if (err) {
+				console.error(err.message);
+				res.send("Erro: " + err.message);
+				return;
+			}
 
-		db.get(sql, params, (err, rows) => {
-            if (err) {
-                throw err;
-            }
 			res.render(viewPath, { model: rows });
 		});
 	})
@@ -50,59 +51,13 @@ router
 router
 	.route("/alterarPerfil")
 	.get((req, res) => {
-		res.statusCode = 200; // Status: OK
-        res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
-		//const params = [req.query.id];
-		let ID_Contratante = req.query["id"];
-		
-        var db = new sqlite3.Database(DBPATH, err => {
-            if (err) {
-                return console.error(err.message);
-            }
-            console.log("Successful connection to the database 'ConstruMatch.db'");
-        });
-
-		
-		if (!ID_Contratante) {
-			res.send("ID faltando");
-			return;
-		}
-
-		const sql = "SELECT ID_Contratante, Cpf, Nome, Email, Celular, Regional FROM Contratante WHERE ID_Contratante=?";
-
-		console.log(sql);
-
-		db.get(sql, [ID_Contratante], (err, row) => {
-		//db.get(sql, params, (err, rows) => {
-            if (err) {
-                throw err;
-            }
-
-			res.render(viewPathFormPerfil, { model: row });
-		});
-	})
-	.post(urlencodedParser, (req, res) => {
-		res.statusCode = 200; // Status: OK
-        res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
-		let ID_Contratante = req.query["id"];
-
-        var db = new sqlite3.Database(DBPATH, err => {
-            if (err) {
-                return console.error(err.message);
-            }
-            console.log("Successful connection to the database 'ConstruMatch.db'");
-        });
-
-		let msg;
-	
-		let Cpf = req.body["Cpf"];
+		let CPF = req.body["CPF"];
 		let Nome = req.body["Nome"];
 		let Email = req.body["Email"];
 		let Celular = req.body["Celular"];
 		let Regional = req.body["Regional"];
 
-	
-		if (!Cpf) {
+		if (!CPF) {
 			res.send("CPF faltando");
 			return;
 		}
@@ -125,16 +80,62 @@ router
 			return;
 		}
 	
-		const sql = "UPDATE Contratante SET Cpf=?, Nome=?, Email=?, Celular=?, Regional=? WHERE ID_Contratante=?";
+		const sql = "SELECT CPF, Nome, Email, Celular, Regional FROM Contratante WHERE ID_Contratante=?";
+
+		console.log(sql);
+
+		db.get(sql, [ID_Contratante], (err, row) => {
+			if (err) {
+				console.error(err.message);
+				res.send("Erro: " + err.message);
+				return;
+			}
+
+			res.render(viewPathFormPerfil, { Oportunidade: row });
+		});
+	})
+	.post(urlencodedParser, (req, res) => {
+		let msg;
+		let CPF = req.body["CPF"];
+		let Nome = req.body["Nome"];
+		let Email = req.body["Email"];
+		let Celular = req.body["Celular"];
+		let Regional = req.body["Regional"];
+
+	
+		if (!CPF) {
+			res.send("CPF faltando");
+			return;
+		}
+
+		if (!Nome) {
+			res.send("Nome faltando");
+			return;
+		}
+
+		if (!Email) {
+			res.send("Email faltando"); 
+			return;
+		}
+		if (!Celular) {
+			res.send("Celular faltando");
+			return;
+		}
+		if (!Regional) {
+			res.send("Regional faltando");
+			return;
+		}
+	
+		const sql = "UPDATE Oportunidade SET CPF=?, Nome=?, Email=?, Celular=?, Regional=? FROM Contratante WHERE ID_Contratante=?";
 	
 		console.log(sql);
 	
-		db.run(sql, [ID_Contratante, Cpf, Nome, Email, Celular, Regional], (err, rows) => {
-			if (err) 
-                throw err;
+		db.run(sql, [CPF, Nome, Email, Celular, Regional], (err, rows) => {
+			if (err)
+				msg = "Erro: " + err.message;
 			else
 				msg = "Usuário Alterado!";
-            
+	
 			res.render(viewPathAlterarPerfil, { mensagem: msg });
 		});
 	});
@@ -142,16 +143,6 @@ router
 router
 	.route('/alterarOportunidade') //como linkar com o id regional ?
 	.get((req, res) => {
-		res.statusCode = 200; // Status: OK
-        res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
-		
-        var db = new sqlite3.Database(DBPATH, err => {
-            if (err) {
-                return console.error(err.message);
-            }
-            console.log("Successful connection to the database 'ConstruMatch.db'");
-        });
-
 		let Id_Oportunidade = req.body["Id_Oportunidade"];
 		let Data_Oportunidade = req.body["Data_Oportunidade"];
 		let Servico = req.body["Servico"];
@@ -221,24 +212,16 @@ router
 		console.log(sql);
 	
 		db.get(sql, [Id_Oportunidade], (err, row) => {
-            if (err) {
-                throw err;
-            }
+			if (err) {
+				console.error(err.message);
+				res.send("Erro: " + err.message);
+				return;
+			}
 	
 			res.render(viewPathFormOportunidade, { Oportunidade: row });
 		});
 	})
 	.post(urlencodedParser, (req, res) => {
-		res.statusCode = 200; // Status: OK
-        res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
-		
-        var db = new sqlite3.Database(DBPATH, err => {
-            if (err) {
-                return console.error(err.message);
-            }
-            console.log("Successful connection to the database 'ConstruMatch.db'");
-        });
-
 		let msg;
 		let Id_Oportunidade = req.body["Id_Oportunidade"];
 		let Data_Oportunidade = req.body["Data_Oportunidade"];
@@ -309,11 +292,11 @@ router
 		console.log(sql);
 	
 		db.run(sql, [Data_Oportunidade, Servico, Titulo, Escopo, Data_Inicio, Data_fim, Status, Estado, Cidade, Nome_Obra, Endereco, Id_Oportunidade], (err, rows) => {
-
-			if (err) 
-				throw err;
+			if (err)
+				msg = "Erro: " + err.message;
 			else
 				msg = "Oportunidade Alterada!";
+	
 			res.render(viewPathAlterarOportunidade, { mensagem: msg });
 		});
 	});
@@ -321,16 +304,6 @@ router
 router
 	.route('/listar')
 	.get((req, res) => {
-		res.statusCode = 200; // Status: OK
-        res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
-		
-        var db = new sqlite3.Database(DBPATH, err => {
-            if (err) {
-                return console.error(err.message);
-            }
-            console.log("Successful connection to the database 'ConstruMatch.db'");
-        });
-
 		let pessoas; //entender pq foi declarado essas 3 variaveis? Declaro o nome da minha tabela??
 		let ordenar = req.query["ordenar"];
 		let params;
@@ -347,9 +320,11 @@ router
 		console.log(sql);
 	
 		db.all(sql, params, (err, rows) => {
-            if (err) {
-                throw err;
-            }
+			if (err) {
+				console.error(err.message);
+				res.send("Erro: " + err.message);
+				return;
+			}
 	
 			res.render(viewPathListar, { model: rows });
 		});
@@ -358,16 +333,6 @@ router
 router
 	.route('/remover')
 	.get((req, res) => {
-		res.statusCode = 200; // Status: OK
-        res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
-		
-        var db = new sqlite3.Database(DBPATH, err => {
-            if (err) {
-                return console.error(err.message);
-            }
-            console.log("Successful connection to the database 'ConstruMatch.db'");
-        });
-
 		let msg;
 		let Id_Oportunidade = req.body["Id_Oportunidade"];
 	
@@ -375,8 +340,8 @@ router
 		console.log(sql);
 	
 		db.all(sql, [Id_Oportunidade], (err, rows) => {
-			if (err) 
-				throw err;
+			if (err)
+				msg = err.message;
 			else
 				msg = "Oportunidade Removida!";
 	
@@ -387,16 +352,6 @@ router
 router
 	.route('/criarOportunidade')
 	.get((req, res) => {
-		res.statusCode = 200; // Status: OK
-        res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
-		
-        var db = new sqlite3.Database(DBPATH, err => {
-            if (err) {
-                return console.error(err.message);
-            }
-            console.log("Successful connection to the database 'ConstruMatch.db'");
-        });
-
 		const Id_Oportunidade = req.body["Id_Oportunidade"]; // esse ID n é usado msm? Verificar prof
 		const Data_Oportunidade = req.body["Data_Oportunidade"];
 		const Servico = req.body["Servico"];
