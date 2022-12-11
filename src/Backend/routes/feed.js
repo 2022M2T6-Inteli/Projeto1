@@ -34,7 +34,7 @@ router
             }
             console.log("Successful connection to the database 'ConstruMatch.db'");
         });
-        var sql = `SELECT Servico, Titulo, Escopo, Data_Inicio, Data_Fim, Estado, Cidade, ID_Oportunidade FROM Oportunidade`;
+        var sql = `SELECT Servico, Titulo, Descricao, Data_Inicio, Data_Fim, Estado, Cidade, ID_Oportunidade FROM Oportunidade`;
         db.all(sql, [],  (err, rows ) => {
             if (err) {
                 throw err;
@@ -45,20 +45,20 @@ router
     })
 
 router
-    .route('/')
-    .post((req,res) => {
+    .route('/proposta')
+    .post(urlencodedParser, (req,res) => {
         var db = new sqlite3.Database(DBPATH, err => {
             if (err){
                 return console.error(err.message);
             }
         });
-        var sql = `INSERT INTO Proposta (ID_Oportunidade, ID_Empreteira, Valor_Proposta, Escopo) VALUES (${req.body.ID_Oportunidade},${req.query.ID_Empreiteira},${req.body.Valor_Proposta},${req.body.Escopo})`
+        var sql = `INSERT INTO Proposta (ID_Oportunidade, ID_Empreiteira, Valor_Proposta, Escopo) VALUES ("${req.body.id_post}","${req.body.id_emp}","${req.body.valor_op}","${req.body.escopo_op}")`
         db.run(sql, [], err => {
             if(err){
                 throw err;
             }
         });
-        res.redirect("/");
+        res.redirect("/feed/?id=1#modal_conf");
         db.close();
         res.end();
     })

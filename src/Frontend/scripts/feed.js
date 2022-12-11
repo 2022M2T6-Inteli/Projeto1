@@ -1,20 +1,15 @@
-// let url = new URL(window.location.href);
-// let params = url.searchParams;
-// var id = url.searchParams.get("id");
+url = new URL(window.location.href);
+params = url.searchParams;
+id = url.searchParams.get("id");
 
 function like(i) {
-    var x = document.getElementById("prop" + `${i}`);
-    
-    if (x.style.display === "none") {
-      x.style.display = "block";
-    }
-    else if (x.style.display === "block") {
-      x.style.display = "none";
-    }
-    else {
-      x.style.display = "block";
-    }
-};
+    url = new URL(window.location.href);
+    params = url.searchParams;
+    id = url.searchParams.get("id");
+    document.getElementById("id_post").value = i;
+    document.getElementById("id_emp").value = id;
+}
+
 
 function read(){
     $.ajax({
@@ -27,7 +22,7 @@ function read(){
                 tx+=`<div class="grid-item">`;
                     tx+=`<div class="post-box">`;
                         tx+=`<strong id="title">${element.Titulo}</strong>`;
-                        tx+=`<div id="desc">${element.Escopo}</div>`;
+                        tx+=`<div id="desc">${element.Descricao}</div>`;
                         tx+=`<div class="info">`;
                             tx+=`Cidade, Estado:<br>${element.Cidade}, ${element.Estado}<br><br>`;
                             tx+=`Serviço:<br>${element.Servico}`;
@@ -37,16 +32,16 @@ function read(){
                             tx+=`Data de término:<br>${element.Data_Fim}`;
                         tx+=`</div>`;
                         tx+=`<div class="buttons">`;
-                            tx+=`<button onclick="like(${element.ID_Oportunidade})" class="like"><i class="fa-regular fa-thumbs-up"></i></button>`;
+                            tx+=`<a href="#modal" class="btn"><button onclick="like(${element.ID_Oportunidade})" class="like"><i class="fa-regular fa-thumbs-up"></i></button></a>`;
                         tx+=`</div>`;
-                        tx+=`<div id="prop${element.ID_Oportunidade}" class="prop">`;
-                            tx+=`<form id=${element.ID_Oportunidade}>`;
-                                tx+=`<textarea value="Digite sua proposta" id="proposta"></textarea>`;
-                                tx+=`<input type="text" value="Digite o valor da sua proposta" id="valor">`;
-                                tx+=`<input type="hidden" value="${element.ID_Oportunidade}"`
-                                tx+=`<button id="enviar">Enviar</button>`;
-                            tx+=`</form>`;
-                        tx+=`</div>`;
+                        // tx+=`<div id="prop${element.ID_Oportunidade}" class="prop">`;
+                        //     tx+=`<form id=${element.ID_Oportunidade}>`;
+                        //         tx+=`<textarea value="Digite sua proposta" id="proposta"></textarea>`;
+                        //         tx+=`<input type="text" value="Digite o valor da sua proposta" id="valor">`;
+                        //         tx+=`<input type="hidden" value="${element.ID_Oportunidade}"`
+                        //         tx+=`<button id="enviar">Enviar</button>`;
+                        //     tx+=`</form>`;
+                        // tx+=`</div>`;
                     tx+=`</div>`;
                 tx+=`</div>`;
                 // `  
@@ -54,7 +49,6 @@ function read(){
             $('#resultado').html(tx);
         } 
     })
-    
 }
 $(document).ready(function () {
     read();
