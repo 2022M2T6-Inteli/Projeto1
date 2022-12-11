@@ -3,7 +3,9 @@ const path = require('path');
 const ejs = require('ejs');
 const express = require('express');
 const { reset } = require('nodemon');
-
+const bodyParser = require("body-parser");
+const router = express.Router();
+router.use(bodyParser.json());
 // Instantiating modules
 const app = express();
 

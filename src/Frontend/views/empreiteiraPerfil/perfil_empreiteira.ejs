@@ -18,7 +18,7 @@
     </div>
                
     <div class="grid-item">
-        <a href="#modal" class="btn"><button id="edit_profile">Editar Empreiteira</button></a>
+        <a href="#modal" class="btn"><button id="edit_profile" onclick="ShowdataInput();">Editar Empreiteira</button></a>
         <a href="#modal_responsavel" class="btn"><button id="edit_responsavel">Editar Responsável</button></a>
     </div>   
     <div class="grid-item">
@@ -135,32 +135,36 @@
     <div class="modal_content">
        <h2 class="modal_title">Editar Informações da Empreiteira</h2>
        <div class="modal_description">
-        <form id="formulario_uptade_empreiteira">
+        <!-- <form id="formulario_uptade_empreiteira" name="form_uptade_empreiteira" method="post" action="http://localhost:1234/perfil/empreiteira/atualizar"</form>> -->                
+        <form id="formulario_uptade_empreiteira" name="form_uptade_empreiteira" method="post" action="http://127.0.0.1:1234/perfil/empreiteira/atualizar">
             <p>CNPJ:</p>
-            <input type="number" readonly></input>
+            <input type="text" name="cnpj_empreiteira" id="cnpj_empreiteira" readonly value="">
             <p>Nome Fantasia:</p>
-            <input type="text" value="" ></input>
+            <input type="text" name="nome_fantasia_empreiteira" id="nome_fantasia_empreiteira" value="" ></input>
             <p>Razão Social:</p>
-            <input type="text" value=""></input>
+            <input type="text" name="razao_social_empreiteira" id="razao_social_empreiteira" value=""></input>
             <p>Email:</p>
-            <input type="email" value=""></input>
+            <input type="text" name="email_empreiteira" id="email_empreiteira" value=""></input>
             <p>CNAE:</p>
-            <input type="number" value=""></input>
+            <input type="text" name="cnae_empreiteira" id="cnae_empreiteira" value=""></input>
             <p>Data de Abertura:</p>
-            <input type="date" value=""></input>
+            <input type="text"  name="data_abertura_empreiteira" id="data_abertura_empreiteira" value=""></input>
             <p>Número de Funcionários:</p>
-            <input type="number" value=""></input>
+            <input type="text" name="numero_funcionarios" id="numero_funcionarios" value=""></input>
             <p>Serviço Primário:</p>
-            <input type="text" value=""></input>
+            <input type="text" name="servico_primario_empreiteira" id="servico_primario_empreiteira" value=""></input>
             <p>Serviço Secundário:</p>
-            <input type="text" value=""></input>
-            <p>
+            <input type="text" name="servico_secundario_empreiteira" id="servico_secundario_empreiteira" value=""></input>
+            <input type="hidden" name="id" id="id" value=""> 
+            <!-- <a name="send_button" class="send_button"><button>Atualizar</button></a> -->
+            <input type="submit" name="button_enviar" id="button_enviar" onclick="">Enviar mudanças</button>
+
         </form>
             
         </div>
         <div id="modal_buttons">
             <a href="#" class="close_button">Fechar</a>
-            <a href="#" class="send_button">Atualizar</a>
+            <!-- <a name="send_button" class="send_button">Atualizar</a> -->
         </div>
        
    </div>

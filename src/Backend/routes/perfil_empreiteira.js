@@ -52,7 +52,7 @@ router
 
 router
     .route('/infoResp')
-    .post((req, res) => {
+    .get((req, res) => {
         var db = new sqlite3.Database(DBPATH); // Instantiate database
         var sql = `SELECT * FROM Responsavel_Empreiteira WHERE ID_Empreiteira = ${req.query.id};`;
 	    console.log(sql);
@@ -65,25 +65,37 @@ router
         db.close();
     })
 router
-    .route("/atualizarGET")
+    .route("/empreiteira/atualizar")
     .get((req,res)=>{
         var db = new sqlite3.Database(DBPATH);
         var sql = `SELECT * FROM Empreiteira WHERE ID_Empreiteira = ${req.query.id};`;
+        console.log(sql)
         db.all(sql, [],  (err, rows ) => {
             if (err) {
                 throw err;
             }
             res.json(rows);
+            console.log(rows)
         });
         db.close();
     })
 router
-    .route("/mandarAtual")
-    .post((req,res)=>{
-        var db = new sqlite3.Database(DBPATH);
-        var sql = `UPDATE Empreiteiras SET `
-    })
-
+    .post("/empreiteira/atualizar", urlencodedParser, (req, res)=>{
+        res.statusCode = 200;
+        res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+        var db = new sqlite3.Database(DBPATH); // Abre o banco
+        var sql= `UPDATE Empreiteira SET Nome_Fantasia= '${req.body.nome_fantasia_empreiteira}' WHERE ID_Empreiteira= '${req.body.id}'`; 
+        console.log(sql);
+        db.run(sql, [],  err => {
+            if (err) {
+                 throw err;
+             }
+             res.send();
+         });
+         res.write("Nome atualizado com sucesso")
+         db.close(); // Fecha o banco
+         
+    });
 
 module.exports = router;
 

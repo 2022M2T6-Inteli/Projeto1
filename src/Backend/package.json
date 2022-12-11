@@ -11,11 +11,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ajax": "^0.0.4",
+    "body-parser": "^1.20.1",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
     "i": "^0.3.7",
+    "jquery": "^3.6.1",
     "sqlite3": "^5.1.2"
   },
+  "proxy": "http://localhost:1234",
   "devDependencies": {
     "nodemon": "^2.0.20"
   }
