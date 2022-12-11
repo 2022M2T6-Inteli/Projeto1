@@ -34,7 +34,7 @@ router
             }
             console.log("Successful connection to the database 'ConstruMatch.db'");
         });
-        var sql = `SELECT Servico, Titulo, Descricao, Data_Inicio, Data_Fim, Estado, Cidade, ID_Oportunidade FROM Oportunidade`;
+        var sql = `SELECT Servico, Titulo, Escopo, Data_Inicio, Data_Fim, Estado, Cidade, ID_Oportunidade FROM Oportunidade`;
         db.all(sql, [],  (err, rows ) => {
             if (err) {
                 throw err;
@@ -42,6 +42,25 @@ router
             res.json(rows);
         });
         db.close();
+    })
+
+router
+    .route('/')
+    .post((req,res) => {
+        var db = new sqlite3.Database(DBPATH, err => {
+            if (err){
+                return console.error(err.message);
+            }
+        });
+        var sql = `INSERT INTO Proposta (ID_Oportunidade, ID_Empreteira, Valor_Proposta, Escopo) VALUES (${req.body.ID_Oportunidade},${req.query.ID_Empreiteira},${req.body.Valor_Proposta},${req.body.Escopo})`
+        db.run(sql, [], err => {
+            if(err){
+                throw err;
+            }
+        });
+        res.redirect("/");
+        db.close();
+        res.end();
     })
 
 module.exports = router; // Export Router
