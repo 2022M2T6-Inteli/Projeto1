@@ -285,6 +285,7 @@ a{
     margin-top: 1rem;
     border-radius: 4px;
     font-weight: bold;
+    border: none;
 }
 
 .send_button:hover{
@@ -292,6 +293,7 @@ a{
     color: var(--greenA3);
     font-weight: bold;
     border: 2px solid var(--greenA3);
+    cursor: pointer;
 }
 .send_button:active{
     background-color: var(--greenA2);
