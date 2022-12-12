@@ -44,4 +44,23 @@ router
         db.close();
     })
 
+router
+    .route('/proposta')
+    .post(urlencodedParser, (req,res) => {
+        var db = new sqlite3.Database(DBPATH, err => {
+            if (err){
+                return console.error(err.message);
+            }
+        });
+        var sql = `INSERT INTO Proposta (ID_Oportunidade, ID_Empreiteira, Valor_Proposta, Escopo) VALUES ("${req.body.id_post}","${req.body.id_emp}","${req.body.valor_op}","${req.body.escopo_op}")`
+        db.run(sql, [], err => {
+            if(err){
+                throw err;
+            }
+        });
+        res.redirect("/feed/?id=1#modal_conf");
+        db.close();
+        res.end();
+    })
+
 module.exports = router; // Export Router

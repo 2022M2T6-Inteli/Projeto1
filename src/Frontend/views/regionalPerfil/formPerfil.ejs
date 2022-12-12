@@ -1,66 +1,34 @@
-<%- include("../cabecalho") %>
+<%- include("../structures/menu.ejs") %>
 
 <form method="POST">
-	<input type="hidden" name="Id_Oportunidade" value="<%= Oportunidade.Id_Oportunidade %>" />
-
+	<input type="hidden" id="ID_Contratante" name="ID_Contratante" value="<%= model.ID_Contratante %>" />
 	<div>
-		<label for="nome">Nome</label>
-		<input type="text" id="Data_Oportunidade" name="Data_Oportunidade" value="<%= Oportunidade.Data_Oportunidade %>" />
+		<label for="Nome_Responsavel">Nome</label>
+		<input type="text" id="Nome" name="Nome" value="<%= model.Nome %>" />
 	</div>
 
 	<div>
-		<label for="email">E-mail</label>
-		<input type="text" id="Servico" name="Servico" value="<%= Oportunidade.Servico %>" />
+		<label for="Cpf">CPF</label>
+		<input type="text" id="Cpf" name="Cpf" value="<%= model.Cpf %>" />
 	</div>
 
 	<div>
-		<label for="email">E-mail</label>
-		<input type="text" id="Titulo" name="Titulo" value="<%= Oportunidade.Titulo %>" />
+		<label for="Email">E-mail</label>
+		<input type="text" id="Email" name="Email" value="<%= model.Email %>" />
 	</div>
 
 	<div>
-		<label for="email">E-mail</label>
-		<input type="text" id="Escopo" name="Escopo" value="<%= Oportunidade.Escopo %>" />
+		<label for="Celular">Celular</label>
+		<input type="text" id="Celular" name="Celular" value="<%= model.Celular %>" />
 	</div>
 
 	<div>
-		<label for="email">E-mail</label>
-		<input type="text" id="Data_Inicio" name="Data_Inicio" value="<%= Oportunidade.Data_Inicio %>" />
+		<label for="Regional">Regional</label>
+		<input type="text" id="Regional" name="Regional" value="<%= model.Regional %>" />
 	</div>
 
-	<div>
-		<label for="email">E-mail</label>
-		<input type="text" id="Data_Fim" name="Data_Fim" value="<%= Oportunidade.Data_Fim %>" />
-	</div>
-
-	<div>
-		<label for="email">E-mail</label>
-		<input type="text" id="Status" name="Status" value="<%= Oportunidade.Status %>" />
-	</div>
-
-	<div>
-		<label for="email">E-mail</label>
-		<input type="text" id="Estado" name="Estado" value="<%= Oportunidade.Estado %>" />
-	</div>
-
-	<div>
-		<label for="email">E-mail</label>
-		<input type="text" id="Cidade" name="Cidade" value="<%= Oportunidade.Cidade %>" />
-	</div>
-
-	<div>
-		<label for="email">E-mail</label>
-		<input type="text" id="Nome_Obra" name="Nome_Obra" value="<%= Oportunidade.Nome_Obra %>" />
-	</div>
-
-	<div>
-		<label for="email">E-mail</label>
-		<input type="text" id="Endereco" name="Endereco" value="<%= Oportunidade.Endereco %>" />
-	</div>
-
-	<button type="submit">SALVAR</button>
+	<button type="submit">Alterar Perfil</button>
 </form>
 
-<a href="/regionalPerfil/listar">VOLTAR</a>
+<a href="/regionalPerfil?id=<%= model.ID_Contratante %>">Voltar</a>
 
-<%- include("../rodape") %>

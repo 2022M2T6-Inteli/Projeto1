@@ -3,7 +3,9 @@ const path = require('path');
 const ejs = require('ejs');
 const express = require('express');
 const { reset } = require('nodemon');
-
+const bodyParser = require("body-parser");
+const router = express.Router();
+router.use(bodyParser.json());
 // Instantiating modules
 const app = express();
 
@@ -34,8 +36,8 @@ const empProfileRouter = require('./routes/perfil_empreiteira');
 app.use('/perfil', empProfileRouter);
 
 // Endpoint regional profile
-// const regionalRouter = require('./routes/regionalPerfil');
-// app.use('/regional', regionalRouter);
+const regionalRouter = require('./routes/regionalPerfil');
+app.use('/regionalPerfil', regionalRouter);
 
 // Endpoint faq
 // const faqRouter = require('./routes/faq');

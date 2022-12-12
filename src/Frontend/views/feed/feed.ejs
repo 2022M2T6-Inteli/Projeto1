@@ -11,9 +11,54 @@
     <script src="../../frontend/scripts/feed.js"></script>
   </head>
 
+  <div id="modal" class="modal">
+    <div class="modal_content">
+       <h2 class="modal_title">Enviar proposta</h2>
+       <div class="modal_description">
+        <!-- <form id="formulario_uptade_empreiteira" name="form_uptade_empreiteira" method="post" action="http://localhost:1234/perfil/empreiteira/atualizar"</form>> -->                
+        <form id="formulario_proposta" name="formulario_proposta" method="post" action="http://127.0.0.1:1234/feed/proposta">
+            <p>Valor:</p>
+            <input type="text" name="valor_op" id="valor_op" value="R$0.000,00">
+            <p>Descrição:</p>
+            <input type="text" name="escopo_op" id="escopo_op" value="Elabore sua proposta" ></input>
+            <input type="text" name="id_post" id="id_post" value="" hidden></input>
+            <input type="text" name="id_emp" id="id_emp" value="" hidden></input><br>
+
+            <!-- <a name="send_button" class="send_button"><button>Atualizar</button></a> -->
+            <div id="modal_buttons">
+              <a href="#" class="close_button">Fechar</a>
+              <input type="submit" name="button_enviar" id="button_enviar" class="send_button" value="Enviar" onclick="">
+              <!-- <a name="send_button" class="send_button">Atualizar</a> -->
+            </div>
+
+        </form>
+            
+      </div>
+        <!-- <div id="modal_buttons">
+            <a href="#" class="close_button">Fechar</a>
+            
+        </div> -->
+       
+   </div>
+</div>
+
+
+<!-- Modal Editar Informações Empreiteira -->
+
+<div id="modal_conf" class="modal">
+    <div class="modal_content">
+       <h2 class="modal_title">Oportunidade enviada com sucesso</h2>
+        <div id="modal_buttons_responsavel">
+            <a href="#" class="close_button">Fechar</a>
+        </div>
+   </div>
+</div>
+
   <body>
     <%- include("../structures/menu.ejs")%>
     <div class="grid-container" id="resultado"></div>
+    <%- include("../structures/faq.ejs")%>
+    <%- include("../structures/footer.ejs")%>
   </body>
 
 </html>

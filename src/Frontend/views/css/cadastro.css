@@ -53,8 +53,8 @@ html{
     border-radius: 15px 50px;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 12% repeat(7, 15%);
-    padding: 1% 1% 1% 1%;
+    grid-template-rows: 12% repeat(6, 15%)  20% 20%;
+    padding: 1%;
     /* overflow-y: scroll; */
     /* overflow-x: hidden; */
     justify-items: center;
@@ -67,6 +67,8 @@ html{
 .cadastro_item{
     display: flex;
     flex-direction: column;
+    /* border: 2px solid #000 */
+    ;
 }
 .cadastro_item > input,
 .cadastro_item > select{
@@ -85,7 +87,27 @@ text-align: center;
 
 button {
     margin-top: 2ch;
-    width: 10ch;
-    height: 5ch;
+    width: 100%;
+    height: 100%;
+    background-color: var(--yellowA2);
 }
 
+.grid-item:nth-child(9){
+    line-break: anywhere;
+}
+
+#signup{
+    width: 250px;
+    height: 5vh;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#signup:hover{
+    border: 2px solid var(--yellowA2);
+    background-color: rgba(255, 255, 255, 0);
+    color: var(--yellowA2);
+    font-weight: bold;
+}
+ 
