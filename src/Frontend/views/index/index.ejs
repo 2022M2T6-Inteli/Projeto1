@@ -10,15 +10,25 @@
     <title>Index</title>
 </head>
 <body>
+    <script>
+        let url = document.URL;
+        let id = url.search("id");
+
+        function redirect(page){
+            window.location.href = `${urlHost}/${page}/?id=${id}`;
+            console.log(`${urlHost}/${page}/?id=${id}`);
+        };
+
+    </script>
     <header>
         <h1>Index</h1>
         <h2>Essa página não estará no produto final, ela foi criada com o objetivo de navegar por todos endpoints em função de teste</h2>
     </header>
-    <a onclick="redirect('feed/?id=1')">Endpoint Feed</a>
+    <a onclick="redirect('feed')">Endpoint Feed</a>
     <br>
     <a onclick="redirect('cadastrar')">Endpoint Cadastrar</a>
     <br>
-    <a onclick="redirect('perfil/?id=1')">Endpoint Perfil (ID 1)</a>
+    <a onclick="redirect('perfil')">Endpoint Perfil (ID 1)</a>
     <br>
     <a onclick="redirect('perfil/?id=2')">Endpoint Perfil (ID 2)</a>
     <br>

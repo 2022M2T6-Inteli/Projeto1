@@ -1,7 +1,6 @@
 let urlHost = window.location.origin;
-id = url.searchParams.get("id");
+let id = new URLSearchParams(document.location.search).get("id")
 
 function redirect(page){
-     window.location.href = `${urlHost}/${page}`;
-     console.log(`${urlHost}/${page}/?id=${id}`);
+     window.location.href = `https://${urlHost}/${page}/?id=${id}`;
 };
