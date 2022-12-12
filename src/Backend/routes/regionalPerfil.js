@@ -72,19 +72,20 @@ router
 
 		console.log(sql);
 
-		db.get(sql, [ID_Contratante], (err, row) => {
+		db.get(sql, [ID_Contratante], (err, rows) => { //entender com o prof oqe o ID_
 		//db.get(sql, params, (err, rows) => {
             if (err) {
                 throw err;
             }
 
-			res.render(viewPathFormPerfil, { model: row });
+			res.render(viewPathFormPerfil, { model: rows });
 		});
 	})
 	.post(urlencodedParser, (req, res) => {
+		console.log(res.body)
 		res.statusCode = 200; // Status: OK
         res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
-		let ID_Contratante = req.query["id"];
+		
 
         var db = new sqlite3.Database(DBPATH, err => {
             if (err) {
@@ -100,6 +101,7 @@ router
 		let Email = req.body["Email"];
 		let Celular = req.body["Celular"];
 		let Regional = req.body["Regional"];
+		let ID_Contratante = req.body["ID_Contratante"];
 
 	
 		if (!Cpf) {
@@ -128,14 +130,16 @@ router
 		const sql = "UPDATE Contratante SET Cpf=?, Nome=?, Email=?, Celular=?, Regional=? WHERE ID_Contratante=?";
 	
 		console.log(sql);
+
+		id=req.query.id
 	
-		db.run(sql, [ID_Contratante, Cpf, Nome, Email, Celular, Regional], (err, rows) => {
+		db.run(sql, [Cpf, Nome, Email, Celular, Regional, ID_Contratante], (err, rows) => {
 			if (err) 
                 throw err;
 			else
 				msg = "Usuário Alterado!";
             
-			res.render(viewPathAlterarPerfil, { mensagem: msg });
+			res.render(viewPathAlterarPerfil, { mensagem: msg, id: id });
 		});
 	});
 	
@@ -144,6 +148,7 @@ router
 	.get((req, res) => {
 		res.statusCode = 200; // Status: OK
         res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
+		let ID_Contratante = req.query["id"];
 		
         var db = new sqlite3.Database(DBPATH, err => {
             if (err) {
@@ -152,11 +157,11 @@ router
             console.log("Successful connection to the database 'ConstruMatch.db'");
         });
 
-		let Id_Oportunidade = req.body["Id_Oportunidade"];
+		let ID_Oportunidade = req.body["ID_Oportunidade"];
 		let Data_Oportunidade = req.body["Data_Oportunidade"];
 		let Servico = req.body["Servico"];
 		let Titulo = req.body["Titulo"];
-		let Escopo = req.body["Escopo"]; // entender se a MRV vai postar isso tbm ou nao
+		let Escopo = req.body["Escopo"]; 
 		let Data_Inicio = req.body["Data_Inicio"];
 		let Data_Fim = req.body["Data_Fim"];
 		let Status = req.body["Status"]; // verificar posteriormente se sera necessario frente ao nosso tempo e como fazemos para atualizar automaticamente
@@ -165,7 +170,7 @@ router
 		let Nome_Obra = req.body["Nome_Obra"]; 
 		let Endereco = req.body["Endereco"]; 
 	
-		if (!Id_Oportunidade) {
+		if (!ID_Oportunidade) {
 			res.send("Id faltando");
 			return;
 		}
@@ -216,11 +221,11 @@ router
 			return;
 		}
 	
-		const sql = "SELECT Id_Oportunidade, Data_Oportunidade, Servico, Titulo, Escopo, Data_Inicio, Data_Fim, Status, Estado, Cidade, Nome_Obra, Endereco FROM Oportunidade WHERE Id_Oportunidade=? AND ID_Contratante=?";
+		const sql = "SELECT ID_Contratante, ID_Oportunidade, Data_Oportunidade, Servico, Titulo, Escopo, Data_Inicio, Data_Fim, Status, Estado, Cidade, Nome_Obra, Endereco FROM Oportunidade WHERE ID_Contratante=? AND ID_Oportunidade=?";
 	
 		console.log(sql);
 	
-		db.get(sql, [Id_Oportunidade], (err, row) => {
+		db.get(sql, [ID_Contratante, ID_Oportunidade], (err, row) => {
             if (err) {
                 throw err;
             }
@@ -240,20 +245,21 @@ router
         });
 
 		let msg;
-		let Id_Oportunidade = req.body["Id_Oportunidade"];
+		let ID_Contratante = req.body["ID_Contratante"];
+		let ID_Oportunidade = req.body["ID_Oportunidade"];
 		let Data_Oportunidade = req.body["Data_Oportunidade"];
 		let Servico = req.body["Servico"];
 		let Titulo = req.body["Titulo"];
-		let Escopo = req.body["Escopo"]; // entender se a MRV vai postar isso tbm ou nao
+		let Escopo = req.body["Escopo"]; 
 		let Data_Inicio = req.body["Data_Inicio"];
 		let Data_Fim = req.body["Data_Fim"];
-		let Status = req.body["Status"]; // verificar posteriormente se sera necessario frente ao nosso tempo e como fazemos para atualizar automaticamente
+		let Status = req.body["Status"]; 
 		let Estado = req.body["Estado"];
 		let Cidade = req.body["Cidade"];
 		let Nome_Obra = req.body["Nome_Obra"]; 
 		let Endereco = req.body["Endereco"]; 
 	
-		if (!Id_Oportunidade) {
+		if (!ID_Oportunidade) {
 			res.send("Id faltando");
 			return;
 		}
@@ -304,11 +310,11 @@ router
 			return;
 		}
 	
-		const sql = "UPDATE Oportunidade SET Data_Oportunidade=?, Servico=?, Titulo=?, Escopo=?, Data_Inicio=?, Data_Fim=?, Status=?, Estado=?, Cidade=?, Nome_Obra=?, Endereco=? FROM Oportunidade WHERE Id_Oportunidade=? AND ID_Contratante=?";
+		const sql = "UPDATE Oportunidade SET Data_Oportunidade=?, Servico=?, Titulo=?, Escopo=?, Data_Inicio=?, Data_Fim=?, Status=?, Estado=?, Cidade=?, Nome_Obra=?, Endereco=? FROM Oportunidade WHERE ID_Oportunidade=? AND ID_Contratante=?";
 	
 		console.log(sql);
 	
-		db.run(sql, [Data_Oportunidade, Servico, Titulo, Escopo, Data_Inicio, Data_fim, Status, Estado, Cidade, Nome_Obra, Endereco, Id_Oportunidade], (err, rows) => {
+		db.run(sql, [Data_Oportunidade, Servico, Titulo, Escopo, Data_Inicio, Data_fim, Status, Estado, Cidade, Nome_Obra, Endereco, ID_Contratante, ID_Oportunidade], (err, rows) => {
 
 			if (err) 
 				throw err;
@@ -323,27 +329,17 @@ router
 	.get((req, res) => {
 		res.statusCode = 200; // Status: OK
         res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
-		
+		const params = [req.query.id];
+		console.log('QUERY', params);
+
         var db = new sqlite3.Database(DBPATH, err => {
             if (err) {
                 return console.error(err.message);
             }
             console.log("Successful connection to the database 'ConstruMatch.db'");
         });
-
-		let pessoas; //entender pq foi declarado essas 3 variaveis? Declaro o nome da minha tabela??
-		let ordenar = req.query["ordenar"];
-		let params;
 	
-		if (!ordenar) {
-			ordenar = "";
-			params = [];
-		} else {
-			ordenar = "ORDER BY ? COLLATE NOCASE ASC";
-			params = [ordenar];
-		}
-	
-		const sql = "SELECT Id_Oportunidade, Data_Oportunidade, Servico, Titulo, Escopo, Data_Inicio, Data_Fim, Status, Estado, Cidade, Nome_Obra, Endereco FROM Oportunidade WHERE ID_Contratante=? " + ordenar;
+		const sql = "SELECT * FROM Oportunidade WHERE ID_Contratante=? ";
 		console.log(sql);
 	
 		db.all(sql, params, (err, rows) => {
@@ -351,10 +347,10 @@ router
                 throw err;
             }
 	
-			res.render(viewPathListar, { model: rows });
+			res.render(viewPathListar, { model: rows, id: req.query.id });
 		});
 	});
-	
+
 router
 	.route('/remover')
 	.get((req, res) => {
@@ -369,12 +365,12 @@ router
         });
 
 		let msg;
-		let Id_Oportunidade = req.body["Id_Oportunidade"];
+		let ID_Oportunidade = req.body["ID_Oportunidade"];
 	
-		const sql = "DELETE FROM Oportunidade WHERE Id_Oportunidade=?";
+		const sql = "DELETE FROM Oportunidade WHERE ID_Oportunidade=?";
 		console.log(sql);
 	
-		db.all(sql, [Id_Oportunidade], (err, rows) => {
+		db.all(sql, [ID_Oportunidade], (err, rows) => {
 			if (err) 
 				throw err;
 			else
@@ -387,17 +383,21 @@ router
 router
 	.route('/criarOportunidade')
 	.get((req, res) => {
+		id=req.query.id
+		res.render(viewPathCriarOportunidade, {id: id});
+	})
+	.post(urlencodedParser, (req, res) => {
 		res.statusCode = 200; // Status: OK
-        res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
-		
-        var db = new sqlite3.Database(DBPATH, err => {
+        res.setHeader('Access-Control-Allow-Origin', '*');
+		// const Id_Oportunidade = req.body["Id_Oportunidade"]; // esse ID n é usado msm? Verificar prof
+
+		var db = new sqlite3.Database(DBPATH, err => {
             if (err) {
                 return console.error(err.message);
             }
             console.log("Successful connection to the database 'ConstruMatch.db'");
         });
 
-		const Id_Oportunidade = req.body["Id_Oportunidade"]; // esse ID n é usado msm? Verificar prof
 		const Data_Oportunidade = req.body["Data_Oportunidade"];
 		const Servico = req.body["Servico"];
 		const Titulo = req.body["Titulo"];
@@ -409,6 +409,9 @@ router
 		const Cidade = req.body["Cidade"];
 		const Nome_Obra = req.body["Nome_Obra"]; 
 		const Endereco = req.body["Endereco"]; 
+		const ID_Contratante = req.body["ID_Contratante"]; 
+		console.log("ID: "+ID_Contratante);
+		
 	
 		if (!Data_Oportunidade) {
 			res.send("Data oportunidade faltando");
@@ -456,21 +459,19 @@ router
 			return;
 		}
 	
-		// os nomes abaixo tem que estar na mesma ordem de cima??
-		//os nomes abaxio tem que estar igual ao da tabela ou igual as variaveis declaradas acima??
-		const sql = "INSERT INTO Oportunidade (Data_Oportunidade, Servico, Titulo, Escopo, Data_Inicio, Data_Fim, Status, Estado, Cidade, Nome_Obra, Endereco) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		const sql = "INSERT INTO Oportunidade (Data_Oportunidade, Servico, Titulo, Escopo, Data_Inicio, Data_Fim, Status, Estado, Cidade, Nome_Obra, Endereco, ID_Contratante) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		console.log(sql);
 	
-		db.run(sql, [Data_Oportunidade, Servico, Titulo, Escopo, Data_Inicio, Data_Fim, Status, Estado, Cidade, Nome_Obra, Endereco], (err, rows) => {
-			if (err) {
-				res.send("Erro: " + err.message);
-				console.error(err.message);
-				return;
-			}
-	
-			res.render(viewPathCriarOportunidade, { msg: mensagem }); //escrevi para renderizar essa página pq dps de criado quero que volte para o perfil, verificar com o professor?
+		db.run(sql, [Data_Oportunidade, Servico, Titulo, Escopo, Data_Inicio, Data_Fim, Status, Estado, Cidade, Nome_Obra, Endereco, ID_Contratante], (err, rows) => {
+			if (err) 
+                throw err;
+			else
+				msg = "Oportunidade criada!";
+            
+			res.render(viewPathCriarOportunidade, { mensagem: msg });
 		});
 	});
+	
 
 
 // ////como nesse caso so vai haver apenas um usuario, n é necessário ordenar, verificar com o prof minha sugestão?? ctrl+k+c
