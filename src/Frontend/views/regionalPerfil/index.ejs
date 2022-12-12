@@ -4,13 +4,13 @@
 
 <p>
     <a 	href="/regionalPerfil/alterarPerfil?id=<%= model.ID_Contratante %>">Alterar Perfil</a> | <!--confirmar referencia dps-->
-    <a 	href="/regionalPerfil/listar">Ver Oportunidades</a> |
-    <a 	href="/regionalPerfil/criarOportunidade">Criar Oportunidade</a> |
+    <a 	href="/regionalPerfil/listar?id=<%= model.ID_Contratante %>">Ver Oportunidades</a> |
+    <a 	href="/regionalPerfil/criarOportunidade?id=<%= model.ID_Contratante %>">Criar Oportunidade</a> |
 </p>
 
 <div id="perfilregional">		
 	<p>
 		<%= console.log('MODELO:', model) %>
-		<%= model.Nome %> : <%= model.CPF %> - <%= model.Email %> - <%= model.Celular %> - <%= model.Regional %> |
+		<%= model.Nome %> : <%= model.Cpf %> - <%= model.Email %> - <%= model.Celular %> - <%= model.Regional %> |
 	</p>
 </div>
