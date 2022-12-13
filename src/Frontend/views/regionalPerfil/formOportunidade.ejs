@@ -1,7 +1,9 @@
 <%- include("../structures/menu.ejs") %>
 
-<form method="POST">
-	<input type="hidden" name="ID_Contratante" value="<%= Contratante.Id_Contratante %>" />
+<form method="POST" action="/regionalPerfil/alterarOportunidade">
+	<%= console.log('ID: Contratante', Oportunidade.ID_Contratante)%>
+	<input type="hidden" name="ID_Oportunidade" value="<%= Oportunidade.ID_Oportunidade %>" />
+	<input type="hidden" name="ID_Contratante" value="<%= Oportunidade.ID_Contratante %>" />
 
 	<div>
 		<label for="Data_Oportunidade">Data de Criação:</label>
@@ -19,8 +21,8 @@
 	</div>
 
 	<div>
-		<label for="Escopo">Escopo</label>
-		<input type="text" id="Escopo" name="Escopo" value="<%= Oportunidade.Escopo %>" />
+		<label for="Descricao">Descricao</label>
+		<input type="text" id="Descricao" name="Descricao" value="<%= Oportunidade.Descricao %>" />
 	</div>
 
 	<div>
@@ -34,11 +36,6 @@
 	</div>
 
 	<div>
-		<label for="Status">Status</label>
-		<input type="text" id="Status" name="Status" value="<%= Oportunidade.Status %>" />
-	</div>
-
-	<div>
 		<label for="Estado">Estado</label>
 		<input type="text" id="Estado" name="Estado" value="<%= Oportunidade.Estado %>" />
 	</div>
@@ -48,18 +45,8 @@
 		<input type="text" id="Cidade" name="Cidade" value="<%= Oportunidade.Cidade %>" />
 	</div>
 
-	<div>
-		<label for="Nome_Obra">Nome da Obra</label>
-		<input type="text" id="Nome_Obra" name="Nome_Obra" value="<%= Oportunidade.Nome_Obra %>" />
-	</div>
-
-	<div>
-		<label for="Endereco">Endereço</label>
-		<input type="text" id="Endereco" name="Endereco" value="<%= Oportunidade.Endereco %>" />
-	</div>
-
 	<button type="submit">Salvar Alterações</button>
 </form>
 
-<a href="/regionalPerfil/listar">VOLTAR</a>
+<a href="/regionalPerfil?id=<%= id %>">VOLTAR</a>
 

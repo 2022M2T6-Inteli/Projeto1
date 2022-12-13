@@ -13,10 +13,10 @@
 
 <div id="Oportunidade">
 	<% for (const Oportunidade of model) { %>
-		<%= Oportunidade.Id_Oportunidade %> : <%= Oportunidade.Data_Oportunidade %> - <%= Oportunidade.Servico %> - <%= Oportunidade.Titulo %> - <%= Oportunidade.Escopo %> - <%= Oportunidade.Data_Inicio %> - <%= Oportunidade.Data_Fim %> - <%= Oportunidade.Status %> - <%= Oportunidade.Estado %> - <%= Oportunidade.Cidade %> - <%= Oportunidade.Nome_Obra %> <%= Oportunidade.Endereco %> |
-		<a href="/regionalPerfil/alterarOportunidade?id=<%= model.ID_Contratante %>&?ID_Oportunidade=<%= Oportunidade.ID_Oportunidade %>">Alterar Oportunidade</a> |
-		<a href="/regionalPerfil/remover?ID_Oportunidade=<%= Oportunidade.ID_Oportunidade %>">Remover</a>
-		<a href="/regionalPerfil/interessados?ID_Oportunidade=<%= Oportunidade.ID_Oportunidade %>">Ver Interessados</a>
+		<%= Oportunidade.Id_Oportunidade %> : <%= Oportunidade.Data_Oportunidade %> - <%= Oportunidade.Servico %> - <%= Oportunidade.Titulo %> - <%= Oportunidade.Descricao %> - <%= Oportunidade.Data_Inicio %> - <%= Oportunidade.Data_Fim %> - <%= Oportunidade.Status %> - <%= Oportunidade.Estado %> - <%= Oportunidade.Cidade %> - <%= Oportunidade.Nome_Obra %> <%= Oportunidade.Endereco %> |
+		<a href="/regionalPerfil/alterarOportunidade?id=<%= id %>&id_oportunidade=<%= Oportunidade.ID_Oportunidade %>">Alterar Oportunidade</a> |
+		<a href="/regionalPerfil/remover?id=<%= id %>&id_oportunidade=<%= Oportunidade.ID_Oportunidade %>">Remover</a>
+		<a href="/regionalPerfil/interessados?id=<%= id %>&id_oportunidade=<%= Oportunidade.ID_Oportunidade %>">Ver Interessados</a>
 		<br>
 	<% } %>
 </div>
