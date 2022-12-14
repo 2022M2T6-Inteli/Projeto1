@@ -32,7 +32,7 @@ const signupRouter = require('./routes/signup');
 app.use('/cadastrar', signupRouter);
 
 // Endpoint empreiteira profile
-const empProfileRouter = require('./routes/perfil_empreiteira');
+const empProfileRouter = require('./routes/perfil_empreiteira', './routes/perfil_empreiteira');
 app.use('/perfil', empProfileRouter);
 
 // Endpoint regional profile
@@ -41,6 +41,9 @@ app.use('/regionalPerfil', regionalRouter);
 
 const interessadosRouter = require('./routes/interessados');
 app.use('/interessados', interessadosRouter);
+
+const servcurtidosRouter = require('./routes/servicoscurtidos_empreiteira');
+app.use('/servcurtidos', servcurtidosRouter);
 
 // Endpoint faq
 // const faqRouter = require('./routes/faq');

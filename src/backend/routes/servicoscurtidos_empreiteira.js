@@ -8,7 +8,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
 // Definitions
-const viewPath = path.join(__dirname, "../../frontend/views/empreiteiraPerfil/perfil_empreiteira.ejs"); // Fetch the ejs file
+const viewPath = path.join(__dirname, "../../frontend/views/empreiteiraPerfil/servicoscurtidos_empreiteira.ejs"); // Fetch the ejs file
 const viewPathNF = path.join(__dirname, "../../frontend/views/404/NotFound.ejs"); // Fetch the ejs file "Not found"
 const DBPATH = path.join(__dirname, "../data/ConstruMatch.db"); // Fetch the database
 
@@ -32,7 +32,7 @@ router
         res.statusCode = 200;
         res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
         var db = new sqlite3.Database(DBPATH); // Instantiate database
-        if(req.query.id){
+        // if(req.query.id){
             // var sql = `SELECT * FROM Empreiteira WHERE ID_Empreiteira = ${req.query.id};`;
             var sql = `SELECT * FROM Empreiteira FULL JOIN Responsavel_Empreiteira ON Empreiteira.ID_Empreiteira=Responsavel_Empreiteira.ID_Responsavel WHERE ID_Empreiteira = ${req.query.id};`;
 	    console.log(sql);
@@ -44,11 +44,11 @@ router
         });
         db.close();
         
-        }else{
-            res.statusCode = 404;
-            res.render(viewPathNF);
+        // else{
+        //     res.statusCode = 404;
+        //     res.render(viewPathNF);
 
-        }
+        // }
     })
 
 /*Atualizar Informações Empreiteira*/
@@ -116,6 +116,32 @@ router
          res.write("<h1>Informacoes do responsavel pela empreiteira atualizadas com sucesso</h1>")
          db.close(); // Fecha o banco
     });
+router
+    .route("/listar")
+    .get((req, res)=>{
+        res.statusCode = 200 // Status: OK
+		res.setHeader('Access-Control-Allow-Origin', '*');
+        var db = new sqlite3.Database(DBPATH);
+        // var sql = `SELECT Empreiteira.Nome_Fantasia, Responsavel_Empreiteira.Nome, Oportunidade.Titulo, Proposta.ID_Proposta, Proposta.ID_Empreiteira_Proposta, Proposta.Escopo, Proposta.Valor_Proposta FROM Proposta FULL JOIN Empreiteira ON Empreiteira.ID_Empreiteira = Proposta.ID_Empreiteira_Proposta FULL JOIN Responsavel_Empreiteira ON Responsavel_Empreiteira.ID_Responsavel = Empreiteira.ID_Empreiteira FULL JOIN Oportunidade ON Oportunidade.ID_Oportunidade = Proposta.ID_Empreiteira_Proposta`;        
+        // var sql = `SELECT Empreiteira.Nome_Fantasia, Proposta.ID_Proposta, Responsavel_Empreiteira.Nome, Oportunidade.Titulo, Proposta.Escopo, Proposta.Valor_Proposta FROM Proposta FULL JOIN Empreiteira ON Proposta.ID_Empreiteira_Proposta = Empreiteira.ID_Empreiteira FULL JOIN Responsavel_Empreiteira ON Empreiteira.ID_Empreiteira = Responsavel_Empreiteira.ID_Responsavel FULL JOIN Oportunidade ON Oportunidade.ID_Oportunidade = Proposta.ID_Empreiteira_Proposta WHERE Proposta.ID_Empreiteira_Proposta= '${req.query.id}'`;     
+        if(req.query.id){
+            var sql = `SELECT Oportunidade.Titulo, Oportunidade.Servico, Oportunidade.Descricao, Oportunidade.Data_Inicio, Oportunidade.Data_Fim, Oportunidade.Estado, Oportunidade.Cidade FROM Proposta FULL JOIN Oportunidade ON Proposta.ID_Empreiteira_Proposta = Oportunidade.ID_Oportunidade WHERE Proposta.ID_Empreiteira_Proposta= '${req.query.id}'`;       
+            console.log(sql)
+            db.all(sql, [],  (err, rows ) => {
+                if (err) {
+                    throw err;
+                }
+                res.json(rows);
+                console.log(rows)
+            });
+            db.close();
+        }else{
+            res.statusCode = 404;
+            res.render(viewPathNF);
+
+        }
+    });
+    
 
 module.exports = router;
 
