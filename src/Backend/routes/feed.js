@@ -52,7 +52,7 @@ router
                 return console.error(err.message);
             }
         });
-        var sql = `INSERT INTO Proposta (ID_Oportunidade, ID_Empreiteira, Valor_Proposta, Escopo) VALUES ("${req.body.id_post}","${req.body.id_emp}","${req.body.valor_op}","${req.body.escopo_op}")`
+        var sql = `INSERT INTO Proposta (ID_Oportunidade, ID_Empreiteira_Proposta, Valor_Proposta, Escopo) VALUES ("${req.body.id_post}","${req.body.id_emp}","${req.body.valor_op}","${req.body.escopo_op}")`
         db.run(sql, [], err => {
             if(err){
                 throw err;

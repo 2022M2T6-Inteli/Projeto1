@@ -16,7 +16,12 @@ function submitProfile(){
             cidades: $('#cidades').val(),
             estados: $('#estados').val(), 
             serv1: $('#serv1').val(), 
-            serv2: $('#serv2').val()
+            serv2: $('#serv2').val(),
+            cpf_responsavel: $('#cpf_responsavel').val(),
+            nome_responsavel: $('#nome_responsavel').val(),
+            email_responsavel: $('#email_responsavel').val(),
+            celular_responsavel: $('#celular_responsavel').val(),
+            id_empreiteira_fk: $('#id_empreiteira_fk').val()
         }
     }).done(function(){
         console.log('done');
@@ -70,5 +75,6 @@ $(document).ready(function () {
     $('#signup').click(function (e) { 
         e.preventDefault();
         submitProfile();
+        submitProfileResponsavel();
     });
 });

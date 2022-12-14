@@ -39,6 +39,9 @@ app.use('/perfil', empProfileRouter);
 const regionalRouter = require('./routes/regionalPerfil');
 app.use('/regionalPerfil', regionalRouter);
 
+const interessadosRouter = require('./routes/interessados');
+app.use('/interessados', interessadosRouter);
+
 // Endpoint faq
 // const faqRouter = require('./routes/faq');
 //  app.use('/faq', faqRouter);

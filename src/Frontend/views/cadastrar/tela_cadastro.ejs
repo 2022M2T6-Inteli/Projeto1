@@ -8,11 +8,15 @@
     <link rel="stylesheet" href="/frontend/views/css/cadastro.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="/frontend/scripts/signup.js"></script>
+    <script src="/backend/routes/signup.js"></script>
   </head>
 
   <body>
     <div id="main_container">
         <form id="cadastro_grid">
+          <div class="">
+            <h1>Cadastrar Empreiteira</h1>
+          </div>
           <div class="cadastro_item">
             <p>Nos informe o CNPJ da Empreiteira:</p>
             <input name="cnpj" id="cnpj" type="text" required placeholder="Ex: 00.000.000/0000-00">
@@ -74,6 +78,26 @@
               <option value="Hidráulico">Hidráulico</option>
               <option value="Elétrico">Elétrico</option>
             </select>
+          </div>
+          <div class="cadastro_item">
+            <h1>Responsável Empreiteira</h1>
+          </div>
+          <div class="cadastro_item">
+            <p>Qual é o CPF do Responsável pela Empreiteira:</p>
+            <input name="cpf_responsavel" id="cpf_responsavel" type="text" required placeholder="Ex: 000.000.000-00">
+          </div>
+          <div class="cadastro_item">
+            <p>Insira o nome do Responsável pela Empreiteira:</p>
+            <input name="nome_responsavel" id="nome_responsavel" type="text" required placeholder="Ex: João Freitas Almeida">
+          </div>
+          <div class="cadastro_item">
+            <p>Nos informe o Email do Responsável pela Empreiteira:</p>
+            <input name="email_responsavel" id="email_responsavel" type="text" required placeholder="Ex: João Freitas Almeida">
+          </div>
+          <div class="cadastro_item">
+            <p>Qual é o número do celular do Responsável pela Empreiteira:</p>
+            <input name="celular_responsavel" id="celular_responsavel" type="text" required placeholder="Ex: João Freitas Almeida">
+            <input name="id_empreiteira_fk" id="id_empreiteira_fk" type="hidden" value="">
           </div>
           <div class="cadastro_item">
             <button id="signup">Cadastrar</button>

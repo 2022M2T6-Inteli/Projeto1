@@ -1,0 +1,22 @@
+table{
+    max-width: 900px;
+    margin-left: 150px;
+}
+
+#row-interessados{
+    justify-content: center;
+    align-items: center;
+}
+
+#button-check{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 20%;
+    border: none;
+}
+
+#img-check{
+    width: 100%;
+    height: 100%;
+}

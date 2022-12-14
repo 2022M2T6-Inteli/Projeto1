@@ -50,8 +50,6 @@ function list() {
         }
     });
     console.log(cnpj);
-   
-    
 }
 
 $(document).ready(function () {

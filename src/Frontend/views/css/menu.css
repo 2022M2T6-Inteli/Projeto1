@@ -162,12 +162,12 @@ a:hover{
 .footer{
     padding: 10px 2%;
     background: var(--greenA2);
-    position: fixed;
+    position: fixed; 
     display: flex;
     bottom: 0;
     height: 50px;
     width: 100%;
-    text-align: end;
+    /* text-align: end; */
     /* box-shadow: 0 0 10px 10px black; */
 }
 .fab{
