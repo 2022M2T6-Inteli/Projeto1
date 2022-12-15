@@ -1,0 +1,36 @@
+<%- include("../structures/menu.ejs") %>
+<%- include("../structures/footer.ejs") %>
+
+<head>
+    <link rel="stylesheet" href="/frontend/views/css/servicosaceitos_empreiteira.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+    <div class="table-responsive">
+        <h1>Parabéns! Você foi aceito nas seguintes oportunidades:</h1>
+        <div id="Oportunidade_titulo" hidden></div>
+        <table class="table th-lg table-striped table-bordered">
+            <thead class="table-success border-dark">
+                <tr>
+                    <th>Oportunidade</th>
+                    <th>Serviço a ser feito</th>
+                    <th>Data de Início</th>
+                    <th>Data de Término</th>
+                    <th>Nome Contratante</th>
+                    <th>Email Contratante</th>
+                    <th>Regional Contratante</th>
+                    <th>Whatsapp Contratante</tr>
+
+                    
+                </tr>
+            </thead>
+            <tbody id="row-minhasobras">
+
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="/frontend/scripts/servicosaceitos_empreiteira.js"></script>
