@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<!-- Importe de estilo, jquery, ajax e rota -->
+  <head>
+    <title>Cadastrar Contratante</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/frontend/views/css/cadastro.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="/backend/routes/cadastroCont.js"></script>
+  </head>
+<!-- Página para criar o cadastro da contratante -->
+  <body>
+  <script>
+  </script>
+  <!-- O "main_container" é utilizado como base para centralizar na página a localização do form -->
+    <div id="main_container">
+      <!-- Este é o form para enviar as informações ao banco de dados -->
+        <form id="cadastro_grid" method="post" action="http://localhost:1234/cadastrarCont/enviar">
+          <div class="">
+            <h1>Cadastrar Contratante</h1>
+          </div>
+          <!-- A classe "cadastro_item" normaliza todos os inputs do form como nome, telefone, entre outros -->
+          <div class="cadastro_item">
+            <p>CPF:</p>
+            <input name="cpf" id="cpf" type="text" required placeholder="Ex: 000.000.000-00">
+          </div>
+          <div class="cadastro_item">
+            <p>Nome do contratante:</p>
+            <input type="text" name="nome" id="nome" required placeholder="Ex: Carlos Miranda">
+          </div>
+          <div class="cadastro_item">
+            <p>Email:</p>
+            <input type="text" name="email" id="email" required placeholder="Ex: carlos@contratante.com">
+          </div>
+          <div class="cadastro_item">
+            <p>Celular:</p>
+            <input type="number" name="celular" id="celular" required placeholder="Ex: (11)1111-1111 sem () e -" maxlength="11">
+          </div>
+          <div class="cadastro_item">
+            <p>Regional:</p>
+            <input type="text" name="regional" id="regional" required placeholder="Ex: São Paulo, SP">
+          </div>
+          <div class="cadastro_item">
+            <p>Senha:</p>
+            <input type="text" name="senha" id="senha" required placeholder="Ex: 1234">
+          </div>
+          <div class="cadastro_item">
+            <!-- O botão faz o envio do form para a url definida em "action" para enviar ao banco de dados -->
+            <button id="signup">Cadastrar</button>
+          </div>
+        </form>
+    </div>
+  </body>
+
+</html>
