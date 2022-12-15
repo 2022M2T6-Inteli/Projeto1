@@ -2,12 +2,13 @@ url = new URL(window.location.href);
 params = url.searchParams;
 id = url.searchParams.get("id");
 
-function like(i) {
+function like(i, contratante) {
     url = new URL(window.location.href);
     params = url.searchParams;
     id = url.searchParams.get("id");
     document.getElementById("id_post").value = i;
     document.getElementById("id_emp").value = id;
+    document.getElementById("id_contrat").value = contratante;
 }
 
 
@@ -32,7 +33,7 @@ function read(){
                             tx+=`Data de término:<br>${element.Data_Fim}`;
                         tx+=`</div>`;
                         tx+=`<div class="buttons">`;
-                            tx+=`<a href="#modal" class="btn"><button onclick="like(${element.ID_Oportunidade})" class="like"><i class="fa-regular fa-thumbs-up"></i></button></a>`;
+                            tx+=`<a href="#modal" class="btn"><button onclick="like(${element.ID_Oportunidade}, ${element.ID_Contratante})" class="like"><i class="fa-regular fa-thumbs-up"></i></button></a>`;
                         tx+=`</div>`;
                         // tx+=`<div id="prop${element.ID_Oportunidade}" class="prop">`;
                         //     tx+=`<form id=${element.ID_Oportunidade}>`;

@@ -32,9 +32,15 @@ router
     .route("/listar")
     .get((req,res)=>{
         var db = new sqlite3.Database(DBPATH);
-        // var sql = `SELECT Empreiteira.Nome_Fantasia, Responsavel_Empreiteira.Nome, Oportunidade.Titulo, Proposta.ID_Proposta, Proposta.ID_Empreiteira_Proposta, Proposta.Escopo, Proposta.Valor_Proposta FROM Proposta FULL JOIN Empreiteira ON Empreiteira.ID_Empreiteira = Proposta.ID_Empreiteira_Proposta FULL JOIN Responsavel_Empreiteira ON Responsavel_Empreiteira.ID_Responsavel = Empreiteira.ID_Empreiteira FULL JOIN Oportunidade ON Oportunidade.ID_Oportunidade = Proposta.ID_Empreiteira_Proposta`;        
-        var sql = `SELECT Empreiteira.Nome_Fantasia, Proposta.ID_Proposta, Responsavel_Empreiteira.Nome, Oportunidade.Titulo, Proposta.Escopo, Proposta.Valor_Proposta FROM Proposta FULL JOIN Empreiteira ON Proposta.ID_Empreiteira_Proposta = Empreiteira.ID_Empreiteira FULL JOIN Responsavel_Empreiteira ON Empreiteira.ID_Empreiteira = Responsavel_Empreiteira.ID_Responsavel FULL JOIN Oportunidade ON Oportunidade.ID_Oportunidade = Proposta.ID_Empreiteira_Proposta WHERE Proposta.ID_Proposta > '0'`;       
-        console.log(sql)
+        // var sql = `SELECT Empreiteira.Nome_Fantasia, Proposta.ID_Proposta, Responsavel_Empreiteira.Nome, Oportunidade.Titulo, Proposta.Escopo, Proposta.Valor_Proposta, Oportunidade.ID_Contratante FROM Proposta FULL JOIN Empreiteira ON Proposta.ID_Empreiteira_Proposta = Empreiteira.ID_Empreiteira FULL JOIN Responsavel_Empreiteira ON Empreiteira.ID_Empreiteira = Responsavel_Empreiteira.ID_Responsavel FULL JOIN Oportunidade ON Oportunidade.ID_Oportunidade = Proposta.ID_Empreiteira_Proposta FULL JOIN Contratante ON Oportunidade.ID_Contratante = Contratante.ID_Contratante WHERE Oportunidade.ID_Contratante= ${req.query.id} AND Proposta.ID_Proposta > '0'`;       
+        // var sql = `SELECT Empreiteira.Nome_Fantasia, Responsavel_Empreiteira.Nome, Oportunidade.Titulo, Proposta.Escopo, Proposta.Valor_Proposta FROM Proposta FULL JOIN Empreiteira ON Proposta.ID_Empreiteira_Proposta = Empreiteira.ID_Empreiteira FULL JOIN Responsavel_Empreiteira ON Empreiteira.ID_Empreiteira = Responsavel_Empreiteira.ID_Responsavel FULL JOIN Oportunidade ON Oportunidade.ID_Oportunidade = Proposta.ID_Empreiteira_Proposta WHERE Proposta.ID_Proposta > 0 AND Oportunidade.ID_Contratante= '${req.query.id_contratante}'`;       
+        var sql = `SELECT Proposta.ID_Proposta, Proposta.ID_Empreiteira_Proposta, Proposta.ID_Contratante_Proposta, Empreiteira.Nome_Fantasia, Responsavel_Empreiteira.Nome, Oportunidade.Titulo, Proposta.Escopo, Proposta.Valor_Proposta FROM Proposta 
+        FULL JOIN Oportunidade ON Oportunidade.ID_Oportunidade = Proposta.ID_Oportunidade 
+        FULL JOIN Contratante ON Oportunidade.ID_Contratante = Contratante.ID_Contratante 
+        FULL JOIN Empreiteira ON Proposta.ID_Empreiteira_Proposta = Empreiteira.ID_Empreiteira
+        FULL JOIN Responsavel_Empreiteira ON Responsavel_Empreiteira.ID_Empreiteira_FK = Empreiteira.ID_Empreiteira
+        WHERE Oportunidade.ID_Contratante= '${req.query.id_contratante}' AND Proposta.ID_Proposta > 0`;       
+        console.log("Join de listar " + sql)
         db.all(sql, [],  (err, rows ) => {
             if (err) {
                 throw err;
@@ -50,8 +56,12 @@ router
     .route("/like")
     .get((req, res)=>{
         var db = new sqlite3.Database(DBPATH);
-        var sql = `SELECT Match FROM Proposta WHERE ID_Proposta= '${req.query.id_proposta}';`;
-        console.log(sql)
+        // var sql = `SELECT Proposta.Match 
+        // FROM Proposta FULL JOIN Contratante ON Proposta.ID_Proposta = ID_Contratante 
+        // WHERE Proposta.ID_Proposta= '${req.query.id_proposta}' AND 
+        // Proposta.ID_Contratante_Proposta= '${req.query.id}';`;
+        var sql = `SELECT * FROM Proposta WHERE ID_Proposta= ${req.query.id_proposta}`;
+        console.log("join de like: " + sql)
         db.all(sql, [],  (err, rows ) => {
             if (err) {
                 throw err;

@@ -1,5 +1,10 @@
+url = new URL(window.location.href);
+params = url.searchParams;
+id = url.searchParams.get("id_contratante");
+id_proposta_url= url.searchParams.get("id_proposta")
+
 function listarInteressados(){    
-    fetch('/interessados/listar')
+    fetch(`./listar/?id_contratante=${id}`)
     .then((response) => {
         return response.json();
     })
@@ -7,7 +12,6 @@ function listarInteressados(){
         interessados = data;
         saida= ''
         interessados.map(function (element) {
-            console.log(element.ID_Proposta)
             saida += `<tr>    
                 <th id="value_table_empreiteira"> ${element.Nome_Fantasia} </th>
                 <th id="value_table_responsavel"> ${element.Nome} </th>
@@ -15,7 +19,7 @@ function listarInteressados(){
                 <th id="value_table_escopo"> ${element.Escopo} </th>
                 <th id="value_table_proposta"> ${element.Valor_Proposta} </th>
                 <th><button type="submit" id="button-check" onclick="SubmitLike(${element.ID_Proposta});"><img id="img-check" src="/frontend/views/img/check-button.png"></img></button></th>
-                <input type="hidden" name="id_proposta" id="id_proposta" value="${element.ID_Proposta}">
+                <!-- <input type="hidden" name="id_proposta" id="id_proposta" value="${element.ID_Proposta}"> -->
                 
         </tr>`
         
@@ -28,7 +32,7 @@ function listarInteressados(){
 function SubmitLike(id_proposta){
     $.ajax({
         type: "POST",
-        url: "/interessados/like",
+        url: `./like/?id_contratante=${id}&id_proposta=${id_proposta_url}`,
         data: {
             id_proposta: id_proposta
 
@@ -47,4 +51,6 @@ function SubmitLike(id_proposta){
 
 $(document).ready(function () {
     listarInteressados();
+    console.log("é o id " + id)
+
 });
