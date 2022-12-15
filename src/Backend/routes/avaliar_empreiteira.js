@@ -34,7 +34,7 @@ router
         var db = new sqlite3.Database(DBPATH);
         // var sql = `SELECT Empreiteira.Nome_Fantasia, Proposta.ID_Proposta, Responsavel_Empreiteira.Nome, Oportunidade.Titulo, Proposta.Escopo, Proposta.Valor_Proposta, Oportunidade.ID_Contratante FROM Proposta FULL JOIN Empreiteira ON Proposta.ID_Empreiteira_Proposta = Empreiteira.ID_Empreiteira FULL JOIN Responsavel_Empreiteira ON Empreiteira.ID_Empreiteira = Responsavel_Empreiteira.ID_Responsavel FULL JOIN Oportunidade ON Oportunidade.ID_Oportunidade = Proposta.ID_Empreiteira_Proposta FULL JOIN Contratante ON Oportunidade.ID_Contratante = Contratante.ID_Contratante WHERE Oportunidade.ID_Contratante= ${req.query.id} AND Proposta.ID_Proposta > '0'`;       
         // var sql = `SELECT Empreiteira.Nome_Fantasia, Responsavel_Empreiteira.Nome, Oportunidade.Titulo, Proposta.Escopo, Proposta.Valor_Proposta FROM Proposta FULL JOIN Empreiteira ON Proposta.ID_Empreiteira_Proposta = Empreiteira.ID_Empreiteira FULL JOIN Responsavel_Empreiteira ON Empreiteira.ID_Empreiteira = Responsavel_Empreiteira.ID_Responsavel FULL JOIN Oportunidade ON Oportunidade.ID_Oportunidade = Proposta.ID_Empreiteira_Proposta WHERE Proposta.ID_Proposta > 0 AND Oportunidade.ID_Contratante= '${req.query.id_contratante}'`;       
-        var sql = `SELECT Proposta.ID_Proposta, Proposta.ID_Empreiteira_Proposta, Proposta.ID_Contratante_Proposta, Empreiteira.Nome_Fantasia, Responsavel_Empreiteira.Nome, Oportunidade.Titulo, Proposta.Escopo, Proposta.Valor_Proposta, Oportunidade.ID_Contratante, Proposta.ID_Oportunidade FROM Proposta 
+        var sql = `SELECT Proposta.ID_Proposta, Proposta.ID_Empreiteira_Proposta, Proposta.ID_Contratante_Proposta, Empreiteira.Nome_Fantasia, Responsavel_Empreiteira.Nome, Oportunidade.Titulo, Proposta.Escopo, Proposta.Valor_Proposta FROM Proposta 
         FULL JOIN Oportunidade ON Oportunidade.ID_Oportunidade = Proposta.ID_Oportunidade 
         FULL JOIN Contratante ON Oportunidade.ID_Contratante = Contratante.ID_Contratante 
         FULL JOIN Empreiteira ON Proposta.ID_Empreiteira_Proposta = Empreiteira.ID_Empreiteira
@@ -50,6 +50,7 @@ router
         });
         db.close();
     })
+
 
 router
     .route("/like")
@@ -76,22 +77,6 @@ router
         res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
         var db = new sqlite3.Database(DBPATH); // Abre o banco
         var sql= `UPDATE Proposta SET Match= '1' WHERE ID_Proposta= '${req.body.id_proposta}'`; 
-        console.log(sql);
-        db.run(sql, [],  err => {
-            if (err) {
-                 throw err;
-             }
-             res.send();
-         });
-         db.close(); // Fecha o banco
-    });
-
-router
-    .post("/avaliar", urlencodedParser, (req, res)=>{
-        res.statusCode = 200;
-        res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
-        var db = new sqlite3.Database(DBPATH); // Abre o banco
-        var sql= `INSERT INTO Avaliacoes (ID_Oportunidade, ID_Empreiteira, ID_Contratante, Organizacao, Produtividade, Documentacao, Limpeza, Escopo_Avaliacao) VALUES ('${req.body.id_oport}', '${req.body.id_emp}', '${req.body.id_contrat}', '${req.body.organizacao_avaliacao}', '${req.body.produtividade_avaliacao}', '${req.body.documentacao_avaliacao}', '${req.body.limpeza_avaliacao}', '${req.body.escopo_avaliacao}')`; 
         console.log(sql);
         db.run(sql, [],  err => {
             if (err) {
