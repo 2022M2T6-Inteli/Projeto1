@@ -1,52 +1,58 @@
-<%- include("../structures/menu.ejs") %>
-<!--
-Posso usar o metodo POST para criar a oportunidade??
--->
-SDCVSD
-<form method="POST" action="/regionalPerfil/criarOportunidade">
-	<input type="hidden" name="ID_Contratante" value="<%= id %>" />
-	<div>
-		<label for="Data_Oportunidade">Data de Criação</label>
-		<input type="text" id="Data_Oportunidade" name="Data_Oportunidade" />
-	</div>
+<%- include("../structures/menuContratante.ejs") %>
 
-	<div>
-		<label for="Servico">Serviço</label>
-		<input type="text" id="Servico" name="Servico" />
-	</div>
+<head>
+    <link rel="stylesheet" href="/frontend/views/css/perfil_contratante.css">
+</head>
+		
 
-	<div>
-		<label for="Titulo">Titulo</label>
-		<input type="text" id="Titulo" name="Titulo"  />
-	</div>
+		<form method="POST"  class="modal_postagem" action="/regionalPerfil/criarOportunidade">
+			<input type="hidden" name="ID_Contratante" value="<%= id %>" />
+			<div>
+				<label for="Data_Oportunidade">Data de Criação:</label>
+				<input type="text" id="Data_Oportunidade" name="Data_Oportunidade" />
+			</div>
 
-	<div>
-		<label for="Descricao">Descricao</label>
-		<input type="text" id="Descricao" name="Descricao" />
-	</div>
+			<div>
+				<label for="Servico">Serviço:</label>
+				<input type="text" id="Servico" name="Servico" />
+			</div>
 
-	<div>
-		<label for="Data_Inicio">Data Início</label>
-		<input type="text" id="Data_Inicio" name="Data_Inicio" />
-	</div>
+			<div>
+				<label for="Titulo">Titulo:</label>
+				<input type="text" id="Titulo" name="Titulo"  />
+			</div>
 
-	<div>
-		<label for="Data_Fim">Data Fim</label>
-		<input type="text" id="Data_Fim" name="Data_Fim" />
-	</div>
+			<div>
+				<label for="Descricao">Escopo:</label>
+				<input type="text" id="Descricao" name="Descricao" />
+			</div>
 
-	<div>
-		<label for="Estado">Estado</label>
-		<input type="text" id="Estado" name="Estado" />
-	</div>
+			<div>
+				<label for="Data_Inicio">Data Início:</label>
+				<input type="text" id="Data_Inicio" name="Data_Inicio" />
+			</div>
 
-	<div>
-		<label for="Cidade">Cidade</label>
-		<input type="text" id="Cidade" name="Cidade"  />
-	</div>
+			<div>
+				<label for="Data_Fim">Data Fim:</label>
+				<input type="text" id="Data_Fim" name="Data_Fim" />
+			</div>
 
-	<button type="submit">Criar Oportunidade</button>
-</form>
+			<div>
+				<label for="Estado">Estado:</label>
+				<input type="text" id="Estado" name="Estado" />
+			</div>
 
-<a href="/regionalPerfil?id=<%= id %>">VOLTAR</a>
+			<div>
+				<label for="Cidade">Cidade:</label>
+				<input type="text" id="Cidade" name="Cidade"  />
+			</div>
 
+			<button type="submit">Criar Oportunidade:</button>
+			<a href="/regionalPerfil?id=<%= id %>">VOLTAR</a>
+		</form>
+    </div>
+</div>
+
+</body>
+
+</html>

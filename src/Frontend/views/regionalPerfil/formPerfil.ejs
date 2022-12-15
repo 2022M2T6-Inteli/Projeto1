@@ -1,34 +1,43 @@
-<%- include("../structures/menu.ejs") %>
+<%- include("../structures/menuContratante.ejs") %>
 
-<form method="POST" action="/regionalPerfil/alterarPerfil">
-	<input type="hidden" id="ID_Contratante" name="ID_Contratante" value="<%= model.ID_Contratante %>" />
-	<div>
-		<label for="Nome_Responsavel">Nome</label>
-		<input type="text" id="Nome" name="Nome" value="<%= model.Nome %>" />
+<head>
+    <link rel="stylesheet" href="/frontend/views/css/perfil_contratante.css">
+</head>
+		
+
+		<form method="POST" class="modal_postagem" action="/regionalPerfil/alterarPerfil">
+			<input type="hidden" id="ID_Contratante" name="ID_Contratante" value="<%= model.ID_Contratante %>" />
+			<div>
+				<label for="Nome_Responsavel">Nome</label>
+				<input type="text" id="Nome" name="Nome" value="<%= model.Nome %>" />
+			</div>
+
+			<div>
+				<label for="Cpf">CPF</label>
+				<input type="text" id="Cpf" name="Cpf" value="<%= model.Cpf %>" />
+			</div>
+
+			<div>
+				<label for="Email">E-mail</label>
+				<input type="text" id="Email" name="Email" value="<%= model.Email %>" />
+			</div>
+
+			<div>
+				<label for="Celular">Celular</label>
+				<input type="text" id="Celular" name="Celular" value="<%= model.Celular %>" />
+			</div>
+
+			<div>
+				<label for="Regional">Regional</label>
+				<input type="text" id="Regional" name="Regional" value="<%= model.Regional %>" />
+			</div>
+			<button type="submit">Alterar Perfil</button>
+			<a href="/regionalPerfil?id=<%= id %>">Voltar</a>
+		</form>
 	</div>
+</div>
 
-	<div>
-		<label for="Cpf">CPF</label>
-		<input type="text" id="Cpf" name="Cpf" value="<%= model.Cpf %>" />
-	</div>
+</body>
 
-	<div>
-		<label for="Email">E-mail</label>
-		<input type="text" id="Email" name="Email" value="<%= model.Email %>" />
-	</div>
-
-	<div>
-		<label for="Celular">Celular</label>
-		<input type="text" id="Celular" name="Celular" value="<%= model.Celular %>" />
-	</div>
-
-	<div>
-		<label for="Regional">Regional</label>
-		<input type="text" id="Regional" name="Regional" value="<%= model.Regional %>" />
-	</div>
-
-	<button type="submit">Alterar Perfil</button>
-</form>
-
-<a href="/regionalPerfil?id=<%= id %>">Voltar</a>
+</html>
 

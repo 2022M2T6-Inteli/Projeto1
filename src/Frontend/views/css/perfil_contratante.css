@@ -35,19 +35,21 @@ html{
 #grid-container{
     display: grid;
     height: 100vh;
-     grid-template-columns: 80% 80%; 
+    grid-template-columns: 80% 80%; 
     /* grid-template-rows: 20%; */
-    padding: 10px;
     justify-content: center;
-    margin-left: 10%;
+    margin-top: 100px;
+
+    width: 85vw;
+
 }
 
 .grid-item{
     display: flex;
-    padding-right: 10px;
+    margin-left: 25vw;
     /* padding-bottom: 30px; */
-     border: 2px solid #000; 
-    
+   
+    width: 85vw;
 }
 
 .grid-item > p{
@@ -108,6 +110,7 @@ html{
     width: 150px;
     height: 50px;
     cursor: pointer;
+    word-wrap: break-word;
 
 }
 
@@ -256,6 +259,88 @@ html{
 }
 
 
+/* CSS referente a view a Listar */
+
+.box-oportunidade{
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    height: 35vh;
+    padding: 1px;
+    margin-left: 7vw;
+    /* padding-bottom: 30px; */
+    border: 2px solid #000; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box-titulo{
+    width: 100%;
+    height: 15%;
+    background-color: var(--greenA3);
+    color: #fff;
+    font-weight: bold;
+    text-justify: center;
+    word-wrap: break-word;
+}
+
+.box-infos-oportunidade{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 70%;
+    color: var(--greenA3);
+    font-weight: bold;
+    word-wrap: break-word;
+}
+
+.box-info-cadastrais{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    word-wrap: break-word;
+}
+
+.box-informacao-escopo{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    word-wrap: break-word;
+}
+
+#botoes-oportunidade{
+    border-radius: 30px;
+    background-color: var(--greenA3);
+    color: #fff;
+    font-weight: bold;
+    width: 15vw;
+    height: 5vh;
+    cursor: pointer;
+    word-wrap: break-word;
+ }
+
+
+/* CSS Referente a criar Oportunidade*/
+
+.box-criar-oportunidade{
+    background-color: var(--greenA3);
+    color: #fff;
+    width: 20vw;
+    height: 25vh;
+    font-weight: bold;
+    display: grid;
+    border: 2px solid black;
+    place-content: center;
+
+    
+    transition: 0.3s;
+
+
+}
+
 /* Modal Editar Contratante */
 
 a{
@@ -271,15 +356,24 @@ a{
     border-radius: 4px;
 } */
 .modal, .modal_postagem{
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: #000000ab;
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    color: #fff;
+    background-color: var(--greenA2);
     display: grid;
+    border: 2px solid black;
     place-content: center;
-    visibility: hidden;
+    border-radius: 30px;
+    font-weight: bold;
+    position: absolute;
+    right: 25vw;
+    bottom: 25vh;
+    justify-content: center;
     transition: 0.3s;
-    opacity: 0;
+    
+    z-index: 11;
+    
 }
 
 .modal:target, .modal_postagem:target{
@@ -295,11 +389,14 @@ a{
     padding: 2rem 2rem 1rem;
     border-radius: 10px;
     border-top: 0.5rem solid var(--greenA3);
+    z-index: 11;
+    
 }
 
 .modal_title{
     margin-bottom: 1rem;
     justify-content: center;
+    z-index: 11;
 }
 
 .send_button{
@@ -312,6 +409,7 @@ a{
     margin-top: 1rem;
     border-radius: 4px;
     font-weight: bold;
+    z-index: 11;
 }
 
 .send_button:hover{
@@ -351,6 +449,7 @@ a{
 
 .modal_title{
     text-align: center;
+    z-index: 11;
 }
 
 #formulario_uptade_contratante > p{

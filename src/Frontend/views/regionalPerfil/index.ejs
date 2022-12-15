@@ -1,16 +1,52 @@
-<%- include("../structures/menu.ejs") %>
+<%- include("../structures/menuContratante.ejs") %>
 
-<!--for (const pessoa of model), professor usou isso, entender pq ele declarou pessoas e escreveu so pessoa e se do jeito qe fiz vai rodar -->
+<head>
+    <link rel="stylesheet" href="/frontend/views/css/perfil_contratante.css">
+</head>
+		<div id="grid-container">
+			<div class="grid-item">
+				<div id="profile_pic">
+					<!-- <img src="/img/icon_user.png" id="icon_user"> -->
+				</div>
 
-<p>
-    <a 	href="/regionalPerfil/alterarPerfil?id=<%= model.ID_Contratante %>">Alterar Perfil</a> | <!--confirmar referencia dps-->
-    <a 	href="/regionalPerfil/listar?id=<%= model.ID_Contratante %>">Ver Oportunidades</a> |
-    <a 	href="/regionalPerfil/criarOportunidade?id=<%= model.ID_Contratante %>">Criar Oportunidade</a> |
-</p>
+				<div>
+					<p id="name_empreiteira"><%= model.Nome %></p>
+					<p id="service_empreiteira"><%= model.Regional %></p>
+				</div>
+			</div>
+					
+			<div class="grid-item">
+				<a href="/regionalPerfil/criarOportunidade?id=<%= model.ID_Contratante %>"><button id="new_postagem">Adicionar Oportunidade</button></a>
+				<a href="/regionalPerfil/listar?id=<%= model.ID_Contratante %>"><button id="new_postagem">Ver Oportunidades</button></a>
+				<a href="/regionalPerfil/alterarPerfil?id=<%= model.ID_Contratante %>"><button id="edit_profile">Editar Perfil</button></a>
+			</div>   
+			<div class="grid-item">
+				<div id="info_contratante">
+					<div class="contratante_grid_item">
+						<h2>Meus Dados:</h1> 
+					</div>
+					<div class="contratante_grid_item">
+						<p class="title_grid"><b>CPF:</b></p>
+						<p><%= model.Cpf %></p>
+					</div>
+					<div class="contratante_grid_item">        
+						<p class="title_grid"><b>E-mail:</b></p>
+						<p><%= model.Email %></p>
+					</div>
+					<div class="contratante_grid_item">
+						<p class="title_grid"><b>Nome Completo:</b></p>
+						<p><%= model.Nome %> </p>
+					</div>
+					<div class="contratante_grid_item">
+						<p class="title_grad"><b>Celular - Whatsapp:</b></p>
+						<p id="cel_value"><%= model.Celular %></p> 
+					</div>
+					<div class="contratante_grid_item">
+						<p class="title_grad"><b>Regional:</b></p>
+						<p id="cel_value"><%= model.Regional %></p> 
+					</div>
+				</div>
+			</div>
+		</div>
 
-<div id="perfilregional">		
-	<p>
-		<%= console.log('MODELO:', model) %>
-		<%= model.Nome %> : <%= model.Cpf %> - <%= model.Email %> - <%= model.Celular %> - <%= model.Regional %> |
-	</p>
-</div>
+		<%- include("../structures/footer.ejs") %>

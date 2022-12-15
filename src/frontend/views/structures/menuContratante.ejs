@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="../../frontend/scripts/menu.js"></script>
     <script src="../../frontend/scripts/faq.js"></script>
-    <link rel="stylesheet" href="/frontend/views/css/menu.css">
+    <link rel="stylesheet" href="/frontend/views/css/menuContratante.css">
 </head>
 
 <body>
@@ -17,44 +17,45 @@
     
   </script>
     <!-- Menu Lateral e Menu SupSerior -->
-
+<div class="principal">
     <div class="header normal-shadow">
       <div class="horizontal-container">
         <div class="icons-left">
           <!-- <i id="toggle-sidebar" class="fa-solid fa-bars"></i> -->
         </div>
-        <h1 class="menu-names">ConstruMatch</h1>
+        <h1 class="menu-names">ConstruMatch </h1>
         <div class="icons-right">
         </div>
       </div>
     </div>
-    <div class="main-container center horizontal-container">
-      <div class="sidebar">
-        <div class="vertical-container">
-          <a onclick="redirect('feed')">
-            <div class="horizontal-container center">
-              <i class="fa-solid fa-list menu-active"></i>
-              <h5 class="menu-names">Feed</h5>
-            </div>
-          </a>
-          <a onclick="redirect('perfil')">
-            <div class="horizontal-container center">
-              <i class="fa-solid fa-user"></i>
-              <h5 class="menu-names">Perfil</h5>
-            </div>
-          </a>
+    <!--<div class="main-container center horizontal-container"> -->
+    <div class="sidebar">
+      <div class="vertical-container">
+        <a onclick="redirect('regionalPerfil')">
+          <div class="horizontal-container center">
+            <i class="fa-solid fa-user"></i>
+            <h5 class="menu-names">Perfil</h5>
+          </div>
+        </a>
+        <a onclick="redirect('interessados')">
           <div class="horizontal-container center">
             <i class="fa-solid fa-hammer"></i>
-            <h5 class="menu-names" align=center>Meus serviços</h5>
+            <h5 class="menu-names" align=center>Interessados Oportunidades</h5>
           </div>
+        </a>
+        <a onclick="redirect('faq')">
           <div class="horizontal-container center" id="help">
+            <a onclick="redirect('structures/faq')"></a>
             <i class="fa-solid fa-circle-info"></i>
             <h5 class="menu-names">Ajuda</h5>
           </div>
-        </div>
+        </a>
       </div>
+    </div>
+    <div class="contente"
+  
 
-</body>
 
-</html>
+
+
 
