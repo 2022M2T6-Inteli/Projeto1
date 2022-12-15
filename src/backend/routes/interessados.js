@@ -1,21 +1,20 @@
-// Import modules
+// Definição de módulos necessários
 const express = require('express');
 const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
 const bodyParser = require('body-parser');
-// const { FULL } = require('sqlite3');
 const router = express.Router();
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
-// Definitions
-const viewPath = path.join(__dirname, "../../frontend/views/regionalPerfil/interessados.ejs"); // Fetch the ejs file
-const viewPathNF = path.join(__dirname, "../../frontend/views/404/NotFound.ejs"); // Fetch the ejs file "Not found"
-const DBPATH = path.join(__dirname, "../data/ConstruMatch.db"); // Fetch the database
+// Definições para este arquivo
+const viewPath = path.join(__dirname, "../../frontend/views/regionalPerfil/interessados.ejs");
+const viewPathNF = path.join(__dirname, "../../frontend/views/404/NotFound.ejs");
+const DBPATH = path.join(__dirname, "../data/ConstruMatch.db");
 
 
-// Opening endpoint
 router
+//Endpoint inicial que carrega a página
     .route('/')
     .get((req, res) => {
 		res.statusCode = 200 // Status: OK
@@ -29,6 +28,7 @@ router
 
         
 router
+//Endpoint que busca no banco de dados tanto as oportunidades de uma contratante quanto 
     .route("/listar")
     .get((req,res)=>{
         var db = new sqlite3.Database(DBPATH);
