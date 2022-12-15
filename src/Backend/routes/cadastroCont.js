@@ -34,13 +34,13 @@ router
                 return console.error(err.message);
             }
         });
-        var sql = `INSERT INTO contratante (CPF, Nome, Email, Celular, Regional, Senha) VALUES ("${req.body.cpf}","${req.body.nome}","${req.body.regional}","${req.body.celular}","${req.body.regional}","${req.body.senha}")`
+        var sql = `INSERT INTO contratante (CPF, Nome, Email, Celular, Regional, Senha) VALUES ("${req.body.cpf}","${req.body.nome}","${req.body.email}","${req.body.celular}","${req.body.regional}","${req.body.senha}")`
         db.run(sql, [], err => {
             if(err){
                 throw err;
             }
         });
-        res.redirect("/feed/?id=1");
+        res.redirect(`/regionalPerfil/?id=${req.query.id}`);
         db.close();
         res.end();
     });
