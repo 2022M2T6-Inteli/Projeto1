@@ -45,7 +45,7 @@ router
                     for(var i = 0; i < rows.length; i++){
                         if(rows[i].Senha == senha){
                             id = rows[i].ID_Empreiteira
-                            res.redirect(`/feed/?id=${id}`)
+                            res.redirect(`/perfil/?id=${id}`)
                         } else{
                             res.redirect(`/login#probSenha`)
                         }

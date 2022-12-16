@@ -29,7 +29,7 @@ router
 	.get((req, res) => {
 		res.statusCode = 200; // Status: OK
         res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
-		const params = [req.query.id];
+		const params = [req.query.id_contratante];
 		console.log('QUERY', params);
 
         var db = new sqlite3.Database(DBPATH, err => {
@@ -54,10 +54,10 @@ router
 
 router 
 	.route('/perfil_contrante')
-	.get((req, res) => {
+	.get(urlencodedParser,(req, res) => {
 		res.statusCode = 200; // Status: OK
         res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
-		const params = [req.query.id];
+		const params = [req.query.id_contratante];
 		console.log('QUERY', params);
 
         var db = new sqlite3.Database(DBPATH, err => {
@@ -68,7 +68,7 @@ router
         });
 
 
-		const sql = "SELECT * FROM Contratante WHERE ID_Contratante=? ";
+		const sql = `SELECT * FROM Contratante WHERE ID_Contratante="${params}"`;
 		console.log(sql);
 
 
@@ -86,7 +86,7 @@ router
 	.get((req, res) => {
 		res.statusCode = 200; // Status: OK
         res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
-		const params = [req.query.id];
+		const params = [req.query.id_contratante];
 		console.log('QUERY', params);
 
         var db = new sqlite3.Database(DBPATH, err => {
@@ -116,7 +116,7 @@ router
 		res.statusCode = 200; 
         res.setHeader('Access-Control-Allow-Origin', '*'); 
 
-		let ID_Contratante = req.query["id"];
+		let ID_Contratante = req.query["id_contratante"];
 
         var db = new sqlite3.Database(DBPATH, err => {
             if (err) {
@@ -134,7 +134,7 @@ router
 		const sql = "SELECT ID_Contratante, Cpf, Nome, Email, Celular, Regional FROM Contratante WHERE ID_Contratante=?";
 
 		console.log(sql);
-		id=req.query.id
+		id=req.query.id_contratante
 		
 		db.get(sql, [ID_Contratante], (err, rows) => { 
             if (err) {

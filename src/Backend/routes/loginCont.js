@@ -27,7 +27,7 @@ router
 
 router
     .route('/banco')
-    .post((req, res) => {
+    .post(urlencodedParser,(req, res) => {
         var cpf = req.body.cpf
         var senha = req.body.senha
         var id = "";
@@ -37,7 +37,7 @@ router
             }
             console.log("Successful connection to the database 'ConstruMatch.db'");
         });
-        var sql = `SELECT CPF, Senha, ID_Contratante FROM Contratante WHERE CPF=${cpf}`;
+        var sql = `SELECT CPF, Senha, ID_Contratante FROM Contratante WHERE CPF="${cpf}"`;
 
         db.all(sql, [],  (err, rows ) => {
             if (err) {
@@ -47,7 +47,7 @@ router
                     for(var i = 0; i < rows.length; i++){
                         if(rows[i].Senha == senha){
                             id = rows[i].ID_Contratante
-                            res.redirect(`/feed/?id=${id}`)
+                            res.redirect(`/regionalPerfil/?id_contratante=${id}`)
                         } else{
                             res.redirect(`/loginCont#probSenha`)
                         }
@@ -58,7 +58,6 @@ router
             }
         });
         db.close();
-        res.end();
     })
 
 console.log(login)
