@@ -13,7 +13,7 @@
 - <a href="https://www.linkedin.com/in/gabriel-gallo-m-coutinho-443809232">Gabriel Gallo Menequini Coutinho</a>
 - <a href="https://www.linkedin.com/in/guilherme-moura-9668821a5/">Guilherme Jesus Moura</a> 
 - <a href="https://www.linkedin.com/in/guilherme-novaes-lima/">Guilherme Novaes Lima</a> 
-- <a href="https://www.linkedin.com/in/victorbarq/">Isabela Amado da Rocha</a>
+- <a href="https://www.linkedin.com/in/isabela-amado-da-rocha-0314b4237">Isabela Amado da Rocha</a>
 - <a href="https://www.linkedin.com/in/thomaz-klifson-falc%C3%A3o-barboza-046490125">Thomaz Klifson Falcao Barboza</a> 
 - <a href="https://www.linkedin.com/in/vivian-shibata-311818252/">Vivian Midori Shibata</a>
 
