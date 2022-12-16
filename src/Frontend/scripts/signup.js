@@ -14,6 +14,7 @@ function submitProfile(){
             email: $('#email').val(),
             func: $('#func').val(),
             cidades: $('#cidades').val(),
+            senha: $('#senha').val(),
             estados: $('#estados').val(), 
             serv1: $('#serv1').val(), 
             serv2: $('#serv2').val(),

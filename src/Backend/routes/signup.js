@@ -27,7 +27,7 @@ router
             }
             console.log("Successful connection to the database 'ConstruMatch.db'");
         });
-        var sql = `INSERT INTO Empreiteira (CNPJ, Razao_Social, Nome_Fantasia, CNAE, Data_Abertura, Email, Numero_Funcionarios, Cidade, Estado, Servico_1, Servico_2) VALUES ("${req.body.cnpj}", "${req.body.razaoSoc}", "${req.body.nomeFant}", "${req.body.cnae}", "${req.body.dataAbert}", "${req.body.email}", "${req.body.func}", "${req.body.cidades}", "${req.body.estados}", "${req.body.serv1}", "${req.body.serv2}");`; // SQL command
+        var sql = `INSERT INTO Empreiteira (CNPJ, Razao_Social, Nome_Fantasia, CNAE, Data_Abertura, Email, Numero_Funcionarios, Cidade, Estado, Servico_1, Servico_2, Senha) VALUES ("${req.body.cnpj}", "${req.body.razaoSoc}", "${req.body.nomeFant}", "${req.body.cnae}", "${req.body.dataAbert}", "${req.body.email}", "${req.body.func}", "${req.body.cidades}", "${req.body.estados}", "${req.body.serv1}", "${req.body.serv2}","${req.body.senha}");`; // SQL command
         var sql1= `SELECT rowid from Empreiteira order by ROWID DESC limit 1`
         db.all(sql1, [],  (err, rid ) => {
             if (err) {

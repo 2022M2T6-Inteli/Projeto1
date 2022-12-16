@@ -9,8 +9,6 @@ const router = express.Router(); // Setup router
 const viewPath = path.join(__dirname, "../../frontend/views/login/loginCont"); // Fetch the ejs file
 const urlencodedParser = bodyParser.urlencoded({ extended: false }) // Setup parser
 const DBPATH = path.join(__dirname, "../data/ConstruMatch.db"); // Fetch the database
-let login = [];
-
 
 // Opening endpoint
 router
@@ -27,22 +25,22 @@ router
 
 router
     .route('/banco')
-    .post((req, res) => {
+    .post(urlencodedParser, (req, res) => {
         var cpf = req.body.cpf
         var senha = req.body.senha
-        var id = "";
+        var id = ""; 
         var db = new sqlite3.Database(DBPATH, err => {
             if (err) {
                 return console.error(err.message);
             }
-            console.log("Successful connection to the database 'ConstruMatch.db'");
+            // console.log("Successful connection to the database 'ConstruMatch.db'");
         });
-        var sql = `SELECT CPF, Senha, ID_Contratante FROM Contratante WHERE CPF=${cpf}`;
+        var sql = `SELECT CPF, Senha, ID_Contratante FROM Contratante WHERE CPF="${cpf}"`;
 
         db.all(sql, [],  (err, rows ) => {
             if (err) {
                 throw err;
-            } else{
+            } else {
                 if(rows.length>0){
                     for(var i = 0; i < rows.length; i++){
                         if(rows[i].Senha == senha){
@@ -58,8 +56,6 @@ router
             }
         });
         db.close();
-        res.end();
     })
 
-console.log(login)
 module.exports = router; // Export Router
