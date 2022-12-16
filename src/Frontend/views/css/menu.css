@@ -187,3 +187,34 @@ a:hover{
 #inst_mrv{
     margin-right: 31%;
 }
+
+@media only screen and (min-width: 480px) {
+    .sidebar {
+        left: initial;
+        min-height: initial;
+        height: 15ch;
+        bottom: 0;
+        min-width: 100vw;
+        z-index: 9;
+        top: initial;
+    }
+    .sidebar .vertical-container {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0;
+    }
+    .sidebar .horizontal-container.center {
+        display: initial;
+        flex-direction: initial;
+        padding-inline: 6ch;
+    }
+    .menu-names {
+        display: none;
+    }
+    .sidebar i{
+        position: initial;
+        margin: initial;
+        left: initial;
+    }
+
+}
