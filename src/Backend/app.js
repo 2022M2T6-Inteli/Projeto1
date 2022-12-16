@@ -35,6 +35,10 @@ app.use('/cadastrar', signupRouter);
 const cadastroContRouter = require('./routes/cadastroCont');
 app.use('/cadastrarCont', cadastroContRouter);
 
+//Endpoint de login das empreiteiras
+const loginRouter = require('./routes/login');
+app.use('/login', loginRouter);
+
 //Endpoint de login dos contratantes
 const loginContRouter = require('./routes/loginCont');
 app.use('/loginCont', loginContRouter);
