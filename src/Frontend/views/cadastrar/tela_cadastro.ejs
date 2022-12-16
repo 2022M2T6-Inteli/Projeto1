@@ -19,7 +19,7 @@
           </div>
           <div class="cadastro_item">
             <p>Nos informe o CNPJ da Empreiteira:</p>
-            <input name="cnpj" id="cnpj" type="text" required placeholder="Ex: 00.000.000/0000-00">
+            <input name="cnpj" id="cnpj" type="text" required placeholder="Ex: 00.000.000/0000-00" required autocomplete="off" maxlength="18">
           </div>
           <div class="cadastro_item">
             <p>Qual é o Nome Fantasia da Empreiteira?</p>
@@ -39,7 +39,7 @@
           </div>
           <div class="cadastro_item">
             <p>Nos informe o número do CNAE da Empreiteira</p>
-            <input type="text" name="cnae" id="cnae" placeholder="Ex: 0000-0/00" required>
+            <input type="text" name="cnae" id="cnae" placeholder="Ex: 0000-0/00" required autocomplete="off" maxlength="9">
           </div>
           <div class="cadastro_item">
             <p>Quantos funcionários têm na empreiteira?</p>
@@ -108,6 +108,37 @@
           </div>
         </form>
     </div>
+    <script>
+      const input=document.querySelector('#cnpj')
+
+      input.addEventListener('keypress', () => {
+          let inputlength = input.value.length
+          
+          if (inputlength === 2 || inputlength === 6){
+              input.value += '.' 
+          } else if (inputlength===10){
+              input.value += '/'
+          }
+          else if (inputlength===15){
+              input.value += '-'
+          }
+      })
+    </script>
+    <script>
+      const cnae=document.querySelector('#cnae')
+
+      cnae.addEventListener('keypress', () => {
+          let inputlength = cnae.value.length
+          
+          if (inputlength === 4 ){
+              cnae.value += '-' 
+          } 
+          else if (inputlength===6){
+              cnae.value += '/'
+          }
+
+      })
+    </script>
   </body>
 
 </html>

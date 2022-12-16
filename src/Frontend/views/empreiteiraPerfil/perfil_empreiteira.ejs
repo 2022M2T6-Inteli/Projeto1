@@ -150,7 +150,7 @@
             <p>Email:</p>
             <input type="text" name="email_empreiteira" id="email_empreiteira" value=""></input>
             <p>CNAE:</p>
-            <input type="text" name="cnae_empreiteira" id="cnae_empreiteira" value=""></input>
+            <input type="text" name="cnae_empreiteira" id="cnae_empreiteira" value=""autocomplete="off" maxlength="9"></input>
             <p>Data de Abertura:</p>
             <input type="text"  name="data_abertura_empreiteira" id="data_abertura_empreiteira" value=""></input>
             <p>Número de Funcionários:</p>
@@ -222,3 +222,17 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="/frontend/scripts/perfil_empreiteira.js"></script>
+<script>
+    const cnae=document.querySelector('#cnae_empreiteira')
+
+    cnae.addEventListener('keypress', () => {
+        let inputlength = cnae.value.length
+        
+        if (inputlength === 4 ){
+            cnae.value += '-' 
+        } 
+        else if (inputlength===6){
+            cnae.value += '/'
+        }
+    })
+</script>
