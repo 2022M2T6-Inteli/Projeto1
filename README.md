@@ -9,13 +9,13 @@
 ## Nome do grupo
 
 ## Integrantes: 
-- <a href="https://www.linkedin.com/in/felipe-martins-moura-1bbb27157/">Felipe Moura</a>
-- <a href="https://www.linkedin.com/in/gabriel-gallo-m-coutinho-443809232">Gabriel Gallo</a>
-- <a href="https://www.linkedin.com/in/guilherme-moura-9668821a5/">Guilherme Moura</a> 
-- <a href="https://www.linkedin.com/in/guilherme-novaes-lima/">Guilherme Lima</a> 
-- <a href="https://www.linkedin.com/in/victorbarq/">Isabela Rocha</a>
-- <a href="https://www.linkedin.com/in/thomaz-klifson-falc%C3%A3o-barboza-046490125">Thomas Klifson</a> 
-- <a href="https://www.linkedin.com/in/vivian-shibata-311818252/">Vivian Shibata</a>
+- <a href="https://www.linkedin.com/in/felipe-martins-moura-1bbb27157/">Felipe Martins Moura</a>
+- <a href="https://www.linkedin.com/in/gabriel-gallo-m-coutinho-443809232">Gabriel Gallo Menequini Coutinho</a>
+- <a href="https://www.linkedin.com/in/guilherme-moura-9668821a5/">Guilherme Jesus Moura</a> 
+- <a href="https://www.linkedin.com/in/guilherme-novaes-lima/">Guilherme Novaes Lima</a> 
+- <a href="https://www.linkedin.com/in/victorbarq/">Isabela Amado da Rocha</a>
+- <a href="https://www.linkedin.com/in/thomaz-klifson-falc%C3%A3o-barboza-046490125">Thomaz Klifson Falcao Barboza</a> 
+- <a href="https://www.linkedin.com/in/vivian-shibata-311818252/">Vivian Midori Shibata</a>
 
 ## 📝 Descrição
 
@@ -25,8 +25,8 @@ O principal objetivo do projeto é facilitar o processo de contratação entre e
 
 |--> documentos<br>
   &emsp;| --> outros <br>
-  &emsp;| T(NUMERO_DA_TURMA)_G(NUMERO_DO_GRUPO)_V(VERSÃO)_Web_application_document.pdf<br>
-  &emsp;| T(NUMERO_DA_TURMA)_G(NUMERO_DO_GRUPO)_V(VERSÃO)_Web_application_document.docx<br>
+  &emsp;| T6_G1_V100_Web_application_document.pdf<br>
+  &emsp;| T6_G1_V100_Web_application_document.docx<br>
 |--> imagens<br>
 |--> src<br>
   &emsp;|--> Backend<br>
@@ -66,25 +66,31 @@ npm start
 
 ## 🗃 Histórico de lançamentos
 
-* 0.2.1 - 25/01/2022
-    * Atualização de documentos (código do módulo permanece inalterado).
-* 0.2.0 - 15/01/2022
-    * Remove `setDefaultXYZ()`
-    * Adiciona `init()`
-* 0.1.1 - 11/01/2022
-    * Crash quando chama `baz()`
-* 0.1.0 - 10/01/2022
-    * O primeiro lançamento adequado
-    * Renomeia `foo()` para `bar()`
-* 0.0.1 - 01/01/2022
-    * Trabalho em andamento
+* 0.2.1 - 16/10/2022
+    * Ultima atualização com documentos.
+* 0.2.0 - 15/10/2022
+    * Máscaras que faltavam e modificação dos exemplos.
+    * Responsividade Feed.
+* 0.1.1 - 12/10/2022
+	* Sessão falsa.
+* 0.1.0 - 02/10/2022
+	* Remoção da instrução e teste de funcionalidade.
+    * Commit Cadastro Atualizado.
+* 0.0.1 - 01/10/2022
+    * Commit com novo source.
 
 ## 📋 Licença/License
 
-<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/Spidus/Teste_Final_1">MODELO GIT INTELI</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.inteli.edu.br/">Inteli, Felipe Moura, Gabriel Gallo, Guilherme Moura, Guilherme Lima, Isabela Rocha, Thomas Klifson, Vivian Shibata</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International</a>.</p>
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/Spidus/Teste_Final_1">MODELO GIT INTELI</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.inteli.edu.br/">Inteli</a>, <a href="https://www.linkedin.com/in/felipe-martins-moura-1bbb27157/">Felipe Martins Moura</a>, <a href="https://www.linkedin.com/in/gabriel-gallo-m-coutinho-443809232">Gabriel Gallo Menequini Coutinho</a>, <a href="https://www.linkedin.com/in/guilherme-moura-9668821a5/">Guilherme Jesus Moura</a>, <a href="https://www.linkedin.com/in/guilherme-novaes-lima/">Guilherme Novaes Lima</a>, <a href="https://www.linkedin.com/in/victorbarq/">Isabela Amado da Rocha</a>, <a href="https://www.linkedin.com/in/thomaz-klifson-falc%C3%A3o-barboza-046490125">Thomaz Klifson Falcao Barboza</a>, <a href="https://www.linkedin.com/in/vivian-shibata-311818252/">Vivian Midori Shibata</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International</a>.</p>
 
 ## 🎓 Referências
 
 Aqui estão as referências usadas no projeto:
 
 1. <https://creativecommons.org/share-your-work/>
+2. <https://www.alterconteudo.com.br/deficit-habitacional-no-brasil-alcanca-numeros-alarmantes/>
+3. <https://www.brasildefato.com.br/2021/05/24/com-historico-de-trabalho-escravo-mrv-adota-area-extrativista-sem-ouvir-comunidade>
+4. <https://www.mrv.com.br/inovacao>
+5. <https://www.lopes.com.br/blog/mercado-imobiliario/incorporacao-imobiliaria-o-que-e/>
+6. <https://www.reclameaqui.com.br/mrv-engenharia/apenas-no-estado-de-sao-paulo-a-mrv-tem-55-mil-processos_NBkVp_vSq6-Nz3w2/>
+7. <https://www.mrv.com.br/institucional/pt/a-mrv/mrv-em-numeros>
