@@ -140,7 +140,7 @@ router
             if (err) {
                 throw err;
             }
-			res.render(viewPathFormPerfil, { id: id, model: rows });
+			res.render(viewPathFormPerfil, { id_contratante: id, model: rows });
 		});
 	})
 	.post(urlencodedParser, (req, res) => {
@@ -201,7 +201,7 @@ router
 				msg = "Usuário Alterado!";
 			id=ID_Contratante
 			console.log('id db run', id);
-			res.render(viewPathAlterarPerfil, { mensagem: msg, id: id });
+			res.render(viewPathAlterarPerfil, { mensagem: msg, id_contratante: id });
 		});
 	});
 	
@@ -210,7 +210,7 @@ router
 	.get((req, res) => {
 		res.statusCode = 200; 
         res.setHeader('Access-Control-Allow-Origin', '*'); 
-		let ID_Contratante = req.query["id"];
+		let ID_Contratante = req.query["id_contratante"];
 		let ID_Oportunidade = req.query["id_oportunidade"];
 		
         var db = new sqlite3.Database(DBPATH, err => {
@@ -329,7 +329,7 @@ router
 	.get((req, res) => {
 		res.statusCode = 200; 
         res.setHeader('Access-Control-Allow-Origin', '*'); 
-		const params = [req.query.id];
+		const params = [req.query.id_contratante];
 		console.log('QUERY', params);
 
         var db = new sqlite3.Database(DBPATH, err => {
@@ -347,7 +347,7 @@ router
                 throw err;
             }
 	
-			res.render(viewPathListar, { model: rows, id: req.query.id });
+			res.render(viewPathListar, { model: rows, id_contratante: req.query.id_contratante });
 		});
 	});
 
@@ -356,7 +356,7 @@ router
 	.get((req, res) => {
 		res.statusCode = 200; 
         res.setHeader('Access-Control-Allow-Origin', '*'); 
-		let ID_Contratante = req.query["id"];
+		let ID_Contratante = req.query["id_contratante"];
 		let ID_Oportunidade = req.query["id_oportunidade"];
 		
         var db = new sqlite3.Database(DBPATH, err => {
@@ -454,7 +454,7 @@ router
 			else
 				msg = "Oportunidade criada!";
             
-			res.render(viewPathAlterarOportunidade, {id: id, mensagem: msg });
+			res.render(viewPathAlterarOportunidade, {id_contratante: id, mensagem: msg });
 		});
 	});
 
