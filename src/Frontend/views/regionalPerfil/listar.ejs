@@ -1,28 +1,43 @@
-<%- include("../structures/menu.ejs") %>
-<!--
-<div>
-	<a href="/funcionarios/listar?ordenar=nome">LISTAR POR NOME</a> |
-	<a href="/funcionarios/listar?ordenar=email">LISTAR POR EMAIL</a> |
-	<a href="/funcionarios/listar?ordenar=id">LISTAR POR ID</a>
+<%- include("../structures/menuContratante.ejs") %>
+
+<head>
+    <link rel="stylesheet" href="/frontend/views/css/perfil_contratante.css">
+</head>
+		<div class="botoes-oportunidade">
+			<a 	href="/regionalPerfil?id=<%= id %>"><button id="botoes-oportunidade">Voltar</button></a>
+		</div>
+		<div id="Oportunidade">
+			<% for (const Oportunidade of model) { %>
+				<div class="box-oportunidade">
+					<div id="Oportunidade" class="box-titulo">
+						<%= Oportunidade.Titulo %>
+					</div>
+					<div class="box-infos-oportunidade">
+						<div class="box-info-cadastrais">
+							ID: <%= Oportunidade.Id_Oportunidade %> <br>
+							Data Oportunidade: <%= Oportunidade.Data_Oportunidade %> <br>
+							Serviço: <%= Oportunidade.Servico %><br>
+							Data Início: <%= Oportunidade.Data_Inicio %> <br>
+							Data Fim: <%= Oportunidade.Data_Fim %> <br>
+							Estado: <%= Oportunidade.Estado %> <br>
+							Cidade: <%= Oportunidade.Cidade %> <br>
+						</div>
+						<div class="box-informacao-escopo">
+							Escopo: <%= Oportunidade.Descricao %>
+						</div>
+					</div>
+					<div class="botoes-oportunidade">
+						<a href="/regionalPerfil/alterarOportunidade?id=<%= id %>&id_oportunidade=<%= Oportunidade.ID_Oportunidade %>"><button id="botoes-oportunidade">Alterar Oportunidade</button></a>
+						<a href="/regionalPerfil/remover?id=<%= id %>&id_oportunidade=<%= Oportunidade.ID_Oportunidade %>"><button id="botoes-oportunidade">Remover Oportunidade</button></a>
+					</div>
+				</div>
+				<p>
+					<input type="hidden" id="ID_Contratante" name="ID_Contratante" value="<%= id %>" />
+				</p>
+			<% } %>
+		</div>
+
+    </div>
 </div>
--->
-<p>
-	<input type="hidden" id="ID_Contratante" name="ID_Contratante" value="<%= model.ID_Contratante %>" />
-    <a 	href="/regionalPerfil?id=<%= model.ID_Contratante %>">Voltar</a> | 
-</p>
-
-<div id="Oportunidade">
-	<% for (const Oportunidade of model) { %>
-		<%= Oportunidade.Id_Oportunidade %> : <%= Oportunidade.Data_Oportunidade %> - <%= Oportunidade.Servico %> - <%= Oportunidade.Titulo %> - <%= Oportunidade.Descricao %> - <%= Oportunidade.Data_Inicio %> - <%= Oportunidade.Data_Fim %> - <%= Oportunidade.Status %> - <%= Oportunidade.Estado %> - <%= Oportunidade.Cidade %> - <%= Oportunidade.Nome_Obra %> <%= Oportunidade.Endereco %> |
-		<a href="/regionalPerfil/alterarOportunidade?id=<%= id %>&id_oportunidade=<%= Oportunidade.ID_Oportunidade %>">Alterar Oportunidade</a> |
-		<a href="/regionalPerfil/remover?id=<%= id %>&id_oportunidade=<%= Oportunidade.ID_Oportunidade %>">Remover</a>
-		<a href="/regionalPerfil/interessados?id=<%= id %>&id_oportunidade=<%= Oportunidade.ID_Oportunidade %>">Ver Interessados</a>
-		<br>
-	<% } %>
-</div>
-
-<p>
-	<input type="hidden" id="ID_Contratante" name="ID_Contratante" value="<%= id %>" />
-    <a 	href="/regionalPerfil?id=<%= id %>">Voltar</a> | <%= id %>
-</p>
-
+</body>
+</html>

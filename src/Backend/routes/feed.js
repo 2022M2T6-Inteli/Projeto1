@@ -34,7 +34,7 @@ router
             }
             console.log("Successful connection to the database 'ConstruMatch.db'");
         });
-        var sql = `SELECT Servico, Titulo, Descricao, Data_Inicio, Data_Fim, Estado, Cidade, ID_Oportunidade FROM Oportunidade`;
+        var sql = `SELECT Servico, Titulo, Descricao, Data_Inicio, Data_Fim, Estado, Cidade, ID_Oportunidade, ID_Contratante FROM Oportunidade`;
         db.all(sql, [],  (err, rows ) => {
             if (err) {
                 throw err;
@@ -52,7 +52,7 @@ router
                 return console.error(err.message);
             }
         });
-        var sql = `INSERT INTO Proposta (ID_Oportunidade, ID_Empreiteira_Proposta, Valor_Proposta, Escopo) VALUES ("${req.body.id_post}","${req.body.id_emp}","${req.body.valor_op}","${req.body.escopo_op}")`
+        var sql = `INSERT INTO Proposta (ID_Oportunidade, ID_Empreiteira_Proposta, Valor_Proposta, Escopo, ID_Contratante_Proposta) VALUES ("${req.body.id_post}","${req.body.id_emp}","${req.body.valor_op}","${req.body.escopo_op}", "${req.body.id_contrat}")`
         db.run(sql, [], err => {
             if(err){
                 throw err;

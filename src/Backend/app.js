@@ -59,7 +59,14 @@ app.use('/interessados', interessadosRouter);
 const servcurtidosRouter = require('./routes/servicoscurtidos_empreiteira');
 app.use('/servcurtidos', servcurtidosRouter);
 
-// Endpoint de fluxo web que mostra aos empreiteiros as oportunidades disponíveis
+const servaceitosRouter = require('./routes/servicosaceitos_empreiteira');
+app.use('/servaceitos', servaceitosRouter);
+
+// Endpoint faq
+// const faqRouter = require('./routes/faq');
+//  app.use('/faq', faqRouter);
+
+// Endpoint signup
 const feedRouter = require('./routes/feed');
 app.use('/feed', feedRouter);
 

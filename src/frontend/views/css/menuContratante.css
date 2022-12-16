@@ -52,9 +52,11 @@ a:hover{
     position: fixed;
     left: 0;
     top: 0px;
+    height: 10vh;
+    width: 100vw;
 }
 .header.normal-shadow{
-    box-shadow: 160px 5px 20px gray;
+    box-shadow: 100px 5px 20px gray;
 }
 .header .icons-right, .header .icons-left{
     margin: auto;
@@ -74,6 +76,17 @@ a:hover{
 }
 .header .icons-right i:hover, .header .icons-left i:hover{
     color: var(--yellowA1);
+}
+
+.principal{
+    display: flex;
+    flex-direction: column;
+    width: 85vw;
+    height: 90vh;
+    margin: 0 auto;
+    position: absolute;
+    right:0;
+    bottom: 0;
 }
 
 .footer{
@@ -96,11 +109,12 @@ a:hover{
     background: linear-gradient(to top, var(--greenA2), var(--greenA3));
     position: fixed;
     left: 0;
-    min-height: 100vh;
-    width: 150px;
-    z-index: 9;
-    top: 0;
+    bottom: 0;
+    min-height: 90vh;
+    height: 90vh;
+    width: 15vw;
 }
+
 .sidebar .vertical-container{
     margin-top: 50px;
     min-height: calc(100vh - 120px);
@@ -132,6 +146,16 @@ a:hover{
     /* border: cadetblue dotted 10px; DELETE THIS */
     width: 100%;
     min-height: 100vh;
+
+}
+
+.contente{
+	float: right;
+    height: 90vh;
+    width: 85vw;
+    position: absolute;
+	background-color: gainsboro;
+    bottom: 0;
 }
 
 .center{
@@ -162,12 +186,12 @@ a:hover{
 .footer{
     padding: 10px 2%;
     background: var(--greenA2);
-    position: fixed; 
+    position: fixed;
     display: flex;
     bottom: 0;
     height: 50px;
     width: 100%;
-    /* text-align: end; */
+    text-align: end;
     /* box-shadow: 0 0 10px 10px black; */
 }
 .fab{
@@ -186,35 +210,4 @@ a:hover{
 }
 #inst_mrv{
     margin-right: 31%;
-}
-
-@media only screen and (min-width: 480px) {
-    .sidebar {
-        left: initial;
-        min-height: initial;
-        height: 15ch;
-        bottom: 0;
-        min-width: 100vw;
-        z-index: 9;
-        top: initial;
-    }
-    .sidebar .vertical-container {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 0;
-    }
-    .sidebar .horizontal-container.center {
-        display: initial;
-        flex-direction: initial;
-        padding-inline: 6ch;
-    }
-    .menu-names {
-        display: none;
-    }
-    .sidebar i{
-        position: initial;
-        margin: initial;
-        left: initial;
-    }
-
 }

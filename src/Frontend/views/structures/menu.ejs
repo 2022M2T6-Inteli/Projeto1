@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <div class="main-container center">
+    <div class="main-container center horizontal-container">
       <div class="sidebar">
         <div class="vertical-container">
           <a onclick="redirect('feed')">
@@ -43,14 +43,18 @@
               <h5 class="menu-names">Perfil</h5>
             </div>
           </a>
-          <div class="horizontal-container center">
-            <i class="fa-solid fa-hammer"></i>
-            <h5 class="menu-names" align=center>Meus serviços</h5>
-          </div>
-          <div class="horizontal-container center" id="help">
-            <i class="fa-solid fa-circle-info"></i>
-            <h5 class="menu-names">Ajuda</h5>
-          </div>
+          <a onclick="redirect('')">
+            <div class="horizontal-container center">
+              <i class="fa-solid fa-hammer"></i>
+              <h5 class="menu-names">Meus serviços</h5>
+            </div>
+          </a>
+          <a onclick="redirect('faq')">
+            <div class="horizontal-container center">
+              <i class="fa-solid fa-circle-info"></i>
+              <h5 class="menu-names">Ajuda</h5>
+            </div>
+          </a>
         </div>
       </div>
 

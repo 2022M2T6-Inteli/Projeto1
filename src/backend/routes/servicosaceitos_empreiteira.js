@@ -8,7 +8,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
 // Definitions
-const viewPath = path.join(__dirname, "../../frontend/views/empreiteiraPerfil/servicoscurtidos_empreiteira.ejs"); // Fetch the ejs file
+const viewPath = path.join(__dirname, "../../frontend/views/empreiteiraPerfil/servicosaceitos_empreiteira.ejs"); // Fetch the ejs file
 const viewPathNF = path.join(__dirname, "../../frontend/views/404/NotFound.ejs"); // Fetch the ejs file "Not found"
 const DBPATH = path.join(__dirname, "../data/ConstruMatch.db"); // Fetch the database
 
@@ -35,10 +35,10 @@ router
         // var sql = `SELECT Empreiteira.Nome_Fantasia, Responsavel_Empreiteira.Nome, Oportunidade.Titulo, Proposta.ID_Proposta, Proposta.ID_Empreiteira_Proposta, Proposta.Escopo, Proposta.Valor_Proposta FROM Proposta FULL JOIN Empreiteira ON Empreiteira.ID_Empreiteira = Proposta.ID_Empreiteira_Proposta FULL JOIN Responsavel_Empreiteira ON Responsavel_Empreiteira.ID_Responsavel = Empreiteira.ID_Empreiteira FULL JOIN Oportunidade ON Oportunidade.ID_Oportunidade = Proposta.ID_Empreiteira_Proposta`;        
         // var sql = `SELECT Empreiteira.Nome_Fantasia, Proposta.ID_Proposta, Responsavel_Empreiteira.Nome, Oportunidade.Titulo, Proposta.Escopo, Proposta.Valor_Proposta FROM Proposta FULL JOIN Empreiteira ON Proposta.ID_Empreiteira_Proposta = Empreiteira.ID_Empreiteira FULL JOIN Responsavel_Empreiteira ON Empreiteira.ID_Empreiteira = Responsavel_Empreiteira.ID_Responsavel FULL JOIN Oportunidade ON Oportunidade.ID_Oportunidade = Proposta.ID_Empreiteira_Proposta WHERE Proposta.ID_Empreiteira_Proposta= '${req.query.id}'`;     
         if(req.query.id){
-            var sql = `SELECT Oportunidade.Titulo, Oportunidade.Servico, Oportunidade.Descricao, 
-            Oportunidade.Data_Inicio, Oportunidade.Data_Fim, Oportunidade.Estado, Oportunidade.Cidade 
-            FROM Proposta FULL JOIN Oportunidade ON Proposta.ID_Oportunidade = Oportunidade.ID_Oportunidade 
-            WHERE Proposta.ID_Empreiteira_Proposta= '${req.query.id}'`;       
+            var sql = `SELECT Proposta.ID_Proposta, Contratante.Nome, Contratante.Email, Contratante.Celular, Contratante.Regional, Oportunidade.Titulo, Oportunidade.Servico, Oportunidade.Data_Inicio, Oportunidade.Data_Fim FROM Proposta
+            FULL JOIN Contratante ON Contratante.ID_Contratante = Proposta.ID_Contratante_Proposta
+            FULL JOIN Oportunidade ON Oportunidade.ID_Oportunidade = Proposta.ID_Oportunidade
+            WHERE Proposta.ID_Empreiteira_Proposta= '${req.query.id}' AND Proposta.Match= '1' `;       
             console.log(sql)
             db.all(sql, [],  (err, rows ) => {
                 if (err) {

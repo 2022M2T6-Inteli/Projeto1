@@ -195,4 +195,8 @@
         background-color: #8B0000;
         color: #fff;
     }
+
+@media (min-width:480px)  { 
+    /* smartphones, Android phones, landscape iPhone */ 
     
+}
