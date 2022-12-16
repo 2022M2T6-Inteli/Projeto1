@@ -1,7 +1,7 @@
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js'></script>
 <script src="backend/routes/loginCont.js"></script>
 <link rel="stylesheet" href="/frontend/views/css/feed.css">
-<head><title>Login Contratante</title></head>
+<head><title>Login</title></head>
 <div id="probSenha" class="modal">
     <div class="modal_content">
        <h2 class="modal_title">Senha incorreta ou não preenchida</h2>
@@ -10,7 +10,6 @@
         </div>
    </div>
 </div>
-
 <div id="probEmail" class="modal">
     <div class="modal_content">
        <h2 class="modal_title">Email incorreto ou não preenchido</h2>
@@ -19,26 +18,41 @@
         </div>
    </div>
 </div>
-<body class="login-body">
-    <div class="header login-shadow">
-        <div class="horizontal-container">
-            <h1>ConstruMatch</h1>
-            <div class="icons-right">
-                <i class="fa-solid fa-circle-info"></i>
-            </div>
-        </div>  
-    </div>
-    <div class="main-container center">
-        <div class="center-box">
-            <h1 class="center">Login</h1>
+<style>
+    .grid-item{
+        margin-top: 5%;
+    }
+    input{
+        margin: 5%;
+    }
+    body{
+        text-align: center;
+        justify-items: center;
+        overflow-y: hidden;
+    }
+    .post-box{
+        text-align: center;
+        justify-content: center;
+        height: 50%;
+
+    }
+    #title{
+        height: 70px;
+        margin-bottom: 0px;
+    }
+</style>
+<body class="grid-container">
+    <div class="grid-item">
+        <div class="post-box">
+            <h1 id="title">ConstruMatch</h1>
             <form method="post" action="/login/banco">
                 <div>
+                    <label>Email: </label>
                     <input type="text" id="email" name="email" required>
-                    <label>Email</label>
                 </div>
                 <div class="txt-field">
+                    <label>Senha: </label>
                     <input type="password" id="senha" name="senha" required>
-                    <label>Senha</label>
                 </div>
                 <div class="center"><input type="submit" id="submit" value="Entrar"></div>
                 <div class="center"><a href="/cadastrar">Ainda não está cadastrado?</a></div>      
@@ -46,21 +60,3 @@
         </div>
     </div>
 </body>
-
-<div id="probSenha" class="modal">
-    <div class="modal_content">
-       <h2 class="modal_title">Senha incorreta ou não preenchida</h2>
-        <div id="modal_buttons_responsavel">
-            <a href="#" class="close_button">Fechar</a>
-        </div>
-   </div>
-</div>
-
-<div id="probCPF" class="modal">
-    <div class="modal_content">
-       <h2 class="modal_title">CPF incorreto ou não preenchido</h2>
-        <div id="modal_buttons_responsavel">
-            <a href="#" class="close_button">Fechar</a>
-        </div>
-   </div>
-</div>

@@ -2,29 +2,46 @@
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js'></script>
 <script src="backend/routes/loginCont.js"></script>
 <link rel="stylesheet" href="/frontend/views/css/feed.css">
-<body class="login-body">
-    <div class="header login-shadow">
-        <div class="horizontal-container">
-            <h1>ConstruMatch</h1>
-            <div class="icons-right">
-                <i class="fa-solid fa-circle-info"></i>
-            </div>
-        </div>  
-    </div>
-    <div class="main-container center">
-        <div class="center-box">
-            <h1 class="center">Login</h1>
-            <form method="post" action="http://localhost:1234/loginCont/banco">
+<head><title>Login Contratante</title></head>
+<style>
+    .grid-item{
+        margin-top: 13%;
+    }
+    input{
+        margin: 5%;
+    }
+    body{
+        text-align: center;
+        justify-items: center;
+        overflow-y: hidden;
+    }
+    .post-box{
+        text-align: center;
+        justify-content: center;
+        height: 62%;
+
+    }
+    #title{
+        height: 70px;
+        margin-bottom: 0px;
+    }
+</style>
+
+<body class="grid-container">
+    <div class="grid-item">
+        <div class="post-box">
+            <h1 id="title">Área das regionais</h1>
+            <form method="post" action="/login/banco">
                 <div>
+                    <label>CPF: </label>
                     <input type="text" id="cpf" name="cpf" required>
-                    <label>CPF</label>
                 </div>
                 <div class="txt-field">
+                    <label>Senha: </label>
                     <input type="password" id="senha" name="senha" required>
-                    <label>Senha</label>
                 </div>
                 <div class="center"><input type="submit" id="submit" value="Entrar"></div>
-                <div class="center"><a href="register.html">Ainda não está cadastrado?</a></div>      
+                <div class="center"><a href="/cadastrarCont">Ainda não está cadastrado?</a></div>      
             </form>
         </div>
     </div>
