@@ -47,7 +47,7 @@ router
                     for(var i = 0; i < rows.length; i++){
                         if(rows[i].Senha == senha){
                             id = rows[i].ID_Contratante
-                            res.redirect(`/regionalPerfil/?id_contratante=${id}`)
+                            res.redirect(`/regionalPerfil/?id=${id}`)
                         } else{
                             res.redirect(`/loginCont#probSenha`)
                         }

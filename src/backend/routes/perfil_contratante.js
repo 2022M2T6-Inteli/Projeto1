@@ -32,6 +32,7 @@ router
         res.end();
     })
 
+module.exports = router;
 
 
 

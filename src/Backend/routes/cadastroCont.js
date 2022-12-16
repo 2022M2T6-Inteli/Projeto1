@@ -5,21 +5,21 @@ const bodyParser = require('body-parser');
 const sqlite3 = require('sqlite3').verbose();
 
 // Definições para este arquivo
-const router = express.Router(); // Setup router
-const viewPath = path.join(__dirname, "../../frontend/views/cadastrar/cadastroCont"); // Fetch the ejs file
-const urlencodedParser = bodyParser.urlencoded({ extended: false }) // Setup parser
-const DBPATH = path.join(__dirname, "../data/ConstruMatch.db"); // Fetch the database
+const router = express.Router(); 
+const viewPath = path.join(__dirname, "../../frontend/views/cadastrar/cadastroCont"); 
+const urlencodedParser = bodyParser.urlencoded({ extended: false }) 
+const DBPATH = path.join(__dirname, "../data/ConstruMatch.db");
 
 router
     //Rota básica que mostra a página
     .route('/')
     .get((req, res) => {
-		res.statusCode = 200 // Status: OK
+		res.statusCode = 200 
 		res.setHeader('Access-Control-Allow-Origin', '*');
-        res.render(viewPath) // Render page
+        res.render(viewPath) 
     })
     .post(urlencodedParser, (req, res) => {
-        res.statusCode = 200; // Status: OK
+        res.statusCode = 200;
         res.setHeader('Access-Control-Allow-Origin', '*');
     })
 

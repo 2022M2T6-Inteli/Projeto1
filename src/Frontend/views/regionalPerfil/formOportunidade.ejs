@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="/frontend/views/css/perfil_contratante.css">
 </head>
 
-		<form method="POST" class="modal_postagem" action="/regionalPerfil/alterarOportunidade?id_contratante=<%= Oportunidade.ID_Oportunidade %>">
+		<form method="POST" class="modal_postagem" action="/regionalPerfil/alterarOportunidade">
 			<input type="hidden" name="ID_Oportunidade" value="<%= Oportunidade.ID_Oportunidade %>" />
 			<input type="hidden" name="ID_Contratante" value="<%= Oportunidade.ID_Contratante %>" />
 

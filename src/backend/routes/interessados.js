@@ -39,7 +39,7 @@ router
         FULL JOIN Contratante ON Oportunidade.ID_Contratante = Contratante.ID_Contratante 
         FULL JOIN Empreiteira ON Proposta.ID_Empreiteira_Proposta = Empreiteira.ID_Empreiteira
         FULL JOIN Responsavel_Empreiteira ON Responsavel_Empreiteira.ID_Empreiteira_FK = Empreiteira.ID_Empreiteira
-        WHERE Oportunidade.ID_Contratante= '${req.query.id_contratante}' AND Proposta.ID_Proposta > 0`;       
+        WHERE Oportunidade.ID_Contratante= '${req.query.id}' AND Proposta.ID_Proposta > 0`;       
         console.log("Join de listar " + sql)
         db.all(sql, [],  (err, rows ) => {
             if (err) {
@@ -110,11 +110,14 @@ router
         var db = new sqlite3.Database(DBPATH); // Abre o banco
         var sql= `INSERT INTO Avaliacoes (ID_Oportunidade, ID_Empreiteira, ID_Contratante, Organizacao, Produtividade, Documentacao, Limpeza, Escopo_Avaliacao) VALUES ('${req.body.id_oport}', '${req.body.id_emp}', '${req.body.id_contrat}', '${req.body.organizacao_avaliacao}', '${req.body.produtividade_avaliacao}', '${req.body.documentacao_avaliacao}', '${req.body.limpeza_avaliacao}', '${req.body.escopo_avaliacao}')`; 
         console.log(sql);
+        res.redirect(`/interessados/?id=${req.query.id}`)
+
         db.run(sql, [],  err => {
             if (err) {
                  throw err;
              }
              res.send();
+
          });
          db.close(); // Fecha o banco
     });

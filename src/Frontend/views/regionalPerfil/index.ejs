@@ -16,9 +16,9 @@
 			</div>
 					
 			<div class="grid-item">
-				<a onclick="redirectCont('regionalPerfil/criarOportunidade')"><button id="new_postagem">Adicionar Oportunidade</button></a>
-				<a onclick="redirectCont('regionalPerfil/listar')"><button id="new_postagem">Ver Oportunidades</button></a>
-				<a onclick="redirectCont('regionalPerfil/alterarPerfil')"><button id="edit_profile">Editar Perfil</button></a>
+				<a href="/regionalPerfil/criarOportunidade?id=<%= model.ID_Contratante %>"><button id="new_postagem">Adicionar Oportunidade</button></a>
+				<a href="/regionalPerfil/listar?id=<%= model.ID_Contratante %>"><button id="new_postagem">Ver Oportunidades</button></a>
+				<a href="/regionalPerfil/alterarPerfil?id=<%= model.ID_Contratante %>"><button id="edit_profile">Editar Perfil</button></a>
 			</div>   
 			<div class="grid-item">
 				<div id="info_contratante">

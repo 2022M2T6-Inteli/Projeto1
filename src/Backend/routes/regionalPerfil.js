@@ -29,7 +29,7 @@ router
 	.get((req, res) => {
 		res.statusCode = 200; // Status: OK
         res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
-		const params = [req.query.id_contratante];
+		const params = [req.query.id];
 		console.log('QUERY', params);
 
         var db = new sqlite3.Database(DBPATH, err => {
@@ -57,7 +57,7 @@ router
 	.get(urlencodedParser,(req, res) => {
 		res.statusCode = 200; // Status: OK
         res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
-		const params = [req.query.id_contratante];
+		const params = [req.query.id];
 		console.log('QUERY', params);
 
         var db = new sqlite3.Database(DBPATH, err => {
@@ -86,7 +86,7 @@ router
 	.get((req, res) => {
 		res.statusCode = 200; // Status: OK
         res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
-		const params = [req.query.id_contratante];
+		const params = [req.query.id];
 		console.log('QUERY', params);
 
         var db = new sqlite3.Database(DBPATH, err => {
@@ -116,7 +116,7 @@ router
 		res.statusCode = 200; 
         res.setHeader('Access-Control-Allow-Origin', '*'); 
 
-		let ID_Contratante = req.query["id_contratante"];
+		let ID_Contratante = req.query["id"];
 
         var db = new sqlite3.Database(DBPATH, err => {
             if (err) {
@@ -134,13 +134,13 @@ router
 		const sql = "SELECT ID_Contratante, Cpf, Nome, Email, Celular, Regional FROM Contratante WHERE ID_Contratante=?";
 
 		console.log(sql);
-		id=req.query.id_contratante
+		id=req.query.id
 		
 		db.get(sql, [ID_Contratante], (err, rows) => { 
             if (err) {
                 throw err;
             }
-			res.render(viewPathFormPerfil, { id_contratante: id, model: rows });
+			res.render(viewPathFormPerfil, { id: id, model: rows });
 		});
 	})
 	.post(urlencodedParser, (req, res) => {
@@ -201,7 +201,7 @@ router
 				msg = "Usuário Alterado!";
 			id=ID_Contratante
 			console.log('id db run', id);
-			res.render(viewPathAlterarPerfil, { mensagem: msg, id_contratante: id });
+			res.render(viewPathAlterarPerfil, { mensagem: msg, id: id });
 		});
 	});
 	
@@ -210,7 +210,7 @@ router
 	.get((req, res) => {
 		res.statusCode = 200; 
         res.setHeader('Access-Control-Allow-Origin', '*'); 
-		let ID_Contratante = req.query["id_contratante"];
+		let ID_Contratante = req.query["id"];
 		let ID_Oportunidade = req.query["id_oportunidade"];
 		
         var db = new sqlite3.Database(DBPATH, err => {
@@ -329,7 +329,7 @@ router
 	.get((req, res) => {
 		res.statusCode = 200; 
         res.setHeader('Access-Control-Allow-Origin', '*'); 
-		const params = [req.query.id_contratante];
+		const params = [req.query.id];
 		console.log('QUERY', params);
 
         var db = new sqlite3.Database(DBPATH, err => {
@@ -347,7 +347,7 @@ router
                 throw err;
             }
 	
-			res.render(viewPathListar, { model: rows, id_contratante: req.query.id_contratante });
+			res.render(viewPathListar, { model: rows, id: req.query.id });
 		});
 	});
 
@@ -356,7 +356,7 @@ router
 	.get((req, res) => {
 		res.statusCode = 200; 
         res.setHeader('Access-Control-Allow-Origin', '*'); 
-		let ID_Contratante = req.query["id_contratante"];
+		let ID_Contratante = req.query["id"];
 		let ID_Oportunidade = req.query["id_oportunidade"];
 		
         var db = new sqlite3.Database(DBPATH, err => {
@@ -454,7 +454,7 @@ router
 			else
 				msg = "Oportunidade criada!";
             
-			res.render(viewPathAlterarOportunidade, {id_contratante: id, mensagem: msg });
+			res.render(viewPathAlterarOportunidade, {id: id, mensagem: msg });
 		});
 	});
 

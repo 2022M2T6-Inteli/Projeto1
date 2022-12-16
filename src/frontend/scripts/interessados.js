@@ -1,10 +1,10 @@
 url = new URL(window.location.href);
 params = url.searchParams;
-id = url.searchParams.get("id_contratante");
+id = url.searchParams.get("id");
 id_proposta_url= url.searchParams.get("id_proposta")
 
 function listarInteressados(){    
-    fetch(`./listar/?id_contratante=${id}`)
+    fetch(`./listar/?id=${id}`)
     .then((response) => {
         return response.json();
     })
@@ -51,7 +51,7 @@ function SubmitLike(id_proposta){
     console.log(id_proposta)
     $.ajax({
         type: "POST",
-        url: `./like/?id_contratante=${id}&id_proposta=${id_proposta_url}`,
+        url: `./like/?id=${id}&id_proposta=${id_proposta_url}`,
         data: {
             id_proposta: id_proposta
 
@@ -72,7 +72,7 @@ function SubmitDislike(id_proposta){
     console.log(id_proposta)
     $.ajax({
         type: "POST",
-        url: `./dislike/?id_contratante=${id}&id_proposta=${id_proposta_url}`,
+        url: `./dislike/?id=${id}&id_proposta=${id_proposta_url}`,
         data: {
             id_proposta: id_proposta
 
@@ -106,7 +106,7 @@ function SubmitRate(){
     }).done(function(){
         console.log('done');
         alert('Avaliação enviada com sucesso!!!')
-        window.location.href= `/interessados/?id_contratante=${id}`
+        window.location.href= `/interessados/?id=${id}`
     }).fail(function(){
         alert('Falha, avaliação não enviada!!')
         console.log('failed');

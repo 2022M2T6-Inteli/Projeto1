@@ -125,7 +125,6 @@ function listarAvaliacoes(){
             saida += `<tr>    
                 <th id="value_table_titulo"> ${element.Titulo} </th>
                 <th id="value_table_escopo"> ${element.Escopo_Avaliacao} </th>
-                <th id="value_table_avaliacao-geral"> ${element.Avaliacao_Geral} </th>
                 <th id="value_table_organizacao"> ${element.Organizacao} </th>
                 <th id="value_table_produtividade"> ${element.Produtividade} </th>
                 <th id="value_table_documentacao"> ${element.Documentacao} </th>
