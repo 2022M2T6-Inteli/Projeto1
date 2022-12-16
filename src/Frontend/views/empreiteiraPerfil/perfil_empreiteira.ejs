@@ -2,7 +2,9 @@
 
 <head>
     <link rel="stylesheet" href="/frontend/views/css/perfil_empreiteira.css">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <title>Construmatch</title>
 </head>
 
 <div id="grid-container">
@@ -28,81 +30,40 @@
             </div>
             <div class="info_grid_item">
                 <p class="title_grid"><b>CNPJ:</b></p>
-                <p id="cnpj"></p>
+                <p id="empreiteira_cnpj"></p>
+            </div>
+            <div class="info_grid_item">
+                <p class="title_grad"><b>Razão Social:</b></p>
+                <p id="empreiteira_razao_social"></p> 
+            </div>
+            <div class="info_grid_item">
+                <p class="title_grad"><b>CNAE:</b></p>
+                <p id="empreiteira_cnae"></p> 
             </div>
             <div class="info_grid_item">        
                 <p class="title_grid"><b>E-mail:</b></p>
-                <p id="email">Empretech@gmail.com</p>
+                <p id="empreiteira_email"></p>
             </div>
             <div class="info_grid_item">
-                <p class="title_grad"><b>Número de funcionários:</b></p>
-                <p id="funcionarios_empreiteira_value"></p> 
+                <p class="title_grad"><b>Número de Funcionários :</b></p>
+                <p id="empreiteira_funcionarios"></p> 
+            </div>
+            <div class="info_grid_item">
+                <p class="title_grad"><b>Data de abertura:</b></p>
+                <p id="empreiteira_data_abertura"></p> 
+            </div>
+            <div class="info_grid_item">
+                <p class="title_grad"><b>Cidade</b></p>
+                <p id="empreiteira_cidade"></p> 
+            </div>
+            <div class="info_grid_item">
+                <p class="title_grad"><b>Estado:</b></p>
+                <p id="empreiteira_estado"></p> 
             </div>
         </div>
     </div>
 
-    <div class="grid-item">
-        <div id="rate_empreiteira">
-            <div class="rate_grid_item">
-                <h2>Avaliações</h1> 
-            </div>
-            <div class="rate_grid_item">
-                <p>Avaliação Geral</p>
-                <div class="rate_star">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                </div>
-            </div>
-            <div class="rate_grid_item">        
-                <p>Organização</p>
-                <div class="rate_star">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                </div>
-             
-            </div>
-            <div class="rate_grid_item">        
-                <p>Produtividade</p>
-                <div class="rate_star">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                </div>
-               
-            </div>
-            <div class="rate_grid_item">        
-                <p>Documentação</p>
-                <div class="rate_star">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                </div>
-                
-            </div>
-            <div class="rate_grid_item">        
-                <p>Limpeza</p>
-                <div class="rate_star">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                </div>
-                
-            </div>
-        </div>
-   </div>
-
+   
    <div class="grid-item">
     <div id="info_responsavel">
         <div class="responsavel_grid_item">
@@ -126,11 +87,31 @@
             <p id="responsavel_celular"></p> 
         </div>
         </div>
-        
+    </div>
+    <div class="grid-item">
+        <h1 style="color: #006b3f;"><b>Avaliações:</b></h1>
+        <table class="table table-sm table-striped table-bordered">
+            <thead class="table-success border-dark">
+                <tr>
+                    <th>Oportunidade</th>
+                    <th>Descrição da Avaliação</th>
+                    <th>Avaliação Geral</th>
+                    <th>Organização</th>
+                    <th>Produtividade</th>
+                    <th>Documentação</th>
+                    <th>Limpeza</th>
+                </tr>
+            </thead>
+            <tbody id="row-avaliar">
+
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+
     </div>
     
     
-    <%- include("../structures/footer.ejs") %>
+    <!-- <%- include("../structures/footer.ejs") %> -->
 </div>
 
 <!-- Modal Editar Informações Empreiteira -->
@@ -140,7 +121,7 @@
        <h2 class="modal_title">Editar Informações da Empreiteira</h2>
        <div class="modal_description">
         <!-- <form id="formulario_uptade_empreiteira" name="form_uptade_empreiteira" method="post" action="http://localhost:1234/perfil/empreiteira/atualizar"</form>> -->                
-        <form id="formulario_uptade_empreiteira" name="form_uptade_empreiteira" method="post" action="http://127.0.0.1:1234/perfil/empreiteira/atualizar">
+        <form id="formulario_uptade_empreiteira" name="form_uptade_empreiteira" method="post" action="/perfil/empreiteira/atualizar">
             <p>CNPJ:</p>
             <input type="text" name="cnpj_empreiteira" id="cnpj_empreiteira" readonly value="">
             <p>Nome Fantasia:</p>
@@ -150,7 +131,7 @@
             <p>Email:</p>
             <input type="text" name="email_empreiteira" id="email_empreiteira" value=""></input>
             <p>CNAE:</p>
-            <input type="text" name="cnae_empreiteira" id="cnae_empreiteira" value=""></input>
+            <input type="text" name="cnae_empreiteira" id="cnae_empreiteira" value=""autocomplete="off" maxlength="9"></input>
             <p>Data de Abertura:</p>
             <input type="text"  name="data_abertura_empreiteira" id="data_abertura_empreiteira" value=""></input>
             <p>Número de Funcionários:</p>
@@ -167,7 +148,6 @@
 
                 <!-- <a name="send_button" class="send_button">Atualizar</a> -->
             </div>
-
         </form>
             
         </div>
@@ -222,3 +202,17 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="/frontend/scripts/perfil_empreiteira.js"></script>
+<script>
+    const cnae=document.querySelector('#cnae_empreiteira')
+
+    cnae.addEventListener('keypress', () => {
+        let inputlength = cnae.value.length
+        
+        if (inputlength === 4 ){
+            cnae.value += '-' 
+        } 
+        else if (inputlength===6){
+            cnae.value += '/'
+        }
+    })
+</script>

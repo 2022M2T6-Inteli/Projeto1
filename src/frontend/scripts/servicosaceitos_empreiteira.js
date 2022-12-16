@@ -39,9 +39,9 @@ function listarObrasAceitas(){
 function SendZAP(celular){
      let titulo_oportunidade= String(document.getElementById('titulo').value)
     let valor1= titulo_oportunidade.split()
-     console.log("Returning do "+valor1)
+     console.log("Returning do: " + valor1)
     // let url= `https://wa.me/55${celular}?text=Ol%C3%A1%2C+eu+sou${titulo_oportunidade}+respons%C3%A1vel+pela+empreiteira.+Vi+que+fui+aceito+na+oportunidade.+Podemos+dar+andamento+ao+processo+de+negocia%C3%A7%C3%A3o%3F`
-    let url= `https://wa.me/55${celular}?text=Nem`
+    let url= `https://wa.me/55${celular}?text=Ol%C3%A1%2C+obtive+seu+n%C3%BAmero+por+meio+do+Construmatch%2C+no+qual+manifestei+interesse+por+uma+oportunidade+e+fui+aceito+nela.+Poder%C3%ADamos+conversar+mais+para+prosseguir+com+a+negocia%C3%A7%C3%A3o%3F`
     window.location.href= url
 }
 

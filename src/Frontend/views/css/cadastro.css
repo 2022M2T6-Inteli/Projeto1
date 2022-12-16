@@ -1,5 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 
+/* Works on Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--greenA3) var(--yellowA2);
+  }
+  
+  /* Works on Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: var(--yellowA2);
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--greenA3);
+    border-radius: 20px;
+    border: 3px solid var(--yellowA2);
+  }
+
 *{
     font-family: 'Noto Sans', sans-serif;
     margin: 0;
@@ -50,7 +71,7 @@ html{
     width: 45%;
     height: 70vh;
     background-color: #006b3f;
-    border-radius: 15px 50px;
+    border-radius:  60px 0 0 60px;
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 12% repeat(6, 15%)  20% 20%;
@@ -59,6 +80,7 @@ html{
     /* overflow-x: hidden; */
     justify-items: center;
     overflow: auto;
+
 } 
 
 /* .cadastro_item{
