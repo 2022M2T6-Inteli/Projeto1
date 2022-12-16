@@ -40,7 +40,7 @@ router
                 throw err;
             }
         });
-        res.redirect(`/regionalPerfil/?id=${req.query.id}`);
+        res.redirect(`/loginCont`);
         db.close();
         res.end();
     });

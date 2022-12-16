@@ -62,7 +62,7 @@ router
        
    
         db.close();
-        res.end();
+        res.redirect("/login");
     })
 
 
