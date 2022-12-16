@@ -88,7 +88,7 @@
           </div>
           <div class="cadastro_item">
             <p>Qual é o CPF do Responsável pela Empreiteira:</p>
-            <input name="cpf_responsavel" id="cpf_responsavel" type="text" required placeholder="Ex: 000.000.000-00">
+            <input name="cpf_responsavel" id="cpf_responsavel" type="text" required placeholder="Ex: 000.000.000-00" required autocomplete="off" maxlength="14">
           </div>
           <div class="cadastro_item">
             <p>Insira o nome do Responsável pela Empreiteira:</p>
@@ -96,11 +96,11 @@
           </div>
           <div class="cadastro_item">
             <p>Nos informe o Email do Responsável pela Empreiteira:</p>
-            <input name="email_responsavel" id="email_responsavel" type="text" required placeholder="Ex: João Freitas Almeida">
+            <input name="email_responsavel" id="email_responsavel" type="text" required placeholder="Ex: joão.freitas@email.com">
           </div>
           <div class="cadastro_item">
             <p>Qual é o número do celular do Responsável pela Empreiteira:</p>
-            <input name="celular_responsavel" id="celular_responsavel" type="text" required placeholder="Ex: João Freitas Almeida">
+            <input name="celular_responsavel" id="celular_responsavel" type="text" required placeholder="Ex: 11971234567">
             <input name="id_empreiteira_fk" id="id_empreiteira_fk" type="hidden" value="">
           </div>
           <div class="cadastro_item">
@@ -137,6 +137,20 @@
               cnae.value += '/'
           }
 
+      })
+    </script>
+    <script>
+      const cpf=document.querySelector('#cpf_responsavel')
+
+      cpf.addEventListener('keypress', () => {
+          let cpflength = cpf.value.length
+          
+          if (cpflength === 3 || cpflength === 7){
+              cpf.value += '.' 
+          } 
+          else if (cpflength===11){
+              cpf.value += '-'
+          }
       })
     </script>
   </body>
