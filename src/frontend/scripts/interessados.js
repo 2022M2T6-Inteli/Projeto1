@@ -18,7 +18,12 @@ function listarInteressados(){
                 <th id="value_table_oportunidade"> ${element.Titulo} </th>
                 <th id="value_table_escopo"> ${element.Escopo} </th>
                 <th id="value_table_proposta"> ${element.Valor_Proposta} </th>
-                <th id="button_table_check"><button type="submit" id="button-check" onclick="SubmitLike(${element.ID_Proposta});"><img id="img-check" src="/frontend/views/img/check-button.png"></img></button></th>
+                <th id="button_table_check">
+                <div id="judge_button">
+                    <button type="submit" class="button-approve" onclick="SubmitLike(${element.ID_Proposta});"><img class="img-approve" src="/frontend/views/img/check-button.png"></img></button>
+                    <button type="submit" class="button-approve" onclick="SubmitDislike(${element.ID_Proposta});"><img class="img-approve" src="/frontend/views/img/x-mark.png"></img></button>
+                </div
+                </th>
                 <th id="button_table_review"><a href="#modal_avaliar"><button type="submit" id="button-review" onclick="pegarIDs(${element.ID_Contratante_Proposta}, ${element.ID_Empreiteira_Proposta}, ${element.ID_Oportunidade});"><img id="img-review" src="/frontend/views/img/comment.png"></img></button></a></th>
                 <input type="hidden" name="id_proposta" id="id_proposta" value=""> 
         </tr>`
@@ -62,6 +67,27 @@ function SubmitLike(id_proposta){
     });
 }
 
+
+function SubmitDislike(id_proposta){
+    console.log(id_proposta)
+    $.ajax({
+        type: "POST",
+        url: `./dislike/?id_contratante=${id}&id_proposta=${id_proposta_url}`,
+        data: {
+            id_proposta: id_proposta
+
+        }
+    }).done(function(){
+        console.log('done');
+        alert('Você removeu a proposta')
+    }).fail(function(){
+        alert('Falha, a proposta não foi removida')
+        console.log('failed');
+    }).always(function(){
+        console.log('always');
+    });
+}
+
 function SubmitRate(){
     $.ajax({
         type: "POST",
@@ -80,6 +106,7 @@ function SubmitRate(){
     }).done(function(){
         console.log('done');
         alert('Avaliação enviada com sucesso!!!')
+        window.location.href= `/interessados/?id_contratante=${id}`
     }).fail(function(){
         alert('Falha, avaliação não enviada!!')
         console.log('failed');

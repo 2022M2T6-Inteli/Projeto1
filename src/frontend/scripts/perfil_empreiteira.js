@@ -13,7 +13,6 @@ id = url.searchParams.get("id");
 
 var cnpj;
 function list() {
-
     // Get from table 'empreiteira'
     $.ajax({
         url: `./info/?id=${id}`,
@@ -31,11 +30,16 @@ function list() {
                     $('#service_empreiteira').text(element.Servico_1);
                 }
 
-                $('#email').text(element.Email); // Set Email address
-                $('#open_date_value').text(element.Data_Abertura) // Set Opening date
+                $('#empreiteira_email').text(element.Email); // Set Email address
+                $('#empreiteira_data_abertura').text(element.Data_Abertura) // Set Opening date
                 $('#icon_user').attr('src', element.Foto); // Set Profile picture
-                $('#funcionarios_empreiteira_value').text(`${element.Numero_Funcionarios} Funcionários`) // Set number of employees
-                $('#cnpj').text(element.CNPJ);
+                $('#empreiteira_funcionarios').text(`${element.Numero_Funcionarios} Funcionários`) // Set number of employees
+                $('#empreiteira_cnpj').text(element.CNPJ);
+                $('#empreiteira_cnae').text(element.CNAE);
+                $('#empreiteira_razao_social').text(element.Razao_Social);
+                $('#empreiteira_cidade').text(element.Cidade);
+                $('#empreiteira_estado').text(element.Estado);
+
                 $('#responsavel_cpf').text(element.CPF);
                 $('#responsavel_email').text(element.Email_Responsavel);
                 $('#responsavel_nome').text(element.Nome);
@@ -52,10 +56,7 @@ function list() {
     console.log(cnpj);
 }
 
-$(document).ready(function () {
-    list();
-    
-});
+
 
 
 function ShowdataInput(){
@@ -111,4 +112,37 @@ function ShowdataInput_Responsavel(){
         }
     })
 }
+
+function listarAvaliacoes(){    
+    fetch(`/perfil/avaliacao/?id=${id}`)
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        avaliacao = data;
+        saida= ''
+        avaliacao.map(function (element) {
+            saida += `<tr>    
+                <th id="value_table_titulo"> ${element.Titulo} </th>
+                <th id="value_table_escopo"> ${element.Escopo_Avaliacao} </th>
+                <th id="value_table_avaliacao-geral"> ${element.Avaliacao_Geral} </th>
+                <th id="value_table_organizacao"> ${element.Organizacao} </th>
+                <th id="value_table_produtividade"> ${element.Produtividade} </th>
+                <th id="value_table_documentacao"> ${element.Documentacao} </th>
+                <th id="value_table_limpeza"> ${element.Limpeza} </th>
+             
+        </tr>`
+        console.log("Contratante" + element.ID_Contratante)
+        })
+            document.getElementById("row-avaliar").innerHTML= saida
+
+    })
+}
+
+$(document).ready(function () {
+    list();
+    listarAvaliacoes();
+
+});
+
 

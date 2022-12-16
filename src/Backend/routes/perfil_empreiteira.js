@@ -117,5 +117,23 @@ router
          db.close(); // Fecha o banco
     });
 
+router
+    .route("/avaliacao")
+    .get((req,res)=>{
+        var db = new sqlite3.Database(DBPATH);
+        var sql = `SELECT Oportunidade.Titulo, Avaliacoes.Escopo_Avaliacao, Avaliacoes.Avaliacao_Geral, Avaliacoes.Organizacao, Avaliacoes.Produtividade, Avaliacoes.Documentacao, Avaliacoes.Limpeza FROM Avaliacoes 
+        FULL JOIN Oportunidade ON Avaliacoes.ID_Oportunidade = Oportunidade.ID_Oportunidade
+        WHERE Avaliacoes.ID_Empreiteira = ${req.query.id};`;
+        console.log(sql)
+        db.all(sql, [],  (err, rows ) => {
+            if (err) {
+                throw err;
+            }
+            res.json(rows);
+            console.log(rows)
+        });
+        db.close();
+    })
+
 module.exports = router;
 

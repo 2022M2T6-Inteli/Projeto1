@@ -6,19 +6,41 @@
     padding: 0; 
 }
 
-html{
+body{
+
     background-color: #F9F6EE;
 }
+:root{
+    /* - Color palette - */
+    --blue1: #93b1cb;
+    --blue2: #85a7c5;
+    --blue3: #789ebf;
+    --greenA1: #568f6a;
+    --greenA2: #428157;
+    --greenA3: #006b3f;
+    --greenB1: #8fe094;
+    --greenB2: #81dc87;
+    --greenB3: #73d97a;
+    --yellowA01: #ffd375;
+    --yellowA1: #ffc546;
+    --yellowA2: #ffbe2f;
+    --yellowA3: #ffb719;
+    --yellowB01: #ffb97a;
+    --yellowB1: #ffa24e;
+    --yellowB2: #ff9638;
+    --yellowB3: #ff8b22;
+    }
 
 
 #grid-container{
     display: grid;
     height: 100vh;
-     grid-template-columns: 80% 80%; 
-    /* grid-template-rows: 20%; */
+    grid-template-columns: 140%; 
+    grid-template-rows: 20%, 20%, 20%, 20%, 20%;
     padding: 10px;
     justify-content: center;
-    margin-left: 10%;
+    margin-top: 2%;
+    margin-left: 5%;
     margin-bottom: 100px;
 }
 
@@ -113,7 +135,7 @@ html{
     /* justify-content: center; */
     grid-column-start: 1;
     grid-column-end: 3;
-    justify-content: space-evenly;
+    justify-content: space-around;
     padding: 2% 0 2% 3.5%;
 
 }
@@ -122,14 +144,35 @@ html{
 #info_empreiteira{
     width: 90%;
     height: 50vh;
-    background-color: #D9D9D9;
+    background-color: var(--greenA3);
     border-radius: 40px;
     padding: 2% 5% 2% 2%;
+    margin: 0;
     display: grid;
-    grid-template-columns: 60% 60%;
+    grid-template-columns: 50% 55%;
     grid-template-rows: 20% 20% 20% 20%;
-    border: 2px solid #000;
+    border: 2px solid var(--yellowA2); 
+    color: #fff;
  
+}
+
+.info_grid_item{
+    max-width: 100%;
+}
+
+.info_grid_item:nth-child(1){
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid #000; */
+    margin-bottom: 1%;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.info_grid_item:nth-child(n+2) > p{
+    margin-bottom: -0.3%;
 }
 
 #info_empreiteira > p{
@@ -153,11 +196,11 @@ html{
 
 .grid-item:nth-child(5){
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: stretch;
     grid-column-start: 1;
     grid-column-end: 3;
-    padding: 20px 0 0 0;
+    padding: 0 5px 150px 5px;
 } 
 
 .grid-item:nth-child(3){
@@ -165,6 +208,9 @@ html{
     flex-direction: row; 
     /* flex-direction: flex-end; */
     justify-content: center; 
+    grid-column-start: 1;
+    grid-column-end: 3;
+    padding: 1% 0 2% 0;
    
     /* padding-left: 25%; */
     /* background-color: blue; */
@@ -175,18 +221,12 @@ html{
     flex-direction: row; 
     /* flex-direction: flex-end; */
      justify-content: center; 
-   
+     grid-column-start: 1;
+     grid-column-end: 3;
     /* padding-left: 25%; */
     /* background-color: blue; */
 }
 
-.info_grid_item:nth-child(1){
-    grid-column-start: 1;
-    grid-column-end: 3;
-    display: flex;
-    /* margin-left: 22%; */
-    margin-left: 15%;
-    }
 
 #title_grad{
     margin-top: 30px;
@@ -205,28 +245,39 @@ html{
 }
 
 #info_responsavel{
-    width: 98.5%;
+    width: 90%;
     height: 50vh;
-    background-color: #D9D9D9;
+    background-color: var(--greenA3);
     border-radius: 40px;
-    padding: 2%;
+    padding: 2% 5% 2% 2%;
+    margin: 0;
     display: grid;
-    grid-template-columns: 60% 60%;
+    grid-template-columns: 50% 55%;
     grid-template-rows: 20% 20% 20% 20%;
-    border: 2px solid #000;
-    margin-bottom: 55px;
+    border: 2px solid var(--yellowA2); 
+    margin-bottom: 2%;
+    color: #fff;
 }
 
 
-/* .responsavel_grid_item{
-    border: 2px solid #000;
-} */
+.responsavel_grid_item{
+    max-width: 100%;
+}
 
 .responsavel_grid_item:nth-child(1){
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid #000; */
+    margin-bottom: 1%;
+
     grid-column-start: 1;
     grid-column-end: 3;
-    display: flex;
-    margin-left: 22%;
+}
+
+.responsavel_grid_item:nth-child(n+2) > p{
+    margin-bottom: -0.3%;
 }
 
 /* Modal Editar Empreiteira */
@@ -339,3 +390,5 @@ a{
     border: 2px solid #000;
     width: 70%;
 }
+
+/* Tabela de Avaliacoes */

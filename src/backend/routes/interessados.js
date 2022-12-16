@@ -87,6 +87,23 @@ router
     });
 
 router
+    .post("/dislike", urlencodedParser, (req, res)=>{
+        res.statusCode = 200;
+        res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
+        var db = new sqlite3.Database(DBPATH); // Abre o banco
+        var sql= `DELETE FROM Proposta WHERE ID_Proposta= '${req.body.id_proposta}'`; 
+        console.log(sql);
+        db.run(sql, [],  err => {
+            if (err) {
+                 throw err;
+             }
+             res.send();
+         });
+         db.close(); // Fecha o banco
+    });
+
+
+router
     .post("/avaliar", urlencodedParser, (req, res)=>{
         res.statusCode = 200;
         res.setHeader('Access-Control-Allow-Origin', '*'); // Isso é importante para evitar o erro de CORS
