@@ -52,7 +52,7 @@ a:hover{
     position: fixed;
     left: 0;
     top: 0px;
-    height: auto;
+    height: 10vh;
     width: 100vw;
 }
 .header.normal-shadow{

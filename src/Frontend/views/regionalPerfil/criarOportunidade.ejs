@@ -1,10 +1,10 @@
+<!-- Adicionando sidebar e header na versão contratante -->
 <%- include("../structures/menuContratante.ejs") %>
-
+<!-- Importando css -->
 <head>
     <link rel="stylesheet" href="/frontend/views/css/perfil_contratante.css">
 </head>
-		
-
+	<!-- Form de criação de oportunidade -->
 		<form method="POST"  class="modal_postagem" action="/regionalPerfil/criarOportunidade">
 			<input type="hidden" name="ID_Contratante" value="<%= id %>" />
 			<div>

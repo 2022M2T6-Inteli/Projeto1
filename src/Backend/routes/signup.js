@@ -1,26 +1,28 @@
-// Import modules
+// Definição de módulos necessários
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const sqlite3 = require('sqlite3').verbose();
 
-// Definitions
-const router = express.Router(); // Setup router
-const viewPath = path.join(__dirname, "../../frontend/views/cadastrar/tela_cadastro"); // Fetch the ejs file
-const urlencodedParser = bodyParser.urlencoded({ extended: false }) // Setup parser
-const DBPATH = path.join(__dirname, "../data/ConstruMatch.db"); // Fetch the database
+// Definições para este arquivo
+const router = express.Router(); 
+const viewPath = path.join(__dirname, "../../frontend/views/cadastrar/tela_cadastro"); 
+const urlencodedParser = bodyParser.urlencoded({ extended: false }) 
+const DBPATH = path.join(__dirname, "../data/ConstruMatch.db"); 
 var resposta_all= null;
 var valor_resposta= null;
 
-// Opening endpoint
+// Endpoint com várias funcionalidades
 router
     .route('/')
+    // Esta parte recebe o front da página para renderizar
     .get((req, res) => {
-        res.render(viewPath) // Render page
+        res.render(viewPath)
     })
+    // Este post cria uma linha na tabela "Empreiteira" no banco de dados e descobre qual o último id criado antes deste post para depois inserir os dados do responsável da empreiteira no banco referenciando o id correto
     .post(urlencodedParser, (req, res) => {
-        res.statusCode = 200; // Status: OK
-        res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
+        res.statusCode = 200; 
+        res.setHeader('Access-Control-Allow-Origin', '*'); 
         var db = new sqlite3.Database(DBPATH, err => {
             if (err) {
                 return console.error(err.message);

@@ -1,10 +1,10 @@
+<!-- Adicionando sidebar e header na versão contratante -->
 <%- include("../structures/menuContratante.ejs") %>
-
+<!-- Importando css -->
 <head>
     <link rel="stylesheet" href="/frontend/views/css/perfil_contratante.css">
 </head>
-		
-
+	<!-- Form de alteração no peril contratante -->
 		<form method="POST" class="modal_postagem" action="/regionalPerfil/alterarPerfil">
 			<input type="hidden" id="ID_Contratante" name="ID_Contratante" value="<%= model.ID_Contratante %>" />
 			<div>

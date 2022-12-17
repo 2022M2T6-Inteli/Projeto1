@@ -1,6 +1,6 @@
 const url = `http://${new URL(window.location.href).hostname}:${new URL(window.location.href).port}`;
 
-// Interacts with server to post in database
+// Função ajax que recebe os inputs no frontend e envia para um endpoint que insere as informações da conta na tabela "Empreiteira"
 function submitProfile(){
     $.ajax({
         type: "POST",
@@ -37,7 +37,7 @@ function submitProfile(){
 };
 
 
-// Fills the fields for cities and states
+// Função que coloca dinâmicamente as cidades e estados brasileiros ao receber a informação por um json
 function cityState(){
     $.getJSON('frontend/scripts/json/cidades-estados.json', function(data) {
         var options = '<option value="">Escolha um estado</option>';	

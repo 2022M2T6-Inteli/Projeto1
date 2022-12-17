@@ -1,12 +1,13 @@
+<!-- Importando sidebar e header -->
 <%- include("../structures/menu.ejs") %>
-
+<!-- Chamando css e bootstrap -->
 <head>
     <link rel="stylesheet" href="/frontend/views/css/perfil_empreiteira.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <title>Construmatch</title>
 </head>
-
+<!-- Perfil empreiteira -->
 <div id="grid-container">
     <div class="grid-item">
         <div id="profile_pic">
@@ -20,7 +21,7 @@
     </div>
                
     <div class="grid-item">
-        <a href="#modal1" class="btn"><button id="edit_profile" onclick="ShowdataInput();">Editar Empreiteira</button></a>
+        <a href="#modal" class="btn"><button id="edit_profile" onclick="ShowdataInput();">Editar Empreiteira</button></a>
         <a href="#modal_responsavel" class="btn"><button id="edit_responsavel" onclick="ShowdataInput_Responsavel()">Editar Responsável</button></a>
     </div>   
     <div class="grid-item">
@@ -115,11 +116,10 @@
 
 <!-- Modal Editar Informações Empreiteira -->
 
-<div id="modal1" class="modal1">
+<div id="modal" class="modal">
     <div class="modal_content">
        <h2 class="modal_title">Editar Informações da Empreiteira</h2>
        <div class="modal_description">
-        <!-- <form id="formulario_uptade_empreiteira" name="form_uptade_empreiteira" method="post" action="http://localhost:1234/perfil/empreiteira/atualizar"</form>> -->                
         <form id="formulario_uptade_empreiteira" name="form_uptade_empreiteira" method="post" action="/perfil/empreiteira/atualizar">
             <p>CNPJ:</p>
             <input type="text" name="cnpj_empreiteira" id="cnpj_empreiteira" readonly value="">
@@ -140,12 +140,10 @@
             <p>Serviço Secundário:</p>
             <input type="text" name="servico_secundario_empreiteira" id="servico_secundario_empreiteira" value=""></input>
             <input type="hidden" name="id" id="id" value=""> 
-            <!-- <a name="send_button" class="send_button"><button>Atualizar</button></a> -->
             <div id="modal_buttons">
                 <a href="#" class="close_button">Fechar</a>
                 <input type="submit" name="button_enviar" class="send_button" onclick="" value="Atualizar"></button>
 
-                <!-- <a name="send_button" class="send_button">Atualizar</a> -->
             </div>
         </form>
             
@@ -176,7 +174,6 @@
             <div id="modal_buttons">
                 <a href="#" class="close_button">Fechar</a>
                 <input type="submit" name="button_enviar" class="send_button" onclick="" value="Atualizar">
-            <!-- <a name="send_button" class="send_button">Atualizar</a> -->
              </div>      
 
         </form>
@@ -186,19 +183,7 @@
    </div>
 </div>
 
-<!-- <div id="modal_atualizado" class="modal_atualizado">
-    <div class="modal_content">
-       <h2 class="modal_title">Informações Atualizadas com Sucesso!!</h2>
-       <div class="modal_description">
-        </div>
-        <div id="modal_buttons_responsavel">
-            <a href="#" class="close_button">Fechar</a>
-            <a href="#" class="send_button">Atualizar</a>
-        </div>
-       
-   </div>
-</div> -->
-
+<!-- Máscara da cnae -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="/frontend/scripts/perfil_empreiteira.js"></script>
 <script>

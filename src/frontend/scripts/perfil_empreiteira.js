@@ -1,28 +1,21 @@
-/* CRUD database */
-
-// const { data } = require("jquery");
-
-// const { data } = require("jquery");
-// const { type } = require("os");
-
-// const { response } = require("express");
-
+//Variáveis para indentificar o id da empreiteira
 url = new URL(window.location.href);
 params = url.searchParams;
 id = url.searchParams.get("id");
 
 var cnpj;
+
+//Função ajax que associa a base de perfil com as informações recebidas no endpoint /info
 function list() {
-    // Get from table 'empreiteira'
     $.ajax({
         url: `./info/?id=${id}`,
         type: 'GET',
         success: data => {
             console.log(data)
             data.forEach(element => {
-                $('#name_empreiteira').text(element.Nome_Fantasia);  // Set 'Nome fantasia'
+                $('#name_empreiteira').text(element.Nome_Fantasia);  
 
-                // Check number of services to set them
+                // Checa o número de serviços e os adiciona na página
                 if(element.Servico_2 != null){ 
                     $('#service_empreiteira').text(`${element.Servico_1}, ${element.Servico_2}`);
                 }
@@ -47,7 +40,7 @@ function list() {
                 
                 
 
-                // $('#cnpj_empreiteira').html(element.CNPJ);
+
 
             });
             
@@ -58,19 +51,13 @@ function list() {
 
 
 
-
+// Função que recebe as informações da empreiteira para facilitar a atualização de dados
 function ShowdataInput(){
-    // let takejson;
     $.ajax({
         url: '/perfil/empreiteira/atualizar?id='+url.searchParams.get("id"),
         type: "get",
         success: data => {
-            // console.log(data)
-            
-            // data= JSON.parse(data);
-            // console.log(data)
             data.forEach(element => {
-                // $('#cnpj_empreiteira').text(element.CNPJ);
                     console.log(element.CNPJ)
                   document.getElementById('cnpj_empreiteira').value= element.CNPJ
                   document.getElementById('nome_fantasia_empreiteira').value= element.Nome_Fantasia
@@ -89,18 +76,13 @@ function ShowdataInput(){
     })
 }
 
+// Função que recebe as informações do responsável da empreiteira para facilitar a atualização de dados
 function ShowdataInput_Responsavel(){
-    // let takejson;
     $.ajax({
         url: '/perfil/responsavel/atualizar?id='+url.searchParams.get("id"),
         type: "get",
         success: data => {
-            // console.log(data)
-            
-            // data= JSON.parse(data);
-            // console.log(data)
             data.forEach(element => {
-                // $('#cnpj_empreiteira').text(element.CNPJ);
                   document.getElementById('cpf_editar_responsavel').value= element.CPF
                   document.getElementById('nome_editar_responsavel').value= element.Nome
                   document.getElementById('email_editar_responsavel').value= element.Email_Responsavel
@@ -113,6 +95,7 @@ function ShowdataInput_Responsavel(){
     })
 }
 
+// Função que cria as avaliações na página conforme as presentes no banco de dados
 function listarAvaliacoes(){    
     fetch(`/perfil/avaliacao/?id=${id}`)
     .then((response) => {

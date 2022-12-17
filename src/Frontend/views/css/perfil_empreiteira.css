@@ -294,7 +294,7 @@ a{
     justify-content: center;
     border-radius: 4px;
 } */
-.modal1, .modal_responsavel{
+.modal, .modal_responsavel{
     position: fixed;
     width: 100%;
     height: 100%;
@@ -306,14 +306,9 @@ a{
     opacity: 0;
 }
 
-.modal_responsavel:target{
+.modal:target,.modal_responsavel:target{
     opacity: 1;
     visibility: visible;    
-}
-
-.modal1:target{
-    opacity: 1;
-    visibility: visible;   
 }
 
 .modal_content{

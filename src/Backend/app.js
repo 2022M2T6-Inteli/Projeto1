@@ -21,7 +21,7 @@ app.use('/frontend', express.static(path.join(__dirname, "../frontend")))
 console.log(`Static Path at: ${path.join(__dirname, "../frontend")}`);
 
 //Endpoint base
-const viewPath = path.join(__dirname, '../frontend/views/index/index');
+const viewPath = path.join(__dirname, '../frontend/views/login/login');
 app.get('/', (req, res) =>{
     res.render(viewPath)
 })

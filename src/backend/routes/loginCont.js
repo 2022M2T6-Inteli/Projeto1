@@ -1,30 +1,30 @@
-// Import modules
+// Definição de módulos necessários
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const sqlite3 = require('sqlite3').verbose();
 
-// Definitions
-const router = express.Router(); // Setup router
-const viewPath = path.join(__dirname, "../../frontend/views/login/loginCont"); // Fetch the ejs file
-const urlencodedParser = bodyParser.urlencoded({ extended: false }) // Setup parser
-const DBPATH = path.join(__dirname, "../data/ConstruMatch.db"); // Fetch the database
+// Definições para este arquivo
+const router = express.Router();
+const viewPath = path.join(__dirname, "../../frontend/views/login/loginCont"); 
+const urlencodedParser = bodyParser.urlencoded({ extended: false }) 
+const DBPATH = path.join(__dirname, "../data/ConstruMatch.db");
 let login = [];
 
 
-// Opening endpoint
+// Endpoint base para carregar a página web
 router
     .route('/')
     .get((req, res) => {
-		res.statusCode = 200 // Status: OK
-		res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
-        res.render(viewPath) // Render page
+		res.statusCode = 200 
+		res.setHeader('Access-Control-Allow-Origin', '*'); 
+        res.render(viewPath) 
     })
     .post(urlencodedParser, (req, res) => {
-        res.statusCode = 200; // Status: OK
-        res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
+        res.statusCode = 200; 
+        res.setHeader('Access-Control-Allow-Origin', '*'); 
     })
-
+// Endpoint que busca no banco as informações de login para comparar com os dados inseridos com as contratantes existentes
 router
     .route('/banco')
     .post(urlencodedParser,(req, res) => {
@@ -61,4 +61,4 @@ router
     })
 
 console.log(login)
-module.exports = router; // Export Router
+module.exports = router;

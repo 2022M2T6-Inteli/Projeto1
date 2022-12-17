@@ -1,12 +1,14 @@
+<!-- Adicionando sidebar, header e footer na versão contratante -->
 <%- include("../structures/menuContratante.ejs") %>
 <%- include("../structures/footer.ejs") %>
-
+<!-- Importando css-->
 <head>
     <link rel="stylesheet" href="/frontend/views/css/interessados.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <title>Construmatch</title>
 </head>
+<!-- Tabela de empreiteiras interessadas nas oportunidades -->
     <div class="table-responsive">
         <h1>Lista de Interessados nas Oportunidades:</h1>
         <table class="table th-lg table-striped table-bordered">
@@ -30,7 +32,7 @@
         </table>
     </div>
 
-    
+<!-- Modal de avaliar a empreiteira -->
 <div id="modal_avaliar" class="modal_avaliar">
     <div class="modal_content">
        <h2 class="modal_title">Avaliar Empreiteira</h2>
@@ -46,24 +48,19 @@
             <input type="text" name="limpeza_avaliacao" id="limpeza_avaliacao" value="">
             <p>Escreva brevemente o que você achou do serviço da Empreiteira:</p>
             <input type="text" name="escopo_avaliacao" id="escopo_avaliacao" value="">
-
             <input type="text" name="id_contrat" id="id_contrat" value="" hidden></input>
             <input type="text" name="id_emp" id="id_emp" value="" hidden></input><br>
             <input type="text" name="id_oport" id="id_oport" value="" hidden></input>
-            
             <div id="modal_buttons">
                 <a href="#" class="close_button">Fechar</a>
                 <input type="submit" name="button_enviar" class="send_button" onclick="SubmitRate();" value="Inserir avaliação">
-            <!-- <a name="send_button" class="send_button">Atualizar</a> -->
              </div>      
-
         </form>
-     
         </div>   
        
    </div>
 </div>
-
+<!-- Importando bootstrap, jquery e script -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="/frontend/scripts/interessados.js"></script>

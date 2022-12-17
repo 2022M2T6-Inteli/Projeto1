@@ -7,9 +7,9 @@ const bodyParser = require('body-parser');
 const sqlite3 = require('sqlite3').verbose();
 
 // Definições
-const router = express.Router(); // Configurando rotas
-const urlencodedParser = bodyParser.urlencoded({ extended: false }) // Configuando parser
-const DBPATH = path.join(__dirname, "../data/ConstruMatch.db"); // Buscando banco de dados
+const router = express.Router();
+const urlencodedParser = bodyParser.urlencoded({ extended: false }) 
+const DBPATH = path.join(__dirname, "../data/ConstruMatch.db"); 
 
 // Obtendo arquivo ejs da rota
 const viewPath = path.join(__dirname, "../../frontend/views/regionalPerfil/index"); 
@@ -24,11 +24,12 @@ const viewPathInteressados= path.join(__dirname, "../../frontend/views/regionalP
 const viewPathListar = path.join(__dirname, "../../frontend/views/regionalPerfil/listar"); 
 const viewPathRemover = path.join(__dirname, "../../frontend/views/regionalPerfil/remover"); 
 
+// Endpoint base que carrega a página web já obtendo as informações do banco de dados
 router 
 	.route('/')
 	.get((req, res) => {
-		res.statusCode = 200; // Status: OK
-        res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
+		res.statusCode = 200; 
+        res.setHeader('Access-Control-Allow-Origin', '*');
 		const params = [req.query.id];
 		console.log('QUERY', params);
 
@@ -52,11 +53,12 @@ router
 		});
 	})
 
+// Endpoint que busca no banco de dados as informações do contratante para fazer seu perfil
 router 
 	.route('/perfil_contrante')
 	.get(urlencodedParser,(req, res) => {
-		res.statusCode = 200; // Status: OK
-        res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
+		res.statusCode = 200; 
+        res.setHeader('Access-Control-Allow-Origin', '*'); 
 		const params = [req.query.id];
 		console.log('QUERY', params);
 
@@ -109,7 +111,7 @@ router
 			res.render(viewPathTeste2, { model: rows });
 		});
 	})
-
+// Endpoint que recebe as informações de determinada contratante e permite atualizar algumas informações
 router
 	.route("/alterarPerfil")
 	.get((req, res) => {
@@ -146,7 +148,7 @@ router
 	.post(urlencodedParser, (req, res) => {
 		console.log(res.body)
 		res.statusCode = 200; 
-        res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
+        res.setHeader('Access-Control-Allow-Origin', '*');
 		
 
         var db = new sqlite3.Database(DBPATH, err => {
@@ -204,7 +206,8 @@ router
 			res.render(viewPathAlterarPerfil, { mensagem: msg, id: id });
 		});
 	});
-	
+
+//Endpoint que permite alterar informações das oportunidades criadas por determinado contratante
 router
 	.route('/alterarOportunidade') 
 	.get((req, res) => {
@@ -323,7 +326,7 @@ router
 			res.render(viewPathAlterarOportunidade, { mensagem: msg });
 		});
 	});
-
+// Endpoint que recebe as oportunidades criadas pelo contratante
 router
 	.route('/listar')
 	.get((req, res) => {
@@ -350,7 +353,7 @@ router
 			res.render(viewPathListar, { model: rows, id: req.query.id });
 		});
 	});
-
+// Endpoint que exclui oportunidades do contratante
 router
 	.route('/remover')
 	.get((req, res) => {
@@ -380,7 +383,7 @@ router
 			res.render(viewPathRemover, { mensagem: msg });
 		});
 	});
-	
+//Endpoint que o contratante usa para criar oportunidades	
 router
 	.route('/criarOportunidade')
 	.get((req, res) => {

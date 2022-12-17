@@ -1,7 +1,9 @@
+//Variáveis para receber o id presente na url
 url = new URL(window.location.href);
 params = url.searchParams;
 id = url.searchParams.get("id");
 
+// Função fetch que cria dinâmicamente os serviços os quais a empreiteira declarou interesse em uma tabela
 function listarMinhasObras(){    
     fetch(`./listar/?id=${id}`)
     .then((response) => {

@@ -1,4 +1,4 @@
-// Import modules
+// Definição de módulos necessários
 const express = require('express');
 const path = require('path');
 const sqlite3 = require('sqlite3').verbose();
@@ -7,33 +7,31 @@ const router = express.Router();
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
-// Definitions
-const viewPath = path.join(__dirname, "../../frontend/views/empreiteiraPerfil/servicoscurtidos_empreiteira.ejs"); // Fetch the ejs file
-const viewPathNF = path.join(__dirname, "../../frontend/views/404/NotFound.ejs"); // Fetch the ejs file "Not found"
-const DBPATH = path.join(__dirname, "../data/ConstruMatch.db"); // Fetch the database
+// Definições para este arquivo
+const viewPath = path.join(__dirname, "../../frontend/views/empreiteiraPerfil/servicoscurtidos_empreiteira.ejs"); 
+const viewPathNF = path.join(__dirname, "../../frontend/views/404/NotFound.ejs"); 
+const DBPATH = path.join(__dirname, "../data/ConstruMatch.db"); 
 
-
-// Opening endpoint
+// Endpoint base para carregar a página web
 router
     .route('/')
     .get((req, res) => {
-		res.statusCode = 200 // Status: OK
-		res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
-        res.render(viewPath) // Render page
+		res.statusCode = 200 
+		res.setHeader('Access-Control-Allow-Origin', '*'); 
+        res.render(viewPath) 
     })
     .post(urlencodedParser, (req, res) => {
-        res.statusCode = 200; // Status: OK
-        res.setHeader('Access-Control-Allow-Origin', '*'); // No CORS errors
+        res.statusCode = 200; 
+        res.setHeader('Access-Control-Allow-Origin', '*'); 
     })
 
+//Endpoint que busca no banco todas as oportunidades as quais a empreiteira declarou interesse
 router
     .route("/listar")
     .get((req, res)=>{
-        res.statusCode = 200 // Status: OK
+        res.statusCode = 200
 		res.setHeader('Access-Control-Allow-Origin', '*');
         var db = new sqlite3.Database(DBPATH);
-        // var sql = `SELECT Empreiteira.Nome_Fantasia, Responsavel_Empreiteira.Nome, Oportunidade.Titulo, Proposta.ID_Proposta, Proposta.ID_Empreiteira_Proposta, Proposta.Escopo, Proposta.Valor_Proposta FROM Proposta FULL JOIN Empreiteira ON Empreiteira.ID_Empreiteira = Proposta.ID_Empreiteira_Proposta FULL JOIN Responsavel_Empreiteira ON Responsavel_Empreiteira.ID_Responsavel = Empreiteira.ID_Empreiteira FULL JOIN Oportunidade ON Oportunidade.ID_Oportunidade = Proposta.ID_Empreiteira_Proposta`;        
-        // var sql = `SELECT Empreiteira.Nome_Fantasia, Proposta.ID_Proposta, Responsavel_Empreiteira.Nome, Oportunidade.Titulo, Proposta.Escopo, Proposta.Valor_Proposta FROM Proposta FULL JOIN Empreiteira ON Proposta.ID_Empreiteira_Proposta = Empreiteira.ID_Empreiteira FULL JOIN Responsavel_Empreiteira ON Empreiteira.ID_Empreiteira = Responsavel_Empreiteira.ID_Responsavel FULL JOIN Oportunidade ON Oportunidade.ID_Oportunidade = Proposta.ID_Empreiteira_Proposta WHERE Proposta.ID_Empreiteira_Proposta= '${req.query.id}'`;     
         if(req.query.id){
             var sql = `SELECT Oportunidade.Titulo, Oportunidade.Servico, Oportunidade.Descricao, 
             Oportunidade.Data_Inicio, Oportunidade.Data_Fim, Oportunidade.Estado, Oportunidade.Cidade 

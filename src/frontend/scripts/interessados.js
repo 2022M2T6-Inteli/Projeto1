@@ -1,8 +1,10 @@
+// Parte que recebe os ids presente na url (contratante e proposta)
 url = new URL(window.location.href);
 params = url.searchParams;
 id = url.searchParams.get("id");
 id_proposta_url= url.searchParams.get("id_proposta")
 
+// Esta função fetch lista os elementos requisitados pelo endpoint em uma tabela que permite a contratante aprovar ou não uma proposta e avaliar o serviço da empreiteira a qual criou a proposta
 function listarInteressados(){    
     fetch(`./listar/?id=${id}`)
     .then((response) => {
@@ -34,6 +36,7 @@ function listarInteressados(){
     })
 }
 
+//Função que recebe todos os ids necessários para a tabela de oportunidades
 function pegarIDs(ID_Contratante_value, ID_Empreiteira_value, ID_Oportunidade_value){
     url = new URL(window.location.href);
     params = url.searchParams;
@@ -47,6 +50,7 @@ function pegarIDs(ID_Contratante_value, ID_Empreiteira_value, ID_Oportunidade_va
 
 }
 
+// Função ajax que faz um post no endpoint /like caso a contratante aceite a proposta
 function SubmitLike(id_proposta){
     console.log(id_proposta)
     $.ajax({
@@ -67,7 +71,7 @@ function SubmitLike(id_proposta){
     });
 }
 
-
+// Função ajax que faz um post no endpoint /dislike caso a contratante recuse a proposta
 function SubmitDislike(id_proposta){
     console.log(id_proposta)
     $.ajax({
@@ -88,6 +92,7 @@ function SubmitDislike(id_proposta){
     });
 }
 
+// Função ajax que faz um post no endpoint /avaliar para enviar ao banco a avaliação que a contratante fez
 function SubmitRate(){
     $.ajax({
         type: "POST",

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+<!-- Importação de estilo, jquery, ajax, script e rota -->
   <head>
     <title>Cadastrar</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,13 +10,16 @@
     <script src="/frontend/scripts/signup.js"></script>
     <script src="/backend/routes/signup.js"></script>
   </head>
-
+<!-- Página para criar o cadastro da contratante -->
   <body>
+     <!-- O "main_container" é utilizado como base para centralizar na página a localização do form -->
     <div id="main_container">
+      <!-- Este é o form para enviar as informações ao banco de dados -->
         <form id="cadastro_grid">
           <div class="">
             <h1>Cadastrar Empreiteira</h1>
           </div>
+          <!-- A classe "cadastro_item" normaliza todos os inputs do form como nome, telefone, entre outros -->
           <div class="cadastro_item">
             <p>Nos informe o CNPJ da Empreiteira:</p>
             <input name="cnpj" id="cnpj" type="text" required placeholder="Ex: 00.000.000/0000-00" required autocomplete="off" maxlength="18">
@@ -104,11 +107,13 @@
             <input name="id_empreiteira_fk" id="id_empreiteira_fk" type="hidden" value="">
           </div>
           <div class="cadastro_item">
+            <!-- O botão faz o envio do form para a url definida em "action" para enviar ao banco de dados -->
             <button id="signup">Cadastrar</button>
           </div>
         </form>
     </div>
     <script>
+      // Script que cria a máscara para o cnpj
       const input=document.querySelector('#cnpj')
 
       input.addEventListener('keypress', () => {
@@ -125,6 +130,7 @@
       })
     </script>
     <script>
+            // Script que cria a máscara para o cnae
       const cnae=document.querySelector('#cnae')
 
       cnae.addEventListener('keypress', () => {
@@ -140,6 +146,7 @@
       })
     </script>
     <script>
+            // Script que cria a máscara para o cpf
       const cpf=document.querySelector('#cpf_responsavel')
 
       cpf.addEventListener('keypress', () => {
