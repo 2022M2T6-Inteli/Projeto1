@@ -62,7 +62,11 @@ app.use('/servcurtidos', servcurtidosRouter);
 const servaceitosRouter = require('./routes/servicosaceitos_empreiteira');
 app.use('/servaceitos', servaceitosRouter);
 
-// Endpoint do feed
+// Endpoint faq
+// const faqRouter = require('./routes/faq');
+//  app.use('/faq', faqRouter);
+
+// Endpoint signup
 const feedRouter = require('./routes/feed');
 app.use('/feed', feedRouter);
 
