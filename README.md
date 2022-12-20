@@ -25,8 +25,8 @@ O principal objetivo do projeto é facilitar o processo de contratação entre e
 
 |--> documentos<br>
   &emsp;| --> outros <br>
-  &emsp;| T6_G1_V100_Web_application_document.pdf<br>
-  &emsp;| T6_G1_V100_Web_application_document.docx<br>
+  &emsp;| T6_G1_V10_Web_application_document.pdf<br>
+  &emsp;| T6_G1_V10_Web_application_document.docx<br>
 |--> imagens<br>
 |--> src<br>
   &emsp;|--> Backend<br>
@@ -81,7 +81,7 @@ npm start
 
 ## 📋 Licença/License
 
-<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/Spidus/Teste_Final_1">MODELO GIT INTELI</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://www.inteli.edu.br/">Inteli</a>, <a href="https://www.linkedin.com/in/felipe-martins-moura-1bbb27157/">Felipe Martins Moura</a>, <a href="https://www.linkedin.com/in/gabriel-gallo-m-coutinho-443809232">Gabriel Gallo Menequini Coutinho</a>, <a href="https://www.linkedin.com/in/guilherme-moura-9668821a5/">Guilherme Jesus Moura</a>, <a href="https://www.linkedin.com/in/guilherme-novaes-lima/">Guilherme Novaes Lima</a>, <a href="https://www.linkedin.com/in/isabela-amado-da-rocha-0314b4237">Isabela Amado da Rocha</a>, <a href="https://www.linkedin.com/in/thomaz-klifson-falc%C3%A3o-barboza-046490125">Thomaz Klifson Falcao Barboza</a>, <a href="https://www.linkedin.com/in/vivian-shibata-311818252/">Vivian Midori Shibata</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International</a>.</p>
+<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title" rel="cc:attributionURL" href="https://github.com/2022M2T6-Inteli/Projeto1">Projeto1</a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/InteliProjects">Inteli</a>, <a href="https://www.linkedin.com/in/felipe-martins-moura-1bbb27157/">Felipe Martins Moura</a>, <a href="https://www.linkedin.com/in/gabriel-gallo-m-coutinho-443809232">Gabriel Gallo Menequini Coutinho</a>, <a href="https://www.linkedin.com/in/guilherme-moura-9668821a5/">Guilherme Jesus Moura</a>, <a href="https://www.linkedin.com/in/guilherme-novaes-lima/">Guilherme Novaes Lima</a>, <a href="https://www.linkedin.com/in/isabela-amado-da-rocha-0314b4237">Isabela Amado da Rocha</a>, <a href="https://www.linkedin.com/in/thomaz-klifson-falc%C3%A3o-barboza-046490125">Thomaz Klifson Falcao Barboza</a>, <a href="https://www.linkedin.com/in/vivian-shibata-311818252/">Vivian Midori Shibata</a> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">Attribution 4.0 International</a>.</p>
 
 ## 🎓 Referências
 
